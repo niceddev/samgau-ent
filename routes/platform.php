@@ -35,12 +35,12 @@ Route::screen('/students/form', \App\Orchid\Screens\Students\CreateScreen::class
 Route::screen('/students/form/{student}', \App\Orchid\Screens\Students\EditScreen::class)
     ->name('platform.students.edit');
 
-//Classes
-Route::screen('/classes', \App\Orchid\Screens\Classes\IndexScreen::class)
-    ->name('platform.classes.index');
+//Grades
+Route::screen('/grades', \App\Orchid\Screens\Grades\IndexScreen::class)
+    ->name('platform.grades.index');
 
-Route::screen('/classes/form', \App\Orchid\Screens\Classes\CreateScreen::class)
-    ->name('platform.classes.create');
+Route::screen('/grades/form', \App\Orchid\Screens\Grades\CreateScreen::class)
+    ->name('platform.grades.create');
 
-Route::screen('/classes/form/{class}', \App\Orchid\Screens\Classes\EditScreen::class)
-    ->name('platform.classes.edit');
+Route::screen('/grades/form/{grade}', \App\Orchid\Screens\Grades\EditScreen::class)
+    ->name('platform.grades.edit');

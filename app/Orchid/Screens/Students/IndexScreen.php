@@ -23,7 +23,7 @@ class IndexScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'IndexScreen';
+        return __('common.students');
     }
 
     /**

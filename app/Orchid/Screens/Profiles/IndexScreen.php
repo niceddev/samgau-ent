@@ -2,6 +2,7 @@
 
 namespace App\Orchid\Screens\Profiles;
 
+use App\Models\Profile;
 use Orchid\Screen\Screen;
 
 class IndexScreen extends Screen
@@ -13,7 +14,9 @@ class IndexScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
+        return [
+            'profiles' => Profile::get()
+        ];
     }
 
     /**
@@ -23,7 +26,7 @@ class IndexScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'IndexScreen';
+        return __('common.profiles');
     }
 
     /**

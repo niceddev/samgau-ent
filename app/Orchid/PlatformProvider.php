@@ -33,9 +33,9 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('people')
                 ->route('platform.students.index'),
 
-            Menu::make(__('common.classes'))
+            Menu::make(__('common.grades'))
                 ->icon('layers')
-                ->route('platform.classes.index'),
+                ->route('platform.grades.index'),
         ];
     }
 

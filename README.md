@@ -10,5 +10,5 @@
     <li>composer i</li>
     <li>php artisan key:generate</li>
     <li>php artisan migrate</li>
-    <li>php artisan orchid:admin admin admin@admin.com password</li>
+    <li>php artisan orchid:admin admin admin@admin.com 123123</li>
 </ul>  

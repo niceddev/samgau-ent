@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Orchid\Screens\Classes;
+namespace App\Orchid\Screens\Grades;
 
 use Orchid\Screen\Screen;
 
-class IndexScreen extends Screen
+class EditScreen extends Screen
 {
     /**
      * Query data.
@@ -23,7 +23,7 @@ class IndexScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'IndexScreen';
+        return 'EditScreen';
     }
 
     /**

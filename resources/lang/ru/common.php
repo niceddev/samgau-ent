@@ -3,8 +3,8 @@
 return [
     'profile' => 'Профиль',
     'profiles' => 'Профили',
-    'class'  => 'Класс',
-    'classes'  => 'Классы',
+    'grade'  => 'Класс',
+    'grades'  => 'Классы',
     'student' => 'Студент',
     'students' => 'Студенты',
 
