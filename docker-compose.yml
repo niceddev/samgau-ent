@@ -19,6 +19,7 @@ services:
         build:
             context: docker/php
             dockerfile: Dockerfile
+        user: ${UID}:${GID}
         volumes:
             - ./:/var/www/samgau
             - ./docker/php/php.ini:/usr/local/etc/php/conf.d/z-php.ini
