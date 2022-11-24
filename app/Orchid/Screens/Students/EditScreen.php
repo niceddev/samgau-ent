@@ -2,7 +2,16 @@
 
 namespace App\Orchid\Screens\Students;
 
+use App\Models\Grade;
+use App\Models\Student;
+use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Actions\Link;
+use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Layout;
+use Orchid\Support\Facades\Toast;
+use Illuminate\Http\Request;
 
 class EditScreen extends Screen
 {
@@ -11,9 +20,11 @@ class EditScreen extends Screen
      *
      * @return array
      */
-    public function query(): iterable
+    public function query(Student $student): iterable
     {
-        return [];
+        return [
+            'student' => $student->toArray()
+        ];
     }
 
     /**
@@ -23,7 +34,35 @@ class EditScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'EditScreen';
+        return __('common.edit') . ' ' . __('common.student') . 'а';
+    }
+
+    /**
+     * Save method.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function save(Student $student, Request $request)
+    {
+        $student->update($request->input('student'));
+
+        Toast::info('Успешно сохранено!');
+
+        return redirect()->route('platform.students.index');
+    }
+
+    /**
+     * Remove method.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function remove(Student $student)
+    {
+        $student->delete();
+
+        Toast::info('Удалено!');
+
+        return redirect()->route('platform.students.index');
     }
 
     /**
@@ -33,7 +72,14 @@ class EditScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            Button::make(__('Remove'))
+                ->method('remove'),
+            Link::make(__('Cancel'))
+                ->href(route('platform.students.index')),
+            Button::make(__('Save'))
+                ->method('save'),
+        ];
     }
 
     /**
@@ -43,6 +89,25 @@ class EditScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            Layout::rows([
+                Input::make('student.email')
+                    ->placeholder('Введите E-mail')
+                    ->title('E-mail')
+                    ->required(),
+                Input::make('student.password')
+                    ->placeholder('Введите ' . __('Password'))
+                    ->title(__('Password'))
+                    ->required(),
+                Input::make('student.fio')
+                    ->placeholder('Введите ' . __('common.fio'))
+                    ->title(__('common.fio'))
+                    ->required(),
+                Select::make('student.grade_id')
+                    ->fromModel(Grade::class, 'name')
+                    ->empty('No select')
+                    ->title(__('common.grades'))
+            ])
+        ];
     }
 }

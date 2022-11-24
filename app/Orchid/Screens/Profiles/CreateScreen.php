@@ -78,7 +78,7 @@ class CreateScreen extends Screen
                     ->title(__('common.image')),
                 Input::make('profile.name')
                     ->placeholder(__('common.example') . ' (Химия, Биология, Математика)')
-                    ->title('Введите название ' . __('common.profile') . 'а')
+                    ->title('Введите название ' . rtrim(__('common.profile'), 'ь') . 'я')
                     ->required(),
             ])
         ];
