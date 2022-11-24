@@ -10,9 +10,8 @@ class Grade extends Model
         'name',
     ];
 
-    public function grade()
+    public function student()
     {
-        return $this->hasOne(Grade::class);
+        return $this->belongsTo(Student::class);
     }
-
 }

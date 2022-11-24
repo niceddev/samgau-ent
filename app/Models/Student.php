@@ -13,4 +13,9 @@ class Student extends Model
         'grade_id',
     ];
 
+    public function grade()
+    {
+        return $this->hasOne(Grade::class, 'id', 'grade_id');
+    }
+
 }

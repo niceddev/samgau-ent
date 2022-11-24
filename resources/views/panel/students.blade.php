@@ -16,7 +16,7 @@
                 {{ $student->fio }}
             </td>
             <td class="border-b border-slate-100 p-4 text-slate-500">
-                {{ $student->grade() }}
+                {{ $student->grade->name ?? null }}
             </td>
         </tr>
     @endforeach
