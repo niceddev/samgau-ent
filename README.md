@@ -6,11 +6,9 @@
     <li>docker-compose up -d --build</li>
     <li>npm i (node 16v)</li>
     <li>npm run dev</li>
-    <li>echo UID=$(id -u) >> .env</li>
-    <li>echo GID=$(id -g) >> .env</li>
     <li>docker exec -it samgau_php bash</li>
     <li>composer i</li>
     <li>php artisan key:generate</li>
     <li>php artisan migrate</li>
-    <li>php artisan orchid:admin admin admin@admin.com 123456</li>
+    <li>php artisan orchid:admin admin admin@admin.com password</li>
 </ul>  
