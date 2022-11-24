@@ -1,13 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Orchid\Screens;
 
 use Orchid\Screen\Screen;
-use Orchid\Support\Facades\Layout;
 
-class PlatformScreen extends Screen
+class ProfilesScreen extends Screen
 {
     /**
      * Query data.
@@ -26,17 +23,7 @@ class PlatformScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Get Started';
-    }
-
-    /**
-     * Display header description.
-     *
-     * @return string|null
-     */
-    public function description(): ?string
-    {
-        return null;
+        return 'ProfilesScreen';
     }
 
     /**
@@ -52,12 +39,10 @@ class PlatformScreen extends Screen
     /**
      * Views.
      *
-     * @return \Orchid\Screen\Layout[]
+     * @return \Orchid\Screen\Layout[]|string[]
      */
     public function layout(): iterable
     {
-        return [
-            Layout::view('platform::partials.welcome'),
-        ];
+        return [];
     }
 }
