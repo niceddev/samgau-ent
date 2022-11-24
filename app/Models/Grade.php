@@ -10,4 +10,9 @@ class Grade extends Model
         'name',
     ];
 
+    public function grade()
+    {
+        return $this->hasOne(Grade::class);
+    }
+
 }

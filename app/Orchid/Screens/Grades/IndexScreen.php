@@ -2,7 +2,10 @@
 
 namespace App\Orchid\Screens\Grades;
 
+use App\Models\Grade;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Layout;
 
 class IndexScreen extends Screen
 {
@@ -13,7 +16,9 @@ class IndexScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
+        return [
+            'grades' => Grade::get()
+        ];
     }
 
     /**
@@ -33,7 +38,10 @@ class IndexScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            Link::make(__('Add'))
+                ->href(route('platform.grades.create')),
+        ];
     }
 
     /**
@@ -43,6 +51,8 @@ class IndexScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            Layout::view('panel.grades')
+        ];
     }
 }

@@ -1,26 +1,21 @@
-<table class="table-auto">
+<table class="mt-12 border-collapse table-auto w-full text-sm">
     <thead>
-    <tr>
-        <th>Sonsg</th>
-        <th>Artist</th>
-        <th>Year</th>
-    </tr>
+        <tr>
+            <th class="border-b font-medium p-4 pl-8 pt-0 pb-3 text-dark-400">{{ __('common.image') }}</th>
+            <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-dark-400">{{ __('common.name') }}</th>
+        </tr>
     </thead>
-    <tbody>
-    <tr>
-        <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-        <td>Malcolm Lockyer</td>
-        <td>1961</td>
-    </tr>
-    <tr>
-        <td>Witchy Woman</td>
-        <td>The Eagles</td>
-        <td>1972</td>
-    </tr>
-    <tr>
-        <td>Shining Star</td>
-        <td>Earth, Wind, and Fire</td>
-        <td>1975</td>
-    </tr>
+    <tbody class="bg-white">
+        @foreach($profiles as $profile)
+            <tr>
+                <td class="border-b border-slate-100 p-4 pl-8 text-slate-500">
+                    <img class="max-h-36" style="object-fit: contain"
+                         src="{{ asset($profile->image_path) }}" alt="" />
+                </td>
+                <td class="border-b border-slate-100 p-4 text-slate-500">
+                    {{ $profile->name }}
+                </td>
+            </tr>
+        @endforeach
     </tbody>
 </table>
