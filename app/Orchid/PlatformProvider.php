@@ -25,10 +25,17 @@ class PlatformProvider extends OrchidServiceProvider
     public function registerMainMenu(): array
     {
         return [
-            Menu::make('Профили')
-                ->icon('home')
+            Menu::make(__('common.profiles'))
+                ->icon('book-open')
                 ->route('platform.profiles.index'),
 
+            Menu::make(__('common.students'))
+                ->icon('people')
+                ->route('platform.students.index'),
+
+            Menu::make(__('common.classes'))
+                ->icon('layers')
+                ->route('platform.classes.index'),
         ];
     }
 
