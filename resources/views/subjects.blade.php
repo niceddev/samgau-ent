@@ -15,7 +15,7 @@
                 </a>
             @endforeach
         </div>
-        <h3 class="fs-3 text-center">{{ __('common.choose_profile_and_start') }}</h3>
+        <h3 class="fs-3 text-center mt-5">{{ __('common.choose_profile_and_start') }}</h3>
         <div class="row">
             <div class="col-sm-6">
                 <h4 class="secondary text-center mb-3 mt-2 fs-5">
