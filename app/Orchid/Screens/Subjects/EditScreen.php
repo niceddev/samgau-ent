@@ -3,16 +3,16 @@
 namespace App\Orchid\Screens\Subjects;
 
 use App\Models\Subject;
+use App\Orchid\Screens\AbstractMultiLanguageScreen;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
-use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
 use Illuminate\Http\Request;
 
-class EditScreen extends Screen
+class EditScreen extends AbstractMultiLanguageScreen
 {
     /**
      * Query data.
@@ -37,6 +37,38 @@ class EditScreen extends Screen
     }
 
     /**
+     * Multi translatable fields
+     *
+     * @return array
+     */
+    protected function multiLanguageFields(): array
+    {
+        return [
+            Input::make('subject.name')
+                ->placeholder(__('common.example') . ' (Химия, Биология, Математика)')
+                ->title('Введите название ' . __('common.subject') . 'а')
+                ->required(),
+        ];
+    }
+
+    /**
+     * Not translatable fields
+     *
+     * @return array
+     */
+    protected function singleLanguageFields(): array
+    {
+        return [
+            Layout::rows([
+                Picture::make('subject.image_path')
+                    ->storage('public')
+                    ->targetUrl()
+                    ->title(__('common.image')),
+            ])
+        ];
+    }
+
+    /**
      * Save method.
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -45,7 +77,7 @@ class EditScreen extends Screen
     {
         $subject->update($request->input('subject'));
 
-        Alert::message('['.$request->input('subject.name').'] Успешно сохранено!');
+        Alert::message('['.$request->input('subject.name')['ru'].'] Успешно сохранено!');
 
         return redirect()->route('platform.subjects.index');
     }
@@ -81,24 +113,4 @@ class EditScreen extends Screen
         ];
     }
 
-    /**
-     * Views.
-     *
-     * @return \Orchid\Screen\Layout[]|string[]
-     */
-    public function layout(): iterable
-    {
-        return [
-            Layout::rows([
-                Picture::make('subject.image_path')
-                    ->storage('public')
-                    ->targetUrl()
-                    ->title(__('common.image')),
-                Input::make('subject.name')
-                    ->placeholder(__('common.example') . ' (Химия, Биология, Математика)')
-                    ->title('Введите название ' . __('common.subject') . 'а')
-                    ->required(),
-            ])
-        ];
-    }
 }

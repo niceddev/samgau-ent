@@ -4,7 +4,7 @@
         <th class="border-b font-medium p-4 pl-8 pt-0 pb-3 text-dark-400">E-mail</th>
         <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-dark-400">{{ __('common.fio') }}</th>
         <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-dark-400">{{ __('common.grade') }}</th>
-        <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-dark-400 float-end">{{ __('common.edit') }}</th>
+        <th></th>
     </tr>
     </thead>
     <tbody class="bg-white">

@@ -77,7 +77,7 @@ class EditScreen extends AbstractMultiLanguageScreen
     {
         $mustSubject->update($request->input('mustSubject'));
 
-        Alert::message('['.$request->input('mustSubject.name').'] Успешно сохранено!');
+        Alert::message('['.$request->input('mustSubject.name')['ru'].'] Успешно сохранено!');
 
         return redirect()->route('platform.must_subjects.index');
     }
