@@ -14,7 +14,7 @@
     <!-- write  two columns sm-6 from bootstrap grid  -->
         <div class="row">
             <div class="col-sm-6">
-                <h4 class="secondary text-center">
+                <h4 class="secondary text-center mb-3 mt-2">
                     Обязательные
                 </h4>
                 <div class="row">
@@ -31,7 +31,7 @@
             </div>
 
             <div class="col-sm-6">
-                <h4>
+                <h4 class="mb-3 mt-2">
                     Предметы по профилю
                 </h4>
                 <div class="row">
