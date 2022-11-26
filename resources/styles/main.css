@@ -99,10 +99,6 @@ h4 {
     height: 155px;
     background: #23BDEE url(../assets/reading.png) no-repeat center center / contain;
 }
-#biology {
-    margin: 10px auto;
-    background: #F25471 url(../assets/biology.png) no-repeat center center / contain;
-}
 #kz_history {
     margin: 10px auto;
     height: 155px;
@@ -138,6 +134,7 @@ h4 {
 }
 
 .profile_subject_label h4 {
+    margin-top: 10px;
     text-align: center;
     color: #737373;
 }

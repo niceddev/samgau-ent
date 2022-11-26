@@ -1,12 +1,14 @@
 <?php
 
 return [
-    'subject'  => 'Предмет',
-    'subjects' => 'Предметы',
-    'grade'    => 'Класс',
-    'grades'   => 'Классы',
-    'student'  => 'Студент',
-    'students' => 'Студенты',
+    'must_subject'  => 'Обязательный предмет',
+    'must_subjects' => 'Обязательные предметы',
+    'subject'       => 'Предмет',
+    'subjects'      => 'Предметы',
+    'grade'         => 'Класс',
+    'grades'        => 'Классы',
+    'student'       => 'Студент',
+    'students'      => 'Студенты',
 
     'image'   => 'Картинка',
     'name'    => 'Название',

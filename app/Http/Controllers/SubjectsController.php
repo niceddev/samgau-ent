@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\MustSubject;
+use App\Models\Subject;
 
 class SubjectsController extends Controller
 {
     public function index()
     {
+        $mustSubjects = MustSubject::get();
+        $subjects = Subject::get();
 
-
-        return view('subjects');
+        return view('subjects', compact('subjects', 'mustSubjects'));
     }
 
 }

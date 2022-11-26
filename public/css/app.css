@@ -558,6 +558,18 @@ video {
 .resize {
   resize: both;
 }
+.overflow-auto {
+  overflow: auto;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.overflow-scroll {
+  overflow: scroll;
+}
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -602,6 +614,9 @@ video {
 }
 .pl-8 {
   padding-left: 2rem;
+}
+.text-center {
+  text-align: center;
 }
 .text-right {
   text-align: right;
