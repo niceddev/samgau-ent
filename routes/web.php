@@ -20,6 +20,11 @@ Route::group(['middleware' => 'language'], function() {
         'index'
     ]);
 
+    Route::post('/login', [
+        \App\Http\Controllers\LoginController::class,
+        'login'
+    ])->name('login');
+
     Route::get('/', [
         \App\Http\Controllers\SubjectsController::class,
         'index'

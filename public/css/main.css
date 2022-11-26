@@ -240,20 +240,29 @@ ol li:hover::marker {
     color: #2F8C51;
 }
 
-.login-label {
+.custom-label {
     font-size: 20px;
     color: #2F327D;
     font-weight: 700;
 }
 
-.login-input {
+.custom-input {
     background-color: #CAD5DD;
     padding: 14px;
     margin-top: 10px;
 }
-.login-input::placeholder {
+.custom-input::placeholder {
     font-size: 20px;
     color: #2F327D;
     opacity: 30%;
     font-weight: 700;
+}
+
+.golden-text {
+    color: #EDB021;
+    font-size: 20px;
+}
+
+.login-btn {
+    background-color: #EDB021;
 }
