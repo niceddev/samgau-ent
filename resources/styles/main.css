@@ -1,8 +1,13 @@
+@font-face {
+    font-family: "CustomHelveticaNeue";
+    src: url("../fonts/Helvetica Neue Condensed Bold.ttf");
+}
+
 body {
     padding: 0;
     margin: 0;
     background: #555555;
-    font-family: sans-serif;
+    font-family: "CustomHelveticaNeue";
 }
 
 #thin-container {
@@ -233,4 +238,22 @@ ol li:hover::marker {
     margin-top: 10px;
     text-align: center;
     color: #2F8C51;
+}
+
+.login-label {
+    font-size: 20px;
+    color: #2F327D;
+    font-weight: 700;
+}
+
+.login-input {
+    background-color: #CAD5DD;
+    padding: 14px;
+    margin-top: 10px;
+}
+.login-input::placeholder {
+    font-size: 20px;
+    color: #2F327D;
+    opacity: 30%;
+    font-weight: 700;
 }

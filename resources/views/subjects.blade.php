@@ -15,11 +15,11 @@
                 </a>
             @endforeach
         </div>
-        <h3>Выберите специализацию и пройдите ЕНТ</h3>
+        <h3 class="fs-3 text-center">{{ __('common.choose_profile_and_start') }}</h3>
         <div class="row">
             <div class="col-sm-6">
-                <h4 class="secondary text-center mb-3 mt-2">
-                    Обязательные
+                <h4 class="secondary text-center mb-3 mt-2 fs-5">
+                    {{ __('common.must_subjects_title') }}
                 </h4>
                 <div class="row">
                     @foreach($mustSubjects as $mustSubject)
@@ -35,8 +35,8 @@
             </div>
 
             <div class="col-sm-6">
-                <h4 class="mb-3 mt-2">
-                    Предметы по профилю
+                <h4 class="mb-3 mt-2 fs-5">
+                    {{ __('common.subjects_by_profile') }}
                 </h4>
                 <div class="row">
                     @foreach($subjects as $subject)

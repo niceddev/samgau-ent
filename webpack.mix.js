@@ -17,4 +17,5 @@ mix.js("resources/js/app.js", "public/js")
         require("tailwindcss"),
     ])
     .copy("resources/styles", "public/css")
-    .copy("resources/assets", "public/assets");
+    .copy("resources/assets", "public/assets")
+    .copy("resources/fonts", "public/fonts");

@@ -18,6 +18,10 @@
         'edit'    => 'Изменить',
         'example' => 'Пример',
 
+        'choose_profile_and_start' => 'Мамандандыруды таңдап, ЕНТ өтіңіз',
+        'must_subjects_title'      => 'Міндетті',
+        'subjects_by_profile'      => 'Профиль бойынша пәндер',
+
         'sign_in'         => 'Кіру',
         'login'           => 'Логин',
         'password'        => 'Құпиясөз',

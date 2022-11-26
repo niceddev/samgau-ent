@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'language'], function() {
 
+    Route::get('/login', [
+        \App\Http\Controllers\LoginController::class,
+        'index'
+    ]);
+
     Route::get('/', [
         \App\Http\Controllers\SubjectsController::class,
         'index'

@@ -18,6 +18,10 @@
         'edit'    => 'Изменить',
         'example' => 'Пример',
 
+        'choose_profile_and_start' => 'Выберите специализацию и пройдите ЕНТ',
+        'must_subjects_title'      => 'Обязательные',
+        'subjects_by_profile'      => 'Предметы по профилю',
+
         'sign_in'         => 'Вход',
         'login'           => 'Логин',
         'password'        => 'Пароль',
