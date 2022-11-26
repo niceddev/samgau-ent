@@ -18,4 +18,14 @@
         'edit'    => 'Изменить',
         'example' => 'Пример',
 
+        'sign_in'         => 'Вход',
+        'login'           => 'Логин',
+        'password'        => 'Пароль',
+        'remember_me'     => 'Запомнить меня',
+        'forget_password' => 'Забыли пароль?',
+        'link_sign_in'    => 'Вход по ссылке',
+        'enter_login'     => 'Введите логин',
+        'enter_password'  => 'Введите пароль',
+        'phone'           => 'Телефон',
+
     ];

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    {{ __('common.subjects') }}
+    Логин
 @endsection()
 
 @section('content')
