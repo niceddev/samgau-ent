@@ -266,3 +266,6 @@ ol li:hover::marker {
 .login-btn {
     background-color: #EDB021;
 }
+.login-btn:hover {
+    background-color: #c9900a;
+}

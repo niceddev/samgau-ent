@@ -9,7 +9,16 @@
         <div class="bg-white container rounded-5 p-0">
             <div class="row">
                 <div class="col px-5">
-                    <form action="{{ route('login') }}" method="POST">
+                    <form action="{{ route('login') }}" method="POST" class="position-relative">
+                        <div id="lang_switcher" class="position-absolute" style="left: 40px; top: 40px;">
+                            @foreach(config('app.languages') as $key => $lang)
+                                <a href="#" onclick="changeLanguage(this.dataset)" class="{{ session()->get('lang') === $key ? 'active_lang' : '' }}"
+                                   {{ session()->has('lang') ? (session()->get('lang') === $key ? 'selected' : '') : '' }}
+                                   data-value="{{ $key }}">
+                                    {{ $lang }}
+                                </a>
+                            @endforeach
+                        </div>
                         @csrf
                         <div class="row py-4">
                             <h1 class="text-center fw-bold" style="color: #2F327D; font-size: 55px;">
@@ -40,7 +49,7 @@
                         </div>
 
                         <div class="row mt-5">
-                            <button type="button" class="login-btn text-white fs-2 p-4 w-50 mx-auto rounded-3 border-0">
+                            <button type="submit" class="login-btn text-white fs-2 p-4 w-50 mx-auto rounded-3 border-0">
                                 {{ __('common.sign_in') }}
                             </button>
                         </div>
@@ -53,53 +62,6 @@
             </div>
         </div>
     </div>
-{{--        <div id="lang_switcher" class="mb-2">--}}
-{{--            @foreach(config('app.languages') as $key => $lang)--}}
-{{--                <a href="#" onclick="changeLanguage(this.dataset)" class="{{ session()->get('lang') === $key ? 'active_lang' : '' }}"--}}
-{{--                    {{ session()->has('lang') ? (session()->get('lang') === $key ? 'selected' : '') : '' }}--}}
-{{--                    data-value="{{ $key }}">--}}
-{{--                    {{ $lang }}--}}
-{{--                </a>--}}
-{{--            @endforeach--}}
-{{--        </div>--}}
-{{--        <div class="row">--}}
-{{--            <div class="col-sm-6">--}}
-{{--                <h4 class="secondary text-center mb-3 mt-2">--}}
-{{--                    Обязательные--}}
-{{--                </h4>--}}
-{{--                <div class="row">--}}
-{{--                    @foreach($mustSubjects as $mustSubject)--}}
-{{--                        <div class="text-center subject-card mb-4">--}}
-{{--                            <a href="#" class="text-decoration-none">--}}
-{{--                                <img class="subject mb-3" style="max-height: 144px" src="{{ asset($mustSubject->image_path) }}" alt="" >--}}
-{{--                                <div class="checksign"></div>--}}
-{{--                                <h4 style="color: #737373;">{{ $mustSubject->getTranslation('name',  session()->get('lang', 'ru')) }}</h4>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                    @endforeach--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
-{{--            <div class="col-sm-6">--}}
-{{--                <h4 class="mb-3 mt-2">--}}
-{{--                    Предметы по профилю--}}
-{{--                </h4>--}}
-{{--                <div class="row">--}}
-{{--                    @foreach($subjects as $subject)--}}
-{{--                        <div class="col-sm-6 mb-2">--}}
-{{--                            <div class="text-center">--}}
-{{--                                <a href="#" class="text-decoration-none">--}}
-{{--                                    <img class="mb-2" src="{{ asset($subject->image_path) }}" alt="" >--}}
-{{--                                    <h4 style="color: #737373;">{{ $subject->getTranslation('name',  session()->get('lang', 'ru')) }}</h4>--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    @endforeach--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-
 
     <script>
         function changeLanguage(data){

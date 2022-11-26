@@ -580,6 +580,12 @@ video {
 .ml-2 {
   margin-left: 0.5rem;
 }
+.-mb-5 {
+  margin-bottom: -1.25rem;
+}
+.-mb-4 {
+  margin-bottom: -1rem;
+}
 .block {
   display: block;
 }
