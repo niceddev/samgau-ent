@@ -6,8 +6,8 @@ use App\Models\Grade;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 use Illuminate\Http\Request;
@@ -45,7 +45,7 @@ class EditScreen extends Screen
     {
         $grade->update($request->input('grade'));
 
-        Toast::info('Успешно сохранено!');
+        Alert::message('['.$request->input('grade.name').'] Успешно сохранено!');
 
         return redirect()->route('platform.grades.index');
     }
@@ -59,7 +59,7 @@ class EditScreen extends Screen
     {
         $grade->delete();
 
-        Toast::info('Удалено!');
+        Alert::error('['.$grade->name.'] Удалено!');
 
         return redirect()->route('platform.grades.index');
     }

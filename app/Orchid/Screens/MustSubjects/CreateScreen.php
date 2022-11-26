@@ -9,6 +9,7 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Screen;
 use Illuminate\Http\Request;
+use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
@@ -58,7 +59,7 @@ class CreateScreen extends Screen
     {
         MustSubject::create($request->input('must_subject'));
 
-        Toast::info('Успешно сохранено!');
+        Alert::info('['.$request->input('must_subject.name') .'] Создано!');
 
         return redirect()->route('platform.must_subjects.index');
     }

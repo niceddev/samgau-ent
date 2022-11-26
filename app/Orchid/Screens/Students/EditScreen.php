@@ -9,8 +9,8 @@ use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
-use Orchid\Support\Facades\Toast;
 use Illuminate\Http\Request;
 
 class EditScreen extends Screen
@@ -46,7 +46,7 @@ class EditScreen extends Screen
     {
         $student->update($request->input('student'));
 
-        Toast::info('Успешно сохранено!');
+        Alert::message('['.$request->input('student.fio').'] Успешно сохранено!');
 
         return redirect()->route('platform.students.index');
     }
@@ -60,7 +60,7 @@ class EditScreen extends Screen
     {
         $student->delete();
 
-        Toast::info('Удалено!');
+        Alert::error('['.$student->fio.'] Удалено!');
 
         return redirect()->route('platform.students.index');
     }

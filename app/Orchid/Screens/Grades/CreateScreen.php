@@ -8,8 +8,8 @@ use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Screen;
 use Illuminate\Http\Request;
+use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
-use Orchid\Support\Facades\Toast;
 
 class CreateScreen extends Screen
 {
@@ -59,7 +59,7 @@ class CreateScreen extends Screen
             'name' => mb_strtoupper($request->input('grade')['name'])
         ]);
 
-        Toast::info('Успешно сохранено!');
+        Alert::info('['.$request->input('grade.name') .'] Создано!');
 
         return redirect()->route('platform.grades.index');
     }

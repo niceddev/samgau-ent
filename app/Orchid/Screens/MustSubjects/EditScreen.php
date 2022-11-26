@@ -8,8 +8,8 @@ use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
-use Orchid\Support\Facades\Toast;
 use Illuminate\Http\Request;
 
 class EditScreen extends Screen
@@ -45,7 +45,7 @@ class EditScreen extends Screen
     {
         $mustSubject->update($request->input('mustSubject'));
 
-        Toast::info('Успешно сохранено!');
+        Alert::message('['.$request->input('mustSubject.name').'] Успешно сохранено!');
 
         return redirect()->route('platform.must_subjects.index');
     }
@@ -59,7 +59,7 @@ class EditScreen extends Screen
     {
         $mustSubject->delete();
 
-        Toast::info('Удалено!');
+        Alert::error('['.$mustSubject->name.'] Удалено!');
 
         return redirect()->route('platform.must_subjects.index');
     }
