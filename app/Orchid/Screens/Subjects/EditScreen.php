@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Orchid\Screens\Profiles;
+namespace App\Orchid\Screens\Subjects;
 
-use App\Models\Profile;
+use App\Models\Subject;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Input;
@@ -19,10 +19,10 @@ class EditScreen extends Screen
      *
      * @return array
      */
-    public function query(Profile $profile): iterable
+    public function query(Subject $subject): iterable
     {
         return [
-            'profile' => $profile->toArray()
+            'subject' => $subject->toArray()
         ];
     }
 
@@ -33,7 +33,7 @@ class EditScreen extends Screen
      */
     public function name(): ?string
     {
-        return __('common.edit') . ' ' . __('common.profile');
+        return __('common.edit') . ' ' . __('common.subject');
     }
 
     /**
@@ -41,13 +41,13 @@ class EditScreen extends Screen
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function save(Profile $profile, Request $request)
+    public function save(Subject $subject, Request $request)
     {
-        $profile->update($request->input('profile'));
+        $subject->update($request->input('subject'));
 
         Toast::info('Успешно сохранено!');
 
-        return redirect()->route('platform.profiles.index');
+        return redirect()->route('platform.subjects.index');
     }
 
     /**
@@ -55,13 +55,13 @@ class EditScreen extends Screen
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function remove(Profile $profile)
+    public function remove(Subject $subject)
     {
-        $profile->delete();
+        $subject->delete();
 
         Toast::info('Удалено!');
 
-        return redirect()->route('platform.profiles.index');
+        return redirect()->route('platform.subjects.index');
     }
 
     /**
@@ -75,7 +75,7 @@ class EditScreen extends Screen
             Button::make(__('Remove'))
                 ->method('remove'),
             Link::make(__('Cancel'))
-                ->href(route('platform.profiles.index')),
+                ->href(route('platform.subjects.index')),
             Button::make(__('Save'))
                 ->method('save'),
         ];
@@ -90,13 +90,13 @@ class EditScreen extends Screen
     {
         return [
             Layout::rows([
-                Picture::make('profile.image_path')
+                Picture::make('subject.image_path')
                     ->storage('public')
                     ->targetUrl()
                     ->title(__('common.image')),
-                Input::make('profile.name')
+                Input::make('subject.name')
                     ->placeholder(__('common.example') . ' (Химия, Биология, Математика)')
-                    ->title('Введите название ' . rtrim(__('common.profile'), 'ь') . 'я')
+                    ->title('Введите название ' . __('common.subject') . 'а')
                     ->required(),
             ])
         ];

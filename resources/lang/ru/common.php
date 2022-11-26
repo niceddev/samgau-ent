@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'profile'  => 'Профиль',
-    'profiles' => 'Профили',
+    'subject'  => 'Предмет',
+    'subjects' => 'Предметы',
     'grade'    => 'Класс',
     'grades'   => 'Классы',
     'student'  => 'Студент',

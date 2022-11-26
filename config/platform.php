@@ -95,7 +95,7 @@ return [
     |
     */
 
-    'index' => 'platform.profiles.index',
+    'index' => 'platform.subjects.index',
 
     /*
     |--------------------------------------------------------------------------

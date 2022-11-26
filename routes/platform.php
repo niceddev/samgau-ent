@@ -15,15 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Profiles
-Route::screen('/profiles', \App\Orchid\Screens\Profiles\IndexScreen::class)
-    ->name('platform.profiles.index');
+//Subjects
+Route::screen('/subjects', \App\Orchid\Screens\Subjects\IndexScreen::class)
+    ->name('platform.subjects.index');
 
-Route::screen('/profiles/form', \App\Orchid\Screens\Profiles\CreateScreen::class)
-    ->name('platform.profiles.create');
+Route::screen('/subjects/form', \App\Orchid\Screens\Subjects\CreateScreen::class)
+    ->name('platform.subjects.create');
 
-Route::screen('/profiles/form/{profile}', \App\Orchid\Screens\Profiles\EditScreen::class)
-    ->name('platform.profiles.edit');
+Route::screen('/subjects/form/{subject}', \App\Orchid\Screens\Subjects\EditScreen::class)
+    ->name('platform.subjects.edit');
 
 //Students
 Route::screen('/students', \App\Orchid\Screens\Students\IndexScreen::class)

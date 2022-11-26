@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Orchid\Screens\Profiles;
+namespace App\Orchid\Screens\Subjects;
 
-use App\Models\Profile;
+use App\Models\Subject;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Input;
@@ -31,7 +31,7 @@ class CreateScreen extends Screen
      */
     public function name(): ?string
     {
-        return __('common.create') . ' ' . __('common.profile');
+        return __('common.create') . ' ' . __('common.subject');
     }
 
     /**
@@ -43,7 +43,7 @@ class CreateScreen extends Screen
     {
         return [
             Link::make(__('Cancel'))
-                ->href(route('platform.profiles.index')),
+                ->href(route('platform.subjects.index')),
             Button::make(__('Save'))
                 ->method('save'),
         ];
@@ -56,11 +56,11 @@ class CreateScreen extends Screen
      */
     public function save(Request $request)
     {
-        Profile::create($request->input('profile'));
+        Subject::create($request->input('subject'));
 
         Toast::info('Успешно сохранено!');
 
-        return redirect()->route('platform.profiles.index');
+        return redirect()->route('platform.subjects.index');
     }
 
     /**
@@ -72,13 +72,13 @@ class CreateScreen extends Screen
     {
         return [
             Layout::rows([
-                Picture::make('profile.image_path')
+                Picture::make('subject.image_path')
                     ->storage('public')
                     ->targetUrl()
                     ->title(__('common.image')),
-                Input::make('profile.name')
+                Input::make('subject.name')
                     ->placeholder(__('common.example') . ' (Химия, Биология, Математика)')
-                    ->title('Введите название ' . rtrim(__('common.profile'), 'ь') . 'я')
+                    ->title('Введите название ' . __('common.subject') . 'а')
                     ->required(),
             ])
         ];

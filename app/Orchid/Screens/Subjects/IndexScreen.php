@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Orchid\Screens\Profiles;
+namespace App\Orchid\Screens\Subjects;
 
-use App\Models\Profile;
+use App\Models\Subject;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
@@ -17,7 +17,7 @@ class IndexScreen extends Screen
     public function query(): iterable
     {
         return [
-            'profiles' => Profile::get()
+            'subjects' => Subject::get()
         ];
     }
 
@@ -28,7 +28,7 @@ class IndexScreen extends Screen
      */
     public function name(): ?string
     {
-        return __('common.profiles');
+        return __('common.subjects');
     }
 
     /**
@@ -40,7 +40,7 @@ class IndexScreen extends Screen
     {
         return [
             Link::make(__('Add'))
-                ->href(route('platform.profiles.create')),
+                ->href(route('platform.subjects.create')),
         ];
     }
 
@@ -52,7 +52,7 @@ class IndexScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::view('panel.profiles')
+            Layout::view('panel.subjects')
         ];
     }
 }
