@@ -9,5 +9,20 @@
     "/css/bootstrap-utilities.rtl.css": "/css/bootstrap-utilities.rtl.css",
     "/css/bootstrap.css": "/css/bootstrap.css",
     "/css/bootstrap.rtl.css": "/css/bootstrap.rtl.css",
-    "/css/main.css": "/css/main.css"
+    "/css/main.css": "/css/main.css",
+    "/assets/biology.png": "/assets/biology.png",
+    "/assets/checksign.png": "/assets/checksign.png",
+    "/assets/chemistry.png": "/assets/chemistry.png",
+    "/assets/foreign-lang.png": "/assets/foreign-lang.png",
+    "/assets/geography.png": "/assets/geography.png",
+    "/assets/kaz-history.png": "/assets/kaz-history.png",
+    "/assets/logic.png": "/assets/logic.png",
+    "/assets/main_prava.png": "/assets/main_prava.png",
+    "/assets/math.png": "/assets/math.png",
+    "/assets/math_gramoticy.png": "/assets/math_gramoticy.png",
+    "/assets/medicine.png": "/assets/medicine.png",
+    "/assets/physics.png": "/assets/physics.png",
+    "/assets/read_gramoticy.png": "/assets/read_gramoticy.png",
+    "/assets/rus-literature.png": "/assets/rus-literature.png",
+    "/assets/test/physics.png": "/assets/test/physics.png"
 }

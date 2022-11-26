@@ -16,4 +16,5 @@ mix.js("resources/js/app.js", "public/js")
     .postCss("resources/css/app.css", "public/css", [
         require("tailwindcss"),
     ])
-    .copy("resources/styles", "public/css");
+    .copy("resources/styles", "public/css")
+    .copy("resources/assets", "public/assets");

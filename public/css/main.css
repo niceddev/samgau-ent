@@ -78,6 +78,9 @@ h4 {
     margin-top: 20px;
 }
 
+.subject-card {
+    position: relative;
+}
 .subject-card .small div.subject {
     height: 100px;
     width: 100px;
@@ -114,9 +117,9 @@ h4 {
     background: #F25471;
 }
 .checksign {
-    position: relative;
-    left: -20px;
-    top: -25px;
+    position: absolute;
+    left: 40px;
+    top: 120px;
     width: 40px;
     height: 40px;
     background: url(../assets/checksign.png) no-repeat center center / contain;
