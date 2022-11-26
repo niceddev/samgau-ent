@@ -3,17 +3,16 @@
 namespace App\Orchid\Screens\MustSubjects;
 
 use App\Models\MustSubject;
+use App\Orchid\Screens\AbstractMultiLanguageScreen;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
-use Orchid\Screen\Screen;
 use Illuminate\Http\Request;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
-use Orchid\Support\Facades\Toast;
 
-class CreateScreen extends Screen
+class CreateScreen extends AbstractMultiLanguageScreen
 {
     /**
      * Query data.
@@ -33,6 +32,38 @@ class CreateScreen extends Screen
     public function name(): ?string
     {
         return __('common.create') . ' ' . __('common.must_subject');
+    }
+
+    /**
+     * Multi translatable fields
+     *
+     * @return array
+     */
+    protected function multiLanguageFields(): array
+    {
+        return [
+            Input::make('must_subject.name')
+                ->placeholder(__('common.example') . ' (Химия, Биология, Математика)')
+                ->title('Введите название ' . __('common.must_subject') . 'а')
+                ->required(),
+        ];
+    }
+
+    /**
+     * Not translatable fields
+     *
+     * @return array
+     */
+    protected function singleLanguageFields(): array
+    {
+        return [
+            Layout::rows([
+                Picture::make('must_subject.image_path')
+                    ->storage('public')
+                    ->targetUrl()
+                    ->title(__('common.image')),
+            ])
+        ];
     }
 
     /**
@@ -59,29 +90,9 @@ class CreateScreen extends Screen
     {
         MustSubject::create($request->input('must_subject'));
 
-        Alert::info('['.$request->input('must_subject.name') .'] Создано!');
+        Alert::info('['.$request->input('must_subject.name')['ru'] .'] Создано!');
 
         return redirect()->route('platform.must_subjects.index');
     }
 
-    /**
-     * Views.
-     *
-     * @return \Orchid\Screen\Layout[]|string[]
-     */
-    public function layout(): iterable
-    {
-        return [
-            Layout::rows([
-                Picture::make('must_subject.image_path')
-                    ->storage('public')
-                    ->targetUrl()
-                    ->title(__('common.image')),
-                Input::make('must_subject.name')
-                    ->placeholder(__('common.example') . ' (Химия, Биология, Математика)')
-                    ->title('Введите название ' . __('common.must_subject') . 'а')
-                    ->required(),
-            ])
-        ];
-    }
 }

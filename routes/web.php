@@ -13,7 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [
-    \App\Http\Controllers\SubjectsController::class,
-    'index'
-]);
+Route::group(['middleware' => 'language'], function() {
+
+    Route::get('/', [
+        \App\Http\Controllers\SubjectsController::class,
+        'index'
+    ]);
+
+    Route::get('/change-lang/{lang}', [
+        \App\Http\Controllers\SubjectsController::class,
+        'changeLanguage'
+    ])->name('change-lang');
+
+
+});

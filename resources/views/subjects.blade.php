@@ -7,8 +7,13 @@
 @section('content')
     <div id="thin-container">
         <div id="lang_switcher" class="mb-2">
-            <a href="#" class="active_lang">KZ</a>
-            <a href="#">RU</a>
+            @foreach(config('app.languages') as $key => $lang)
+                <a href="#" onclick="changeLanguage(this.dataset)" class="{{ session()->get('lang') === $key ? 'active_lang' : '' }}"
+                    {{ session()->has('lang') ? (session()->get('lang') === $key ? 'selected' : '') : '' }}
+                    data-value="{{ $key }}">
+                    {{ $lang }}
+                </a>
+            @endforeach
         </div>
         <h3>Выберите специализацию и пройдите ЕНТ</h3>
     <!-- write  two columns sm-6 from bootstrap grid  -->
@@ -23,7 +28,7 @@
                             <a href="#" class="text-decoration-none">
                                 <img class="subject mb-3" src="{{ asset($subject->image_path) }}" alt="" >
                                 <div class="checksign"></div>
-                                <h4 style="color: #737373;">{{ $subject->name }}</h4>
+                                <h4 style="color: #737373;">{{ $subject->getTranslation('name',  session()->get('lang', 'ru')) }}</h4>
                             </a>
                         </div>
                     @endforeach
@@ -49,4 +54,10 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function changeLanguage(data){
+            window.location='{{ url('change-lang') }}/' + data.value;
+        }
+    </script>
 @endsection

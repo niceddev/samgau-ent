@@ -5,3 +5,8 @@
 .collapse {
     visibility: visible !important;
 }
+
+.cropper-preview, .picture-preview {
+    max-width: 100px !important;
+    width: 100px !important;
+}

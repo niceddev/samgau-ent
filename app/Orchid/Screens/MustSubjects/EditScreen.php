@@ -3,16 +3,16 @@
 namespace App\Orchid\Screens\MustSubjects;
 
 use App\Models\MustSubject;
+use App\Orchid\Screens\AbstractMultiLanguageScreen;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
-use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
 use Illuminate\Http\Request;
 
-class EditScreen extends Screen
+class EditScreen extends AbstractMultiLanguageScreen
 {
     /**
      * Query data.
@@ -34,6 +34,38 @@ class EditScreen extends Screen
     public function name(): ?string
     {
         return __('common.edit') . ' ' . __('common.must_subject');
+    }
+
+    /**
+     * Multi translatable fields
+     *
+     * @return array
+     */
+    protected function multiLanguageFields(): array
+    {
+        return [
+            Input::make('mustSubject.name')
+                ->placeholder(__('common.example') . ' (Химия, Биология, Математика)')
+                ->title('Введите название ' . __('common.must_subject') . 'а')
+                ->required(),
+        ];
+    }
+
+    /**
+     * Not translatable fields
+     *
+     * @return array
+     */
+    protected function singleLanguageFields(): array
+    {
+        return [
+            Layout::rows([
+                Picture::make('mustSubject.image_path')
+                    ->storage('public')
+                    ->targetUrl()
+                    ->title(__('common.image')),
+            ])
+        ];
     }
 
     /**
@@ -81,24 +113,4 @@ class EditScreen extends Screen
         ];
     }
 
-    /**
-     * Views.
-     *
-     * @return \Orchid\Screen\Layout[]|string[]
-     */
-    public function layout(): iterable
-    {
-        return [
-            Layout::rows([
-                Picture::make('mustSubject.image_path')
-                    ->storage('public')
-                    ->targetUrl()
-                    ->title(__('common.image')),
-                Input::make('mustSubject.name')
-                    ->placeholder(__('common.example') . ' (Химия, Биология, Математика)')
-                    ->title('Введите название ' . __('common.must_subject') . 'а')
-                    ->required(),
-            ])
-        ];
-    }
 }
