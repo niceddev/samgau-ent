@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['guest', 'language'])->group(function () {
+Route::middleware(['guest:ent', 'language'])->group(function () {
 
     Route::name('login.')->group(function () {
         Route::get('/login', [
@@ -18,7 +18,7 @@ Route::middleware(['guest', 'language'])->group(function () {
 
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth:ent')->group(function () {
 
     Route::get('/logout', [
         \App\Http\Controllers\Auth\LoginController::class,

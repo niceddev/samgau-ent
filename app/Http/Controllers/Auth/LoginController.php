@@ -17,7 +17,7 @@ class LoginController extends Controller
 
     public function store(LoginRequest $loginRequest)
     {
-        if (!Auth::attempt($loginRequest->only('login', 'password'), $loginRequest->boolean('remember'))) {
+        if (!Auth::guard('ent')->attempt($loginRequest->only('login', 'password'), $loginRequest->boolean('remember'))) {
             return redirect()->back()->withErrors(['message' => __('auth.failed')]);
         }
 
@@ -28,9 +28,8 @@ class LoginController extends Controller
 
     public function destroy(Request $request)
     {
-        Auth::logout();
+        Auth::guard('ent')->logout();
 
-        $request->session()->invalidate();
         $request->session()->regenerateToken();
 
         return redirect()->route('login.form');

@@ -11,7 +11,7 @@ Route::get('/change-lang/{lang}', [
 
 require __DIR__ . '/auth.php';
 
-Route::middleware(['auth', 'verified', 'language'])->group(function() {
+Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {
 
     Route::get('/subjects', [
         \App\Http\Controllers\SubjectsController::class,
