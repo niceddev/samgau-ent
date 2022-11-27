@@ -15,20 +15,42 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'language'], function() {
 
-    Route::get('/login', [
-        \App\Http\Controllers\LoginController::class,
-        'index'
-    ]);
+    Route::name('login.')->group(function (){
 
-    Route::post('/login', [
-        \App\Http\Controllers\LoginController::class,
-        'login'
-    ])->name('login');
+        Route::get('/login', [
+            \App\Http\Controllers\LoginController::class,
+            'index'
+        ])->name('index');
 
-    Route::get('/', [
+        Route::post('/login', [
+            \App\Http\Controllers\LoginController::class,
+            'login'
+        ])->name('auth');
+
+    });
+
+    Route::get('/subjects', [
         \App\Http\Controllers\SubjectsController::class,
         'index'
     ]);
+
+    Route::name('test.')->group(function (){
+
+        Route::get('/test', [
+            \App\Http\Controllers\TestController::class,
+            'index'
+        ])->name('index');
+
+    });
+
+    Route::name('dashboard.')->group(function (){
+
+        Route::get('/dashboard', [
+            \App\Http\Controllers\DashboardController::class,
+            'index'
+        ])->name('index');
+
+    });
 
     Route::get('/change-lang/{lang}', [
         \App\Http\Controllers\SubjectsController::class,

@@ -269,3 +269,16 @@ ol li:hover::marker {
 .login-btn:hover {
     background-color: #c9900a;
 }
+
+.info-cards .col {
+    border: 2px solid #A0B5C2;
+    color: #A0B5C2;
+    padding: 16px;
+}
+.info-cards .info-title {
+    font-size: 25px;
+}
+.info-cards .digit {
+    line-height: 121px;
+    font-size: 100px;
+}

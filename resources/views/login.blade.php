@@ -5,11 +5,11 @@
 @endsection()
 
 @section('content')
-    <div class="login-page d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <div class="bg-white container rounded-5 p-0">
             <div class="row">
                 <div class="col px-5">
-                    <form action="{{ route('login') }}" method="POST" class="position-relative">
+                    <form action="{{ route('login.auth') }}" method="POST" class="position-relative">
                         <div id="lang_switcher" class="position-absolute" style="left: 40px; top: 40px;">
                             @foreach(config('app.languages') as $key => $lang)
                                 <a href="#" onclick="changeLanguage(this.dataset)" class="{{ session()->get('lang') === $key ? 'active_lang' : '' }}"
