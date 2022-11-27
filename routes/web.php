@@ -2,32 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::redirect('/', '/login');
 
-Route::group(['middleware' => 'language'], function() {
+Route::get('/change-lang/{lang}', [
+    \App\Http\Controllers\MultiLanguageController::class,
+    'changeLanguage'
+])->name('change-lang');
 
-    Route::name('login.')->group(function (){
+require __DIR__ . '/auth.php';
 
-        Route::get('/login', [
-            \App\Http\Controllers\LoginController::class,
-            'index'
-        ])->name('index');
-
-        Route::post('/login', [
-            \App\Http\Controllers\LoginController::class,
-            'login'
-        ])->name('auth');
-
-    });
+Route::middleware(['auth', 'verified', 'language'])->group(function() {
 
     Route::get('/subjects', [
         \App\Http\Controllers\SubjectsController::class,
@@ -51,11 +35,5 @@ Route::group(['middleware' => 'language'], function() {
         ])->name('index');
 
     });
-
-    Route::get('/change-lang/{lang}', [
-        \App\Http\Controllers\SubjectsController::class,
-        'changeLanguage'
-    ])->name('change-lang');
-
 
 });

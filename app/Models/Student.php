@@ -2,15 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Orchid\Platform\Models\User as Authenticatable;
 
-class Student extends Model
+class Student extends Authenticatable
 {
+    protected $table = 'students';
+
     protected $fillable = [
-        'email',
+        'login',
         'password',
         'fio',
         'grade_id',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
     ];
 
     public function grade()
