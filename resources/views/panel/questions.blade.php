@@ -3,7 +3,7 @@
         Пусто
     </h1>
 @else
-    <div class="overflow-x-auto relative shadow-md">
+    <div class="overflow-x-auto relative">
         <ul id="tab" class="flex flex-wrap -mb-px text-sm font-medium text-center" data-tabs-toggle="#tabContent" role="tablist">
             @foreach(config('app.languages') as $key => $lang)
                 <li class="mr-2">
@@ -24,7 +24,7 @@
                         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                             @foreach($subjects as $subject)
                                 <article class="bg-white p-4 rounded-lg max-w-xs text-center justify-items-center grid overflow-hidden">
-                                    <img src="{{ asset($subject->image_path) }}" class="mb-3 rounded-lg" alt="Image 1">
+                                    <img src="{{ asset($subject->image_path) }}" class="mb-3 rounded-lg" alt="Image 1" style="max-height: 92px">
                                     <h2 class="fs-4 font-bold leading-tight text-gray-900 text-ellipsis">
                                         {{ $subject->getTranslation('name', $key) }}
                                     </h2>
