@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\AnswerOption;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
@@ -18,6 +19,7 @@ class Question extends Model
         'option_d',
         'option_e',
         'correct_answer',
+        'subject_id',
     ];
 
     public $translatable = [
@@ -28,6 +30,10 @@ class Question extends Model
         'option_c',
         'option_d',
         'option_e',
+    ];
+
+    protected $casts = [
+        'correct_answer' => AnswerOption::class,
     ];
 
 }

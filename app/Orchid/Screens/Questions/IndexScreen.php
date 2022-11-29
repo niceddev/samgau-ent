@@ -17,7 +17,6 @@ class IndexScreen extends Screen
     public function query(): iterable
     {
         return [
-            'questions' => Question::get(),
             'subjects' => Subject::get(),
         ];
     }
@@ -50,7 +49,7 @@ class IndexScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::view('panel.questions')
+            Layout::view('panel.questions_subjects')
         ];
     }
 }

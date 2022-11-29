@@ -22,7 +22,8 @@ class CreateQuestionsTable extends Migration
             $table->jsonb('option_c');
             $table->jsonb('option_d');
             $table->jsonb('option_e');
-            $table->smallInteger('correct_answer');
+            $table->string('correct_answer');
+            $table->foreignId('subject_id');
             $table->timestamps();
         });
     }
