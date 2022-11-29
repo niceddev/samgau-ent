@@ -9,6 +9,8 @@
         'grades'        => 'Класстар',
         'student'       => 'Студент',
         'students'      => 'Студенттер',
+        'questions'     => 'Сұрақтар',
+        'question'      => 'Сұрақ',
 
         'image'   => 'Сурет',
         'name'    => 'Атауы',
@@ -35,5 +37,6 @@
         'passed_tests_count' => 'Өткізілген тесттер саны',
         'max_score'          => 'Максималды балл',
         'average_score'      => 'Орташа балл',
+        'add_question'       => 'Сұрақ қосу',
 
     ];

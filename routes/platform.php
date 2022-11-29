@@ -35,6 +35,13 @@ Route::screen('/subjects/form', \App\Orchid\Screens\Subjects\CreateScreen::class
 Route::screen('/subjects/form/{subject}', \App\Orchid\Screens\Subjects\EditScreen::class)
     ->name('platform.subjects.edit');
 
+//Questions
+Route::screen('/questions', \App\Orchid\Screens\Questions\IndexScreen::class)
+    ->name('platform.questions.subjects.index');
+
+Route::screen('/questions/{subject}', \App\Orchid\Screens\Questions\QuestionsScreen::class)
+    ->name('platform.questions.index');
+
 //Students
 Route::screen('/students', \App\Orchid\Screens\Students\IndexScreen::class)
     ->name('platform.students.index');
