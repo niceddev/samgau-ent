@@ -42,7 +42,7 @@ Route::screen('/questions', \App\Orchid\Screens\Questions\IndexScreen::class)
 Route::screen('/questions/{subject}', \App\Orchid\Screens\Questions\QuestionsScreen::class)
     ->name('platform.questions.index');
 
-Route::screen('/questions/{subject}', \App\Orchid\Screens\Questions\QuestionsEditScreen::class)
+Route::screen('/question/{question}', \App\Orchid\Screens\Questions\QuestionsEditScreen::class)
     ->name('platform.questions.edit');
 
 //Students

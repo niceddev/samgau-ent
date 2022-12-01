@@ -2,7 +2,6 @@
 
 namespace App\Orchid\Screens\Questions;
 
-use App\Models\Question;
 use App\Models\Subject;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;

@@ -25,7 +25,7 @@ class QuestionsRequest extends FormRequest
     {
         return [
             'question'       => 'required|string',
-            'sub_question'   => 'string',
+            'sub_question'   => '',
             'option_a'       => 'required|string',
             'option_b'       => 'required|string',
             'option_c'       => 'required|string',

@@ -21,8 +21,8 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
                             <th class="border-b font-medium p-4 pr-8 pb-3 text-dark-400">№</th>
-                            <th class="border-b font-medium p-4 pl-8 pb-3 text-dark-400">{{ __('common.question') }}</th>
-                            <th class="border-b font-medium p-4 pr-8 pb-3 text-dark-400">{{ __('common.more') }}</th>
+                            <th class="w-25 border-b font-medium p-4 pl-8 pb-3 text-dark-400">{{ __('common.question') }}</th>
+                            <th class="w-25 border-b font-medium p-4 pr-8 pb-3 text-dark-400">{{ __('common.more') }}</th>
                             <th class="border-b font-medium p-4 pr-8 pb-3 text-dark-400">A</th>
                             <th class="border-b font-medium p-4 pr-8 pb-3 text-dark-400">B</th>
                             <th class="border-b font-medium p-4 pr-8 pb-3 text-dark-400">C</th>
@@ -42,7 +42,7 @@
                                     {{ $question->getTranslation('question', $key) }}
                                 </td>
                                 <td class="border-b border-slate-100 p-4 text-slate-500" style="inline-size: 10px">
-                                    {{ $question->getTranslation('sub_question', $key) }}
+                                    {!! $question->getTranslation('sub_question', $key) !!}
                                 </td>
                                 <td class="border-b border-slate-100 p-4 text-slate-500" style="inline-size: 10px">
                                     {{ $question->getTranslation('option_a', $key) }}

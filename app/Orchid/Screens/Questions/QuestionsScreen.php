@@ -18,6 +18,7 @@ use Orchid\Support\Facades\Layout;
 class QuestionsScreen extends Screen
 {
     private Subject $subject;
+
     /**
      * Query data.
      *
@@ -29,7 +30,7 @@ class QuestionsScreen extends Screen
 
         return [
             'subject' => $this->subject->toArray(),
-            'questions' => Question::get(),
+            'questions' => Question::where('subject_id', $subject->id)->get(),
         ];
     }
 
