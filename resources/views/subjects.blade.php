@@ -40,10 +40,10 @@
                 </h4>
                 <div class="row">
                     @foreach($subjects as $subject)
-                        <div class="col-sm-6 mb-2">
+                        <div class="col-sm-6 mb-2 overflow-hidden">
                             <div class="text-center">
                                 <a href="#" class="text-decoration-none">
-                                    <img class="mb-2" src="{{ asset($subject->image_path) }}" alt="" >
+                                    <img class="mb-2" style="max-height: 92px;" src="{{ asset($subject->image_path) }}" alt="" >
                                     <h4 style="color: #737373;">{{ $subject->getTranslation('name',  session()->get('lang', 'ru')) }}</h4>
                                 </a>
                             </div>
