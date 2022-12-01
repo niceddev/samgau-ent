@@ -35,31 +35,31 @@
                     <tbody class="bg-white">
                         @foreach($questions as $question)
                             <tr>
-                                <td class="border-b border-slate-100 p-4 pl-8 text-slate-500" style="inline-size: 10px">
+                                <td class="border-b border-slate-100 p-4 text-slate-500" style="inline-size: 10px">
                                     {{ $loop->iteration }}
                                 </td>
-                                <td class="border-b border-slate-100 p-4 pl-8 text-slate-500" style="inline-size: 10px">
+                                <td class="border-b border-slate-100 p-4 text-slate-500 ellipsis" style="inline-size: 10px">
                                     {{ $question->getTranslation('question', $key) }}
                                 </td>
-                                <td class="border-b border-slate-100 p-4 text-slate-500" style="inline-size: 10px">
+                                <td class="border-b border-slate-100 p-4 text-slate-500 ellipsis" style="inline-size: 10px">
                                     {!! $question->getTranslation('sub_question', $key) !!}
                                 </td>
-                                <td class="border-b border-slate-100 p-4 text-slate-500" style="inline-size: 10px">
+                                <td class="border-b border-slate-100 p-4 text-slate-500 ellipsis" style="inline-size: 10px">
                                     {{ $question->getTranslation('option_a', $key) }}
                                 </td>
-                                <td class="border-b border-slate-100 p-4 text-slate-500" style="inline-size: 10px">
+                                <td class="border-b border-slate-100 p-4 text-slate-500 ellipsis" style="inline-size: 10px">
                                     {{ $question->getTranslation('option_b', $key) }}
                                 </td>
-                                <td class="border-b border-slate-100 p-4 text-slate-500" style="inline-size: 10px">
+                                <td class="border-b border-slate-100 p-4 text-slate-500 ellipsis" style="inline-size: 10px">
                                     {{ $question->getTranslation('option_c', $key) }}
                                 </td>
-                                <td class="border-b border-slate-100 p-4 text-slate-500" style="inline-size: 10px">
+                                <td class="border-b border-slate-100 p-4 text-slate-500 ellipsis" style="inline-size: 10px">
                                     {{ $question->getTranslation('option_d', $key) }}
                                 </td>
-                                <td class="border-b border-slate-100 p-4 text-slate-500" style="inline-size: 10px">
+                                <td class="border-b border-slate-100 p-4 text-slate-500 ellipsis" style="inline-size: 10px">
                                     {{ $question->getTranslation('option_e', $key) }}
                                 </td>
-                                <td class="border-b border-slate-100 p-4 text-slate-500" style="inline-size: 10px">
+                                <td class="border-b border-slate-100 p-4 text-slate-500 ellipsis" style="inline-size: 10px">
                                     {{ $question->correct_answer->name }}
                                 </td>
                                 <td class="border-b border-slate-100 p-4 text-slate-500 text-right">
