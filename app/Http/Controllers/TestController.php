@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Question;
+use App\Models\Subject;
 
 class TestController extends Controller
 {
-    public function index()
+    public function index(Subject $subject)
     {
+        $subjects = Subject::get();
+        $questions = Question::where('subject_id', $subject->id)->get();
 
-        return view('test');
+        return view('test', compact('subject', 'subjects', 'questions'));
     }
 
 }

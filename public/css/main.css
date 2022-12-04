@@ -282,3 +282,16 @@ ol li:hover::marker {
     line-height: 121px;
     font-size: 100px;
 }
+
+.test-page > .row > .col-sm-1 {
+    width: 15% !important;
+}
+
+.test-page ::-webkit-scrollbar {
+    width: 7px;
+}
+
+.test-page ::-webkit-scrollbar-thumb {
+    background: rgb(45, 170, 252);
+    border-radius: 4px;
+}

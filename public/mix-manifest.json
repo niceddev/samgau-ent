@@ -1,5 +1,4 @@
 {
-    "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/bootstrap-grid.css": "/css/bootstrap-grid.css",
     "/css/bootstrap-grid.rtl.css": "/css/bootstrap-grid.rtl.css",
@@ -28,5 +27,10 @@
     "/assets/read_gramoticy.png": "/assets/read_gramoticy.png",
     "/assets/rus-literature.png": "/assets/rus-literature.png",
     "/assets/test/physics.png": "/assets/test/physics.png",
-    "/fonts/Helvetica Neue Condensed Bold.ttf": "/fonts/Helvetica Neue Condensed Bold.ttf"
+    "/fonts/Helvetica Neue Condensed Bold.ttf": "/fonts/Helvetica Neue Condensed Bold.ttf",
+    "/js/app.js": "/js/app.js",
+    "/js/bootstrap.bundle.js": "/js/bootstrap.bundle.js",
+    "/js/bootstrap.esm.js": "/js/bootstrap.esm.js",
+    "/js/bootstrap.js": "/js/bootstrap.js",
+    "/js/main-bootstrap.js": "/js/main-bootstrap.js"
 }

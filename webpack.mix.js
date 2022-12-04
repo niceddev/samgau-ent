@@ -12,10 +12,10 @@ const mix = require('laravel-mix');
  */
 mix.disableNotifications();
 
-mix.js("resources/js/app.js", "public/js")
-    .postCss("resources/css/app.css", "public/css", [
+mix.postCss("resources/css/app.css", "public/css", [
         require("tailwindcss"),
     ])
     .copy("resources/styles", "public/css")
     .copy("resources/assets", "public/assets")
-    .copy("resources/fonts", "public/fonts");
+    .copy("resources/fonts", "public/fonts")
+    .copy("resources/js", "public/js");
