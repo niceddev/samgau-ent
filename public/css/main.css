@@ -292,6 +292,39 @@ ol li:hover::marker {
 }
 
 .test-page ::-webkit-scrollbar-thumb {
-    background: rgb(45, 170, 252);
+    background: rgb(84, 90, 232);
     border-radius: 4px;
+}
+
+#subjects .main {
+    grid-area: main;
+    padding: 0;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+#subjects .items {
+    position: relative;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    transition: all 0.2s;
+    transform: scale(0.98);
+    will-change: transform;
+    user-select: none;
+    cursor: pointer;
+}
+
+#subjects .item {
+    display: inline-block;
+}
+
+#subjects ::-webkit-scrollbar {
+    display: none;
+}
+
+#subjects .item img {
+    max-width: 100px;
+    max-height: 100px;
 }
