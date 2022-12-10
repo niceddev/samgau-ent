@@ -4,6 +4,7 @@ namespace App\Orchid\Screens\Questions;
 
 use App\Enums\AnswerOption;
 use App\Http\Requests\Panel\QuestionsRequest;
+use App\Models\MustSubject;
 use App\Models\Question;
 use App\Models\Subject;
 use Orchid\Screen\Fields\Quill;
@@ -17,20 +18,24 @@ use Orchid\Support\Facades\Layout;
 
 class QuestionsScreen extends Screen
 {
-    private Subject $subject;
+    private Object $subject;
 
     /**
      * Query data.
      *
      * @return array
      */
-    public function query(Subject $subject): iterable
+    public function query(int $id): iterable
     {
-        $this->subject = $subject;
+        $subjects = collect([Subject::get(), MustSubject::get()])->flatten();
+
+        $this->subject = $subjects->filter(function($item) use($id) {
+            return $item->id == $id;
+        })->first();
 
         return [
             'subject' => $this->subject->toArray(),
-            'questions' => Question::where('subject_id', $subject->id)->get(),
+            'questions' => Question::where('subject_id', $this->subject->id)->get(),
         ];
     }
 
@@ -101,7 +106,6 @@ class QuestionsScreen extends Screen
                     ->required(),
                 Input::make('subject_id')
                     ->value($this->subject->id)
-                    ->required()
                     ->hidden(),
             ]))
                 ->size(Modal::SIZE_LG)

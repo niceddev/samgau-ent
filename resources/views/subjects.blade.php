@@ -24,7 +24,7 @@
                 <div class="row">
                     @foreach($mustSubjects as $mustSubject)
                         <div class="text-center subject-card mb-4">
-                            <a href="#" class="text-decoration-none">
+                            <a href="{{ route('test.index', $mustSubject->id) }}" class="text-decoration-none">
                                 <img class="subject mb-3" style="max-height: 144px" src="{{ asset($mustSubject->image_path) }}" alt="" >
                                 <div class="checksign"></div>
                                 <h4 style="color: #737373;">{{ $mustSubject->getTranslation('name',  session()->get('lang', 'ru')) }}</h4>

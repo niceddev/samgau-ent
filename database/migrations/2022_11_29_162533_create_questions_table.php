@@ -23,7 +23,7 @@ class CreateQuestionsTable extends Migration
             $table->jsonb('option_d');
             $table->jsonb('option_e');
             $table->string('correct_answer');
-            $table->foreignId('subject_id')->constrained();
+            $table->integer('subject_id');
             $table->timestamps();
         });
     }
