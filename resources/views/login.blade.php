@@ -16,13 +16,15 @@
                 <div class="col px-5">
                     <form action="{{ route('login.store') }}" method="POST" class="position-relative">
                         <div id="lang_switcher" class="position-absolute" style="left: 40px; top: 40px;">
-                            @foreach(config('app.languages') as $key => $lang)
-                                <a href="#" onclick="changeLanguage(this.dataset)" class="{{ session()->get('lang') === $key ? 'active_lang' : '' }}"
-                                   {{ session()->has('lang') ? (session()->get('lang') === $key ? 'selected' : '') : '' }}
-                                   data-value="{{ $key }}">
-                                    {{ $lang }}
-                                </a>
-                            @endforeach
+                            <div>
+                                @foreach(config('app.languages') as $key => $lang)
+                                    <a href="#" onclick="changeLanguage(this.dataset)" class="{{ session()->get('lang') === $key ? 'active_lang' : '' }}"
+                                       {{ session()->has('lang') ? (session()->get('lang') === $key ? 'selected' : '') : '' }}
+                                       data-value="{{ $key }}">
+                                        {{ $lang }}
+                                    </a>
+                                @endforeach
+                            </div>
                         </div>
                         @csrf
                         <div class="row py-4">

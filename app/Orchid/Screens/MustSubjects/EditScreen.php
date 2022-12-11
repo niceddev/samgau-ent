@@ -60,6 +60,9 @@ class EditScreen extends AbstractMultiLanguageScreen
     {
         return [
             Layout::rows([
+                Input::make('must_subject.color')
+                    ->type('color')
+                    ->title('common.bg_color'),
                 Picture::make('mustSubject.image_path')
                     ->storage('public')
                     ->targetUrl()

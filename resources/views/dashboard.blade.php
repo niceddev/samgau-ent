@@ -5,14 +5,19 @@
 @endsection()
 
 @section('content')
-    <div id="lang_switcher" class="position-absolute p-4">
-        @foreach(config('app.languages') as $key => $lang)
-            <a href="#" onclick="changeLanguage(this.dataset)" class="{{ session()->get('lang') === $key ? 'active_lang' : '' }}"
-               {{ session()->has('lang') ? (session()->get('lang') === $key ? 'selected' : '') : '' }}
-               data-value="{{ $key }}">
-                {{ $lang }}
-            </a>
-        @endforeach
+    <div id="lang_switcher" class="d-flex justify-content-between position-absolute p-4">
+        <div>
+            @foreach(config('app.languages') as $key => $lang)
+                <a href="#" onclick="changeLanguage(this.dataset)" class="{{ session()->get('lang') === $key ? 'active_lang' : '' }}"
+                   {{ session()->has('lang') ? (session()->get('lang') === $key ? 'selected' : '') : '' }}
+                   data-value="{{ $key }}">
+                    {{ $lang }}
+                </a>
+            @endforeach
+        </div>
+        <a href="{{ route('cabinet.index') }}">
+            {{ __('common.cabinet') }}
+        </a>
     </div>
     <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <div class="bg-white container rounded-4">

@@ -16,7 +16,7 @@ Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {
     Route::get('/subjects', [
         \App\Http\Controllers\SubjectsController::class,
         'index'
-    ]);
+    ])->name('subjects');
 
     Route::name('test.')->group(function (){
 
@@ -31,6 +31,15 @@ Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {
 
         Route::get('/dashboard', [
             \App\Http\Controllers\DashboardController::class,
+            'index'
+        ])->name('index');
+
+    });
+
+    Route::name('cabinet.')->group(function (){
+
+        Route::get('/cabinet', [
+            \App\Http\Controllers\CabinetController::class,
             'index'
         ])->name('index');
 

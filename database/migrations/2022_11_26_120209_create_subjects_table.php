@@ -16,6 +16,7 @@ class CreateSubjectsTable extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->string('image_path')->nullable();
+            $table->string('color');
             $table->jsonb('name');
             $table->timestamps();
         });

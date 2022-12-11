@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Dashboard $dashboard)
     {
+        session()->put('lang', 'ru');
         $dashboard->registerResource('stylesheets', asset('css/app.css'));
     }
 }

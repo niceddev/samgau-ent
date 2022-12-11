@@ -58,6 +58,9 @@ class CreateScreen extends AbstractMultiLanguageScreen
     {
         return [
             Layout::rows([
+                Input::make('subject.color')
+                    ->type('color')
+                    ->title('common.bg_color'),
                 Picture::make('subject.image_path')
                     ->storage('public')
                     ->targetUrl()

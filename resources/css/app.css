@@ -19,3 +19,8 @@
     white-space: nowrap;
     overflow: hidden;
 }
+
+input[name='subject[color]'], input[name='must_subject[color]'] {
+    width: 200px;
+    height: 200px;
+}

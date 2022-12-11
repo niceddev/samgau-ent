@@ -16,6 +16,7 @@ class CreateMustSubjectsTable extends Migration
         Schema::create('must_subjects', function (Blueprint $table) {
             $table->id()->from(100);
             $table->string('image_path')->nullable();
+            $table->string('color');
             $table->jsonb('name');
             $table->timestamps();
         });
