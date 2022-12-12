@@ -26,11 +26,13 @@
                 <h4 class="secondary text-center mb-3 mt-2 fs-5">
                     {{ __('common.must_subjects_title') }}
                 </h4>
-                <div class="row">
+                <div class="row flex justify-content-center">
                     @foreach($mustSubjects as $mustSubject)
                         <div class="text-center subject-card mb-4">
                             <a href="{{ route('test.index', $mustSubject->id) }}" class="text-decoration-none">
-                                <img class="subject mb-3" style="max-height: 144px" src="{{ asset($mustSubject->image_path) }}" alt="" >
+                                <div class="p-3 rounded-3" style="width:144px;height:144px;background-color: {{ $mustSubject->color }}">
+                                    <img class="subject mb-3" src="{{ asset($mustSubject->image_path) }}" alt="">
+                                </div>
                                 <div class="checksign"></div>
                                 <h4 style="color: #737373;">{{ $mustSubject->getTranslation('name',  session()->get('lang', 'ru')) }}</h4>
                             </a>
