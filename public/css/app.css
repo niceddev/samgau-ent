@@ -700,6 +700,10 @@ video {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
 .pt-4 {
   padding-top: 1rem;
 }

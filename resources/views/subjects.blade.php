@@ -6,6 +6,7 @@
 
 @section('content')
     <div id="thin-container">
+
         <div id="lang_switcher" class="mb-2 d-flex justify-content-between">
             <div>
                 @foreach(config('app.languages') as $key => $lang)
@@ -20,17 +21,19 @@
                 {{ __('common.cabinet') }}
             </a>
         </div>
+
         <h3 class="fs-3 text-center mt-5">{{ __('common.choose_profile_and_start') }}</h3>
+
         <div class="row">
             <div class="col-sm-6">
                 <h4 class="secondary text-center mb-3 mt-2 fs-5">
                     {{ __('common.must_subjects_title') }}
                 </h4>
-                <div class="row flex justify-content-center">
+                <div class="row">
                     @foreach($mustSubjects as $mustSubject)
                         <div class="text-center subject-card mb-4">
                             <a href="{{ route('test.index', $mustSubject->id) }}" class="text-decoration-none">
-                                <div class="p-3 rounded-3" style="width:144px;height:144px;background-color: {{ $mustSubject->color }}">
+                                <div class="p-3 mb-2 rounded-3" style="margin:0 auto;width:144px;height:144px;background-color: {{ $mustSubject->color }}">
                                     <img class="subject mb-3" src="{{ asset($mustSubject->image_path) }}" alt="">
                                 </div>
                                 <div class="checksign"></div>
@@ -50,8 +53,8 @@
                         <div class="col-sm-6 mb-2 overflow-hidden">
                             <div class="text-center">
                                 <a href="{{ route('test.index', $subject->id) }}" class="text-decoration-none">
-                                    <div class="mb-2 p-4 rounded-3" style="width:100px;height:100px;background-color: {{ $subject->color }}">
-                                        <img style="max-height: 92px;" src="{{ asset($subject->image_path) }}" alt="" >
+                                    <div class="mb-2 rounded-3 py-3" style="margin:0 auto;width:100px;height:100px;background-color: {{ $subject->color }}">
+                                        <img style="max-height: 92px;" src="{{ asset($subject->image_path) }}" alt="">
                                     </div>
                                     <h4 style="color: #737373;">{{ $subject->getTranslation('name',  session()->get('lang', 'ru')) }}</h4>
                                 </a>
@@ -60,6 +63,7 @@
                     @endforeach
                 </div>
             </div>
+
         </div>
     </div>
 
