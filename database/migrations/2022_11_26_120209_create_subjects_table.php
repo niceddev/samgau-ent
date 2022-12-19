@@ -18,6 +18,8 @@ class CreateSubjectsTable extends Migration
             $table->string('image_path')->nullable();
             $table->string('color');
             $table->jsonb('name');
+            $table->boolean('required')->default(false);
+            $table->json('siblings')->nullable();
             $table->timestamps();
         });
     }

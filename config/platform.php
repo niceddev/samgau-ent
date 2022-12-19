@@ -95,7 +95,7 @@ return [
     |
     */
 
-    'index' => 'platform.subjects.index',
+    'index' => 'platform.questions.subjects.index',
 
     /*
     |--------------------------------------------------------------------------

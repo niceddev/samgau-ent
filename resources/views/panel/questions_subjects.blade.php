@@ -24,8 +24,10 @@
                         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                             @foreach($subjects as $subject)
                                 <article class="bg-white p-4 rounded-lg max-w-xs text-center justify-items-center grid overflow-hidden">
-                                    <img src="{{ asset($subject->image_path) }}" class="mb-3 rounded-lg" alt="Image 1" style="max-height: 92px">
-                                    <h2 class="fs-4 font-bold leading-tight text-gray-900 text-ellipsis">
+                                    <div class="p-3 rounded mb-3" style="background-color: {{ $subject->color }}">
+                                        <img src="{{ asset($subject->image_path) }}" class="mb-3 rounded-lg" alt="Image 1" style="max-height: 92px">
+                                    </div>
+                                    <h2 class="fs-4 font-bold leading-tight break-words text-gray-900">
                                         {{ $subject->getTranslation('name', $key) }}
                                     </h2>
                                     <a href="{{ route('platform.questions.index', $subject->id) }}"

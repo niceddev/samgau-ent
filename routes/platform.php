@@ -16,24 +16,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 //MustSubjects
-Route::screen('/must-subjects', \App\Orchid\Screens\MustSubjects\IndexScreen::class)
-    ->name('platform.must_subjects.index');
-
-Route::screen('/must-subjects/form', \App\Orchid\Screens\MustSubjects\CreateScreen::class)
-    ->name('platform.must_subjects.create');
-
-Route::screen('/must-subjects/form/{mustSubject}', \App\Orchid\Screens\MustSubjects\EditScreen::class)
-    ->name('platform.must_subjects.edit');
+//Route::screen('/must-subjects', \App\Orchid\Screens\MustSubjects\IndexScreen::class)
+//    ->name('platform.must_subjects.index');
+//
+//Route::screen('/must-subjects/form', \App\Orchid\Screens\MustSubjects\CreateScreen::class)
+//    ->name('platform.must_subjects.create');
+//
+//Route::screen('/must-subjects/form/{mustSubject}', \App\Orchid\Screens\MustSubjects\EditScreen::class)
+//    ->name('platform.must_subjects.edit');
 
 //Subjects
-Route::screen('/subjects', \App\Orchid\Screens\Subjects\IndexScreen::class)
-    ->name('platform.subjects.index');
-
-Route::screen('/subjects/form', \App\Orchid\Screens\Subjects\CreateScreen::class)
-    ->name('platform.subjects.create');
-
-Route::screen('/subjects/form/{subject}', \App\Orchid\Screens\Subjects\EditScreen::class)
-    ->name('platform.subjects.edit');
+//Route::screen('/subjects', \App\Orchid\Screens\Subjects\IndexScreen::class)
+//    ->name('platform.subjects.index');
+//
+//Route::screen('/subjects/form', \App\Orchid\Screens\Subjects\CreateScreen::class)
+//    ->name('platform.subjects.create');
+//
+//Route::screen('/subjects/form/{subject}', \App\Orchid\Screens\Subjects\EditScreen::class)
+//    ->name('platform.subjects.edit');
 
 //Questions
 Route::screen('/questions', \App\Orchid\Screens\Questions\IndexScreen::class)

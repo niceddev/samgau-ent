@@ -13,10 +13,16 @@ class Subject extends Model
         'image_path',
         'color',
         'name',
+        'required',
+        'siblings',
     ];
 
     public $translatable = [
         'name',
+    ];
+
+    protected $casts = [
+        'siblings' => 'array'
     ];
 
 }
