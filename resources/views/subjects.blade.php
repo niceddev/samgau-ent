@@ -36,7 +36,10 @@
                             <div class="text-center subject-card mb-3">
                                 <label class="d-grid">
                                     <input type="checkbox" checked disabled name="subjects[]" class="hidden subject-checkbox" value="{{ $mustSubject->id }}">
-                                    <input type="hidden" name="subjects[]" value="{{ $mustSubject->id }}"/>
+                                    <input type="hidden" name="subjects[]" value="{{ $mustSubject->id }}">
+                                    <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1.00977 8.4026L6.21309 14.5815L20.197 1.57324" stroke="white" stroke-width="1.95124" stroke-linecap="round"/>
+                                    </svg>
                                     <div class="p-3 mb-2 rounded-4" style="margin:0 auto;width:144px;height:144px;background-color: {{ $mustSubject->color }}">
                                         <img class="subject mb-3" src="{{ asset($mustSubject->image_path) }}" alt="">
                                     </div>
