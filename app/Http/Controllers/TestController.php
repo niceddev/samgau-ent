@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\MustSubject;
 use App\Models\Question;
 use App\Models\Subject;
+use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-    public function index(int $id)
+    public function index(Request $request)
     {
+        dd($request->input('subjects'));
         $subjects = collect([Subject::get(), MustSubject::get()])->flatten();
 
         $subject = collect([Subject::get(), MustSubject::get()])

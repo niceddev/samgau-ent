@@ -46,4 +46,5 @@
         'average_score'      => 'Орташа балл',
         'add_question'       => 'Сұрақ қосу',
 
+        'start_test' => 'Начать тест',
     ];

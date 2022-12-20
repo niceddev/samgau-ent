@@ -10,7 +10,7 @@ services:
             - ./:/var/www/samgau
             - ./docker/nginx/:/etc/nginx/conf.d
         ports:
-            - 83:80
+            - 89:80
 
     php:
         container_name: samgau_php
@@ -23,7 +23,7 @@ services:
             - ./:/var/www/samgau
             - ./docker/php/php.ini:/usr/local/etc/php/conf.d/z-php.ini
         ports:
-            - 9003:9000
+            - 9009:9000
 
     postgres:
         container_name: samgau_postgres
@@ -36,7 +36,7 @@ services:
         volumes:
             - samgau-postgres:/data/postgres
         ports:
-            - 5433:5432
+            - 5439:5432
 
 volumes:
     samgau-postgres:

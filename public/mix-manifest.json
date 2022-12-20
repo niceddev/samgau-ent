@@ -34,7 +34,6 @@
     "/js/bootstrap.bundle.js": "/js/bootstrap.bundle.js",
     "/js/bootstrap.esm.js": "/js/bootstrap.esm.js",
     "/js/bootstrap.js": "/js/bootstrap.js",
-    "/js/main-bootstrap.js": "/js/main-bootstrap.js",
-    "/js/script.js": "/js/script.js",
-    "/js/choose-subjects.js": "/js/choose-subjects.js"
+    "/js/choose-subjects.js": "/js/choose-subjects.js",
+    "/js/main-bootstrap.js": "/js/main-bootstrap.js"
 }
