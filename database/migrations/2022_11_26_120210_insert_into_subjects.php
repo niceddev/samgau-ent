@@ -50,7 +50,7 @@ class InsertIntoSubjects extends Migration
                     'kk' => 'Дүние жүзі тарихы',
                 ]),
                 'required' => false,
-                'siblings' => '[5, 12]',
+                'siblings' => '[7, 13, 14]',
             ],
             [
                 'id' => 5,
@@ -61,7 +61,7 @@ class InsertIntoSubjects extends Migration
                     'kk' => 'Физика',
                 ]),
                 'required' => false,
-                'siblings' => '[11, 5]',
+                'siblings' => '[12, 8]',
             ],
             [
                 'id' => 6,
@@ -72,7 +72,7 @@ class InsertIntoSubjects extends Migration
                     'kk' => 'Биология',
                 ]),
                 'required' => false,
-                'siblings' => '[4, 13]',
+                'siblings' => '[12, 13]',
             ],
             [
                 'id' => 7,
@@ -83,7 +83,7 @@ class InsertIntoSubjects extends Migration
                     'kk' => 'Құқық негіздері',
                 ]),
                 'required' => false,
-                'siblings' => '[]',
+                'siblings' => '[4]',
             ],
             [
                 'id' => 8,
@@ -94,7 +94,7 @@ class InsertIntoSubjects extends Migration
                     'kk' => 'Математика',
                 ]),
                 'required' => false,
-                'siblings' => '[]',
+                'siblings' => '[13, 5, 15]',
             ],
             [
                 'id' => 9,
@@ -116,18 +116,18 @@ class InsertIntoSubjects extends Migration
                     'kk' => 'Қазақ тілі',
                 ]),
                 'required' => false,
-                'siblings' => '[]',
+                'siblings' => '[11]',
             ],
             [
                 'id' => 11,
                 'image_path' => 'assets/kaz_literature.png',
                 'color' => '#4B9779',
                 'name' => json_encode([
-                    'ru' => 'Казахский язык',
-                    'kk' => 'Қазақ тілі',
+                    'ru' => 'Казахская литература',
+                    'kk' => 'Қазақ әдебиеті',
                 ]),
                 'required' => false,
-                'siblings' => '[]',
+                'siblings' => '[10]',
             ],
             [
                 'id' => 12,
@@ -138,7 +138,7 @@ class InsertIntoSubjects extends Migration
                     'kk' => 'Химия',
                 ]),
                 'required' => false,
-                'siblings' => '[]',
+                'siblings' => '[5, 6]',
             ],
             [
                 'id' => 13,
@@ -149,7 +149,7 @@ class InsertIntoSubjects extends Migration
                     'kk' => 'География',
                 ]),
                 'required' => false,
-                'siblings' => '[]',
+                'siblings' => '[14, 6, 4, 8]',
             ],
             [
                 'id' => 14,
@@ -160,7 +160,7 @@ class InsertIntoSubjects extends Migration
                     'kk' => 'Шет тілі',
                 ]),
                 'required' => false,
-                'siblings' => '[]',
+                'siblings' => '[4, 13]',
             ],
             [
                 'id' => 15,
@@ -171,7 +171,7 @@ class InsertIntoSubjects extends Migration
                     'kk' => 'Информатика',
                 ]),
                 'required' => false,
-                'siblings' => '[]',
+                'siblings' => '[8]',
             ]
 
         ]);
