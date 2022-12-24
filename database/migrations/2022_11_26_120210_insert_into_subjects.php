@@ -142,7 +142,7 @@ class InsertIntoSubjects extends Migration
             ],
             [
                 'id' => 13,
-                'image_path' => 'assets/chemistry.png',
+                'image_path' => 'assets/geography.png',
                 'color' => '#F25471',
                 'name' => json_encode([
                     'ru' => 'География',

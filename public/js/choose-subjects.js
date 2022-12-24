@@ -1,27 +1,59 @@
 window.addEventListener("load", () => {
 
-    const subjects = document.querySelectorAll('.subjects')
+    let checkedSubjectsCount = 3;
+    const subjects = document.querySelectorAll('input[type=checkbox]')
 
     subjects.forEach(function (subject){
 
-        subject.addEventListener('click', function (el){
+        subject.addEventListener('change', function (event){
 
-            const allSiblings = JSON.parse(el.currentTarget.dataset.siblings)
+            if (event.currentTarget.checked){
+                const allSiblings = JSON.parse(event.currentTarget.dataset.siblings)
 
-            allSiblings.forEach(function (item){
-
-                const sibling = document.querySelector(`[data-id="${item}"]`).querySelector('.img')
-
-                if (sibling.style.filter == "grayscale(100%)") {
-                    sibling.style.filter = "grayscale(0%)"
-                } else {
-                    sibling.style.filter = "grayscale(100%)"
-                }
-
-                sibling.style.transition = 'all 0.2s ease-in'
+                checkedSubjectsCount++
 
 
-            })
+                const subjsToDisable = document.querySelectorAll('input[type=checkbox]:not([])')
+
+                console.log(subjsToDisable)
+                // if (checkedSubjectsCount >= 5){
+                //     console.log('q')
+                // }
+
+                console.log(allSiblings)
+            }else{
+
+                checkedSubjectsCount--
+
+                console.log('zxc')
+            }
+
+            console.log(checkedSubjectsCount)
+
+
+            // allSiblings.forEach(function (id){
+            //
+            //     const sibling = document.querySelector(`[data-id="${id}"]`).querySelector('.img')
+            //
+            //     let arr = [];
+            //     let checkboxes = document.querySelectorAll("input[type='checkbox']:checked");
+            //     for (let i = 0; i < checkboxes.length; i++) {
+            //         arr.push(checkboxes[i].value)
+            //     }
+            //     console.log(arr.length)
+            //     subjects.forEach(function(el){
+            //
+            //         // el.querySelector('.img').style.filter = "grayscale(100%)"
+            //         //
+            //         // if (sibling.dataset.id === el.dataset.id){
+            //         //     el.querySelector('.img').style.filter = "grayscale(0%)"
+            //         // }
+            //
+            //     });
+            //
+            //     sibling.style.transition = 'all 0.2s ease-in'
+            //
+            // })
 
         })
     })

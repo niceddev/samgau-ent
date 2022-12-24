@@ -57,9 +57,9 @@
                             <div class="col-sm-6 overflow-hidden subjects" data-id="{{ $subject->id }}" data-siblings="{{ json_encode($subject->siblings) }}">
                                 <div class="text-center">
                                     <label class="d-grid">
-                                        <label class="p-3 mb-2 rounded-4 custom-checkbox img" style="margin:0 auto;width:90px;height:90px;background-color: {{ $subject->color }};">
+                                        <label data-id="{{ $subject->id }}" class="p-3 mb-2 rounded-4 custom-checkbox img" style="margin:0 auto;width:90px;height:90px;background-color: {{ $subject->color }};">
                                             <img class="subject mb-3" src="{{ asset($subject->image_path) }}" alt="" style="max-height: 60px;">
-                                            <input type="checkbox" name="subjects[]" value="{{ $subject->id }}">
+                                            <input type="checkbox" name="subjects[]" value="{{ $subject->id }}" data-siblings="{{ json_encode($subject->siblings) }}">
                                             <span class="little-checkmark"></span>
                                         </label>
                                         <h4 class="break-words" style="color: #737373;">
