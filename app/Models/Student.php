@@ -6,14 +6,15 @@ use Orchid\Platform\Models\User as Authenticatable;
 
 class Student extends Authenticatable
 {
-    protected $table = 'students';
-
     protected $fillable = [
-        'login',
-        'password',
         'fio',
+        'email',
+        'password',
+        'school',
         'grade_id',
     ];
+
+    protected $table = 'students';
 
     protected $hidden = [
         'password',

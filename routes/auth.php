@@ -16,6 +16,18 @@ Route::middleware(['guest:ent', 'language'])->group(function () {
         ])->name('store');
     });
 
+    Route::name('register.')->group(function () {
+        Route::get('/register', [
+            \App\Http\Controllers\Auth\RegisterController::class,
+            'create'
+        ])->name('form');
+
+        Route::post('/register', [
+            \App\Http\Controllers\Auth\RegisterController::class,
+            'store'
+        ])->name('store');
+    });
+
 });
 
 Route::middleware('auth:ent')->group(function () {

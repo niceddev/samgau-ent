@@ -20,10 +20,15 @@ Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {
 
     Route::name('test.')->group(function (){
 
-        Route::post('/test', [
+        Route::get('/test', [
             \App\Http\Controllers\TestController::class,
             'index'
         ])->name('index');
+
+        Route::get('/test-finish', [
+            \App\Http\Controllers\TestController::class,
+            'testFinish'
+        ])->name('test_finish');
 
     });
 

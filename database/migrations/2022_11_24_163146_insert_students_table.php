@@ -10,10 +10,11 @@ class InsertStudentsTable extends Migration
     {
         DB::table('students')->insert([
             [
-                'login'    =>  'naruto',
-                'password' =>  Hash::make('123123'),
-                'fio'      =>  'Узумаки Наруто',
-                'grade_id' =>  null,
+                'fio'      => 'Узумаки Наруто',
+                'email'    => 'naruto@kz',
+                'password' => Hash::make('123123'),
+                'school'   => 1,
+                'grade_id' => null,
             ],
         ]);
     }

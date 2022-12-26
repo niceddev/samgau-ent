@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    {{ __('common.sign_in') }}
+    {{ __('common.sign_up') }}
 @endsection()
 
 @section('content')
@@ -14,7 +14,7 @@
         <div class="bg-white container rounded-5 p-0">
             <div class="row">
                 <div class="col px-5">
-                    <form action="{{ route('login.store') }}" method="POST" class="position-relative">
+                    <form action="{{ route('register.store') }}" method="POST" class="position-relative">
                         <div id="lang_switcher" class="position-absolute" style="left: 40px; top: 40px;">
                             <div>
                                 @foreach(config('app.languages') as $key => $lang)
@@ -29,7 +29,7 @@
                         @csrf
                         <div class="row py-4">
                             <h1 class="text-center fw-bold" style="color: #2F327D; font-size: 55px;">
-                                {{ mb_strtoupper(__('common.sign_in')) }}
+                                {{ mb_strtoupper(__('common.sign_up')) }}
                             </h1>
                         </div>
 
@@ -38,8 +38,8 @@
                                 <label for="email" class="custom-label">{{ __('common.login') }}:</label>
                                 <a href="#" class="golden-text">{{ __('common.link_sign_in') }}:</a>
                             </div>
-                            <input id="email" name="email"
-                                   value="{{ old('email') }}"
+                            <input id="email" name="login"
+                                   value="{{ old('login') }}"
                                    class="custom-input border-0 rounded-3" type="text" required placeholder="{{ __('common.enter_login') }}">
                         </div>
 

@@ -12,10 +12,13 @@ window.addEventListener("load", () => {
 
                 checkedSubjectsCount++
 
+                subjects.forEach(function (el){
+                    console.log(event.currentTarget.dataset)
+                    // if(el.value === event.currentTarget)
+                })
 
-                const subjsToDisable = document.querySelectorAll('input[type=checkbox]:not([])')
+                // const subjsToDisable = document.querySelectorAll('input[type=checkbox]:not([value=' + subject.value + '])')
 
-                console.log(subjsToDisable)
                 // if (checkedSubjectsCount >= 5){
                 //     console.log('q')
                 // }
