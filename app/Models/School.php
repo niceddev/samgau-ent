@@ -11,7 +11,7 @@ class School extends Model
         'region_id',
     ];
 
-    public function schools()
+    public function region()
     {
         return $this->belongsTo(Region::class);
     }

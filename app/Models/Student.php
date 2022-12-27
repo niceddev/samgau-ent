@@ -10,7 +10,7 @@ class Student extends Authenticatable
         'fio',
         'email',
         'password',
-        'school',
+        'school_id',
         'grade_id',
     ];
 

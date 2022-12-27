@@ -12,7 +12,7 @@ class Region extends Model
 
     public function schools()
     {
-        return $this->hasMany(School::class, 'region_id', 'id');
+        return $this->hasMany(School::class);
     }
 
 }

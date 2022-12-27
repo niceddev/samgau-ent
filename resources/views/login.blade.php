@@ -35,12 +35,12 @@
 
                         <div class="row px-5">
                             <div class="d-flex align-items-center justify-content-between">
-                                <label for="email" class="custom-label">{{ __('common.login') }}:</label>
+                                <label for="email" class="custom-label">Email:</label>
                                 <a href="#" class="golden-text">{{ __('common.link_sign_in') }}:</a>
                             </div>
                             <input id="email" name="email"
                                    value="{{ old('email') }}"
-                                   class="custom-input border-0 rounded-3" type="text" required placeholder="{{ __('common.enter_login') }}">
+                                   class="custom-input border-0 rounded-3" type="text" required placeholder="{{ __('common.enter_email') }}">
                         </div>
 
                         <div class="row px-5 mt-5">

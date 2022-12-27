@@ -5,10 +5,10 @@
 @endsection()
 
 @section('content')
-    <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div id="register" class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
         @if($errors->any())
             @foreach ($errors->all() as $error)
-                <p class="text-danger fs-1">{{ $error }}</p>
+                <p class="text-danger fs-3 ">{{ $error }}</p>
             @endforeach
         @endif
         <div class="bg-white container rounded-5 p-0">
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         @csrf
-                        <div class="row py-4">
+                        <div class="row py-2">
                             <h1 class="text-center fw-bold" style="color: #2F327D; font-size: 55px;">
                                 {{ mb_strtoupper(__('common.sign_up')) }}
                             </h1>
@@ -35,40 +35,57 @@
 
                         <div class="row px-5">
                             <div class="d-flex align-items-center justify-content-between">
-                                <label for="email" class="custom-label">{{ __('common.login') }}:</label>
-                                <a href="#" class="golden-text">{{ __('common.link_sign_in') }}:</a>
+                                <label for="fio" class="custom-label">{{ __('common.fio') }}:</label>
                             </div>
-                            <input id="email" name="login"
-                                   value="{{ old('login') }}"
-                                   class="custom-input border-0 rounded-3" type="text" required placeholder="{{ __('common.enter_login') }}">
+                            <input id="fio" name="fio"
+                                   value="{{ old('fio') }}"
+                                   class="custom-input border-0 rounded-3" type="text" required placeholder="{{ __('common.fio') }}">
                         </div>
 
-                        <div class="row px-5 mt-5">
+                        <div class="row px-5 mt-3">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <label for="email" class="custom-label">Email:</label>
+                            </div>
+                            <input id="email" name="email"
+                                   value="{{ old('email') }}"
+                                   class="custom-input border-0 rounded-3" type="email" required placeholder="{{ __('common.enter_email') }}">
+                        </div>
+
+                        <div class="row px-5 mt-3">
                             <label for="password" class="custom-label">{{ __('common.password') }}:</label>
                             <input id="password" name="password"
                                    class="custom-input border-0 rounded-3" type="password" required placeholder="{{ __('common.enter_password') }}">
+                        </div>
 
-                            <div class="d-flex align-items-center justify-content-between mt-1">
-                                <div>
-                                    <input type="checkbox" value="lsRememberMe" id="rememberMe">
-                                    <label class="golden-text mx-1 text-decoration-underline" for="rememberMe">{{ __('common.remember_me') }}</label>
-                                </div>
-                                <div>
-                                    <a href="#" class="golden-text">{{ __('common.forget_password') }}</a>
-                                </div>
-                            </div>
+                        <div class="row px-5 mt-3">
+                            <label for="confirm-password" class="custom-label">{{ __('common.password_confirmation') }}:</label>
+                            <input id="confirm-password" name="password_confirmation"
+                                   class="custom-input border-0 rounded-3" type="password" required placeholder="{{ __('common.password_confirmation') }}">
+                        </div>
+
+                        <div class="row px-5 mt-3">
+                            <label for="select-school" class="custom-label">{{ __('common.school') }}:</label>
+                            <select id="select-school" name="school" class="custom-input border-0 rounded-3" required>
+                                <option disabled selected>{{ __('common.select_school') }}</option>
+                                @foreach($regions as $region)
+                                    <option disabled value="{{ $region->id }}">{{ $region->title }}</option>
+                                    @foreach($region->schools()->get() as $school)
+                                        <option value="{{ $school->id }}">{{ $school->title }}</option>
+                                    @endforeach
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="row mt-5">
                             <button type="submit" class="login-btn text-white fs-2 p-4 w-50 mx-auto rounded-3 border-0">
-                                {{ __('common.sign_in') }}
+                                {{ __('common.sign_up') }}
                             </button>
                         </div>
 
                     </form>
                 </div>
-                <div class="col-4">
-                    <img class="float-end" src="{{ asset('assets/login_kid.png') }}" alt="">
+                <div class="col-4 overflow-hidden">
+                    <img class="float-end h-100" src="{{ asset('assets/login_kid.png') }}" alt="">
                 </div>
             </div>
         </div>

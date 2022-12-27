@@ -31,4 +31,18 @@ class RegisterRequest extends FormRequest
             'school'   => 'required|integer|min:0'
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'fio'    => __('common.fio'),
+            'school' => __('common.school'),
+        ];
+    }
+
 }

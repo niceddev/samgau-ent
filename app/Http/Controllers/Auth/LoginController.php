@@ -16,7 +16,7 @@ class LoginController
 
     public function store(LoginRequest $loginRequest)
     {
-        if (!Auth::guard('ent')->attempt($loginRequest->only('login', 'password'), $loginRequest->boolean('remember'))) {
+        if (!Auth::guard('ent')->attempt($loginRequest->only('email', 'password'), $loginRequest->boolean('remember'))) {
             return redirect()->back()->withErrors(['message' => __('auth.failed')]);
         }
 
