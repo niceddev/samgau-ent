@@ -13,7 +13,7 @@ class School extends Model
 
     public function schools()
     {
-        return $this->belongsTo(Region::class, 'id', 'id');
+        return $this->belongsTo(Region::class);
     }
 
 }
