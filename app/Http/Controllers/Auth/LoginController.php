@@ -22,7 +22,7 @@ class LoginController
 
         $loginRequest->session()->regenerate();
 
-        return redirect('dashboard');
+        return redirect('cabinet');
     }
 
     public function destroy(Request $request)
