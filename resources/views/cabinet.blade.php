@@ -49,6 +49,16 @@
                 </button>
             </div>
 
+            <div class="row mt-4">
+                <button type="submit" form="logout-form" class="rounded-4 text-white p-2 mx-auto border-0" style="background-color:#EDB021">
+                    {{ __('common.log_out') }}
+                </button>
+            </div>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="GET">
+                @csrf
+            </form>
+
         </div>
     </div>
 

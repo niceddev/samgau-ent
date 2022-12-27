@@ -11,7 +11,7 @@ class TestController extends Controller
 {
     public function index(Request $request)
     {
-//        dd($request->input('subjects'));
+        dd($request->input('subjects'));
         $subjects = collect([Subject::get(), MustSubject::get()])->flatten();
 
         $subject = collect([Subject::get(), MustSubject::get()])

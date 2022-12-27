@@ -33,7 +33,7 @@ class RegisterController
 
         Auth::login($student);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('login.form')->with('success', __('auth.successfully_registered'));
     }
 
 }

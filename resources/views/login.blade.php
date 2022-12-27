@@ -11,11 +11,16 @@
                 <p class="text-danger fs-1">{{ $error }}</p>
             @endforeach
         @endif
+        @if(session()->has('success'))
+            <p class="text-success fs-1">
+                {{ session()->get('success') }}
+            </p>
+        @endif
         <div class="bg-white container rounded-5 p-0">
             <div class="row">
                 <div class="col px-5">
                     <form action="{{ route('login.store') }}" method="POST" class="position-relative">
-                        <div id="lang_switcher" class="position-absolute" style="left: 40px; top: 40px;">
+                        <div id="lang_switcher" class="row px-3" style="font-size: 24px">
                             <div>
                                 @foreach(config('app.languages') as $key => $lang)
                                     <a href="#" onclick="changeLanguage(this.dataset)" class="{{ session()->get('lang') === $key ? 'active_lang' : '' }}"
@@ -27,14 +32,19 @@
                             </div>
                         </div>
                         @csrf
-                        <div class="row py-4">
-                            <h1 class="text-center fw-bold" style="color: #2F327D; font-size: 55px;">
-                                {{ mb_strtoupper(__('common.sign_in')) }}
-                            </h1>
+                        <div class="row px-5 py-4">
+                            <div class="px-0 d-flex justify-content-between align-items-center">
+                                <a class="fw-bold" style="text-decoration:none;color:#2F327D;font-size:55px;">
+                                    {{ mb_strtoupper(__('common.sign_in')) }}
+                                </a>
+                                <a href="{{ route('register.form') }}" class="fw-bold" style="text-decoration:none;color: #2F327D; font-size: 25px;">
+                                    {{ mb_strtoupper(__('common.sign_up')) }}
+                                </a>
+                            </div>
                         </div>
 
                         <div class="row px-5">
-                            <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex px-0 align-items-center justify-content-between">
                                 <label for="email" class="custom-label">Email:</label>
                                 <a href="#" class="golden-text">{{ __('common.link_sign_in') }}:</a>
                             </div>
@@ -44,11 +54,11 @@
                         </div>
 
                         <div class="row px-5 mt-5">
-                            <label for="password" class="custom-label">{{ __('common.password') }}:</label>
+                            <label for="password" class="custom-label px-0">{{ __('common.password') }}:</label>
                             <input id="password" name="password"
                                    class="custom-input border-0 rounded-3" type="password" required placeholder="{{ __('common.enter_password') }}">
 
-                            <div class="d-flex align-items-center justify-content-between mt-1">
+                            <div class="d-flex px-0 align-items-center justify-content-between mt-1">
                                 <div>
                                     <input type="checkbox" value="lsRememberMe" id="rememberMe">
                                     <label class="golden-text mx-1 text-decoration-underline" for="rememberMe">{{ __('common.remember_me') }}</label>

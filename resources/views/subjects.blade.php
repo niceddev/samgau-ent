@@ -5,9 +5,9 @@
 @endsection()
 
 @section('content')
-    <div id="thin-container">
+    <div id="thin-container" style="margin: 15px auto">
 
-        <div id="lang_switcher" class="mb-2 d-flex justify-content-between">
+        <div id="lang_switcher" class="d-flex justify-content-between">
             <div>
                 @foreach(config('app.languages') as $key => $lang)
                     <a href="#" onclick="changeLanguage(this.dataset)" class="{{ session()->get('lang') === $key ? 'active_lang' : '' }}"
@@ -25,9 +25,8 @@
         <h3 class="fs-3 text-center mt-5">{{ __('common.choose_profile_and_start') }}</h3>
 
         <div class="row">
-            <form id="subjectsForm" action="{{ route('test.index') }}" method="POST" class="d-inline-flex">
-                @csrf
-                <div class="col-sm-6">
+            <form id="subjectsForm" action="{{ route('test.index') }}" method="GET" class="d-inline-flex justify-content-center">
+                <div class="col-sm-5">
                     <h4 class="secondary text-center mb-3 mt-2 fs-5">
                         {{ __('common.must_subjects_title') }}
                     </h4>
@@ -48,13 +47,13 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-sm-9">
                     <h4 class="mb-3 mt-2 fs-5 text-center">
                         {{ __('common.subjects_by_profile') }}
                     </h4>
                     <div class="row flex justify-content-center">
                         @foreach($subjects->where('required', false) as $subject)
-                            <div class="col-sm-6 overflow-hidden subjects" data-id="{{ $subject->id }}" data-siblings="{{ json_encode($subject->siblings) }}">
+                            <div class="col-sm-4 overflow-hidden subjects" data-id="{{ $subject->id }}" data-siblings="{{ json_encode($subject->siblings) }}">
                                 <div class="text-center">
                                     <label class="d-grid">
                                         <label data-id="{{ $subject->id }}" class="p-3 mb-2 rounded-4 custom-checkbox img" style="margin:0 auto;width:90px;height:90px;background-color: {{ $subject->color }};">
@@ -69,16 +68,16 @@
                                 </div>
                             </div>
                         @endforeach
+                        <div class="row">
+                            <button type="submit" form="subjectsForm" class="login-btn text-white fs-2 mt-2 p-4 rounded-4 border-0">
+                                {{ __('common.start_test') }}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </form>
         </div>
 
-        <div class="row my-4">
-            <button type="submit" form="subjectsForm" class="login-btn text-white fs-2 p-4 w-50 mx-auto rounded-3 border-0">
-                {{ __('common.start_test') }}
-            </button>
-        </div>
     </div>
 
     @push('custom-scripts')

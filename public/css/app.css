@@ -733,6 +733,10 @@ video {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
 }
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
 .pt-4 {
   padding-top: 1rem;
 }
@@ -753,6 +757,9 @@ video {
 }
 .text-right {
   text-align: right;
+}
+.align-middle {
+  vertical-align: middle;
 }
 .text-sm {
   font-size: 0.875rem;
