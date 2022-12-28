@@ -4,7 +4,6 @@ namespace App\Orchid\Screens\Questions;
 
 use App\Enums\AnswerOption;
 use App\Http\Requests\Panel\QuestionsRequest;
-use App\Models\MustSubject;
 use App\Models\Question;
 use App\Models\Subject;
 use Orchid\Screen\Fields\Quill;
@@ -27,7 +26,7 @@ class QuestionsScreen extends Screen
      */
     public function query(int $id): iterable
     {
-        $subjects = collect([Subject::get(), MustSubject::get()])->flatten();
+        $subjects = Subject::get();
 
         $this->subject = $subjects->filter(function($item) use($id) {
             return $item->id == $id;

@@ -9,7 +9,7 @@ class InsertIntoSubjects extends Migration
         DB::table('subjects')->insert([
             [
                 'id' => 1,
-                'image_path' => 'assets/tree.png',
+                'image_path' => 'assets/mathematical_literacy.png',
                 'color' => '#545AE8',
                 'name' => json_encode([
                     'ru' => 'Математическая грамотность',
@@ -20,7 +20,7 @@ class InsertIntoSubjects extends Migration
             ],
             [
                 'id' => 2,
-                'image_path' => 'assets/literature.png',
+                'image_path' => 'assets/reading_literacy.png',
                 'color' => '#23BDEE',
                 'name' => json_encode([
                     'ru' => 'Грамотность чтения',
@@ -31,7 +31,7 @@ class InsertIntoSubjects extends Migration
             ],
             [
                 'id' => 3,
-                'image_path' => 'assets/history.png',
+                'image_path' => 'assets/history_of_kazakhstan.png',
                 'color' => '#EDB021',
                 'name' => json_encode([
                     'ru' => 'История Казахстана',

@@ -2,7 +2,6 @@
 
 namespace App\Orchid\Screens\Questions;
 
-use App\Models\MustSubject;
 use App\Models\Subject;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
@@ -16,7 +15,7 @@ class IndexScreen extends Screen
      */
     public function query(): iterable
     {
-        $subjects = collect([Subject::get(), MustSubject::get()])->flatten();
+        $subjects = Subject::get();
 
         return [
             'subjects' => $subjects,

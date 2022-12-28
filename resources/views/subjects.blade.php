@@ -31,16 +31,17 @@
                         {{ __('common.must_subjects_title') }}
                     </h4>
                     <div class="row">
-                        @foreach($subjects->where('required', true) as $mustSubject)
-                            <div class="text-center subject-card mb-3">
-                                <input type="hidden" name="subjects[]" value="{{ $mustSubject->id }}">
-                                <label class="p-3 mb-2 rounded-4 custom-checkbox" style="margin:0 auto;width:144px;height:144px;background-color: {{ $mustSubject->color }}">
-                                    <img class="subject mb-3" src="{{ asset($mustSubject->image_path) }}" alt="">
-                                    <input type="checkbox" checked disabled name="subjects[]" value="{{ $mustSubject->id }}">
+                        @foreach($subjects->where('required', true) as $requiredSubject)
+                            <div class="text-center mb-3">
+                                <input type="hidden" name="subjects[]" value="{{ $requiredSubject->id }}">
+                                <label class="p-3 rounded-4 custom-checkbox d-flex justify-content-center"
+                                       style="margin:0 auto;width:144px;height:144px;background-color: {{ $requiredSubject->color }}">
+                                    <img src="{{ asset($requiredSubject->image_path) }}" alt="">
+                                    <input type="checkbox" checked disabled name="subjects[]" value="{{ $requiredSubject->id }}">
                                     <span class="checkmark"></span>
                                 </label>
-                                <h4 class="text-center mt-4 px-5 fs-5" style="color:#737373;">
-                                    {{ $mustSubject->getTranslation('name',  session()->get('lang', 'ru')) }}
+                                <h4 class="mt-4 fs-5" style="width:150px;margin:0 auto;color:#737373;">
+                                    {{ $requiredSubject->getTranslation('name',  session()->get('lang', 'ru')) }}
                                 </h4>
                             </div>
                         @endforeach
@@ -56,9 +57,9 @@
                             <div class="col-sm-4 overflow-hidden subjects" data-id="{{ $subject->id }}" data-siblings="{{ json_encode($subject->siblings) }}">
                                 <div class="text-center">
                                     <label class="d-grid">
-                                        <label data-id="{{ $subject->id }}" class="p-3 mb-2 rounded-4 custom-checkbox img" style="margin:0 auto;width:90px;height:90px;background-color: {{ $subject->color }};">
-                                            <img class="subject mb-3" src="{{ asset($subject->image_path) }}" alt="" style="max-height: 60px;">
-                                            <input type="checkbox" name="subjects[]" value="{{ $subject->id }}" data-siblings="{{ json_encode($subject->siblings) }}">
+                                        <label data-id="{{ $subject->id }}" class="p-3 mb-2 rounded-4 custom-checkbox subject-label img d-flex justify-content-center" style="margin:0 auto;width:90px;height:90px;background-color: {{ $subject->color }};">
+                                            <img class="subject" src="{{ asset($subject->image_path) }}" alt="" >
+                                            <input class="subject-item" type="checkbox" name="subjects[]" value="{{ $subject->id }}" data-siblings="{{ json_encode($subject->siblings) }}">
                                             <span class="little-checkmark"></span>
                                         </label>
                                         <h4 class="break-words" style="color: #737373;">

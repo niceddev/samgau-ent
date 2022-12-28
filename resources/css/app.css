@@ -20,7 +20,7 @@
     overflow: hidden;
 }
 
-input[name='subject[color]'], input[name='mustSubject[color]'] {
+input[name='subject[color]'] {
     width: 200px;
     height: 200px;
 }

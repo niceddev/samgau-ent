@@ -1,64 +1,36 @@
 window.addEventListener("load", () => {
 
     let checkedSubjectsCount = 3;
-    const subjects = document.querySelectorAll('input[type=checkbox]')
+    const subjectsLabels = document.querySelectorAll('.subject-label')
 
-    subjects.forEach(function (subject){
+    subjectsLabels.forEach(function (subjectsLabel){
 
-        subject.addEventListener('change', function (event){
+        subjectsLabel.querySelector('.subject-item')
+            .addEventListener('change', function ({currentTarget}){
 
-            if (event.currentTarget.checked){
-                const allSiblings = JSON.parse(event.currentTarget.dataset.siblings)
+                if (currentTarget.checked){
 
-                checkedSubjectsCount++
+                    currentTarget.parentElement.style.filter = 'grayscale(100%)';
 
-                subjects.forEach(function (el){
-                    console.log(event.currentTarget.dataset)
-                    // if(el.value === event.currentTarget)
-                })
+                    console.log(subjectsLabels)
 
-                // const subjsToDisable = document.querySelectorAll('input[type=checkbox]:not([value=' + subject.value + '])')
+                    // JSON.parse(event.currentTarget.dataset.siblings)
 
-                // if (checkedSubjectsCount >= 5){
-                //     console.log('q')
-                // }
+                    checkedSubjectsCount++
 
-                console.log(allSiblings)
-            }else{
+                    console.log('asd')
+                }else{
 
-                checkedSubjectsCount--
+                    currentTarget.parentElement.style.filter = 'grayscale(0%)';
 
-                console.log('zxc')
-            }
+                    checkedSubjectsCount--
 
-            console.log(checkedSubjectsCount)
+                    console.log('zxc')
+                }
 
 
-            // allSiblings.forEach(function (id){
-            //
-            //     const sibling = document.querySelector(`[data-id="${id}"]`).querySelector('.img')
-            //
-            //     let arr = [];
-            //     let checkboxes = document.querySelectorAll("input[type='checkbox']:checked");
-            //     for (let i = 0; i < checkboxes.length; i++) {
-            //         arr.push(checkboxes[i].value)
-            //     }
-            //     console.log(arr.length)
-            //     subjects.forEach(function(el){
-            //
-            //         // el.querySelector('.img').style.filter = "grayscale(100%)"
-            //         //
-            //         // if (sibling.dataset.id === el.dataset.id){
-            //         //     el.querySelector('.img').style.filter = "grayscale(0%)"
-            //         // }
-            //
-            //     });
-            //
-            //     sibling.style.transition = 'all 0.2s ease-in'
-            //
-            // })
+            })
 
-        })
     })
 
 });
