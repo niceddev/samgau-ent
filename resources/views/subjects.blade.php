@@ -70,7 +70,7 @@
                             </div>
                         @endforeach
                         <div class="row">
-                            <button type="submit" form="subjectsForm" class="login-btn text-white fs-2 mt-2 p-4 rounded-4 border-0">
+                            <button type="submit" form="subjectsForm" class="login-btn text-white fs-2 mt-2 p-3 rounded-4 border-0">
                                 {{ __('common.start_test') }}
                             </button>
                         </div>

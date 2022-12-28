@@ -1,33 +1,42 @@
 window.addEventListener("load", () => {
 
     let checkedSubjectsCount = 3;
-    const subjectsLabels = document.querySelectorAll('.subject-label')
+    const subjectLabels = document.querySelectorAll('.subject-label')
 
-    subjectsLabels.forEach(function (subjectsLabel){
+    subjectLabels.forEach(function (el){
 
-        subjectsLabel.querySelector('.subject-item')
-            .addEventListener('change', function ({currentTarget}){
+        let subjectLabel = el.querySelector('.subject-item')
+
+        subjectLabel.addEventListener('change', function ({currentTarget}){
+
+                let siblingSubjectIds = JSON.parse(currentTarget.dataset.siblings)
+                let notSiblingSubjectLabels = []
+
+                subjectLabels.forEach(function (el){
+                    if (!siblingSubjectIds.includes(Number(el.dataset.id))){
+                        notSiblingSubjectLabels.push(el)
+                    }
+                })
 
                 if (currentTarget.checked){
 
-                    currentTarget.parentElement.style.filter = 'grayscale(100%)';
-
-                    console.log(subjectsLabels)
-
-                    // JSON.parse(event.currentTarget.dataset.siblings)
+                    notSiblingSubjectLabels.forEach(function (el){
+                        el.style.filter = 'grayscale(100%)'
+                        el.style.transition = 'all 0.3s ease-out'
+                        // el.querySelector('input').disabled = true
+                    })
 
                     checkedSubjectsCount++
-
-                    console.log('asd')
                 }else{
 
-                    currentTarget.parentElement.style.filter = 'grayscale(0%)';
+                    notSiblingSubjectLabels.forEach(function (el){
+                        el.style.filter = 'grayscale(0%)'
+                        el.style.transition = 'all 0.3s ease-out'
+                        // el.querySelector('input').disabled = false
+                    })
 
                     checkedSubjectsCount--
-
-                    console.log('zxc')
                 }
-
 
             })
 
