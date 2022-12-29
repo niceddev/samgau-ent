@@ -1,37 +1,39 @@
 window.addEventListener("load", () => {
 
-    let checkedSubjectsCount = 3;
-    const subjectLabels = document.querySelectorAll('.subject-label')
+    let startTestBtn = document.querySelector('#subjectsForm button')
+    let checkedCount = 3;
+    let tempGlobalSiblingIds = []
+    let globalSiblingIds = []
+    let allLabels = document.querySelectorAll('.subject-label')
 
-    subjectLabels.forEach(function (el){
+    allLabels.forEach(function (el){
 
-        let subjectLabel = el.querySelector('.subject-item')
-        let globalSiblingSubjectIds = []
+        let label = el.querySelector('.subject-item')
 
-        subjectLabel.addEventListener('change', function ({currentTarget}){
+        label.addEventListener('change', function ({currentTarget}){
 
-            let siblingSubjectIds = JSON.parse(currentTarget.dataset.siblings)
-            let notSiblingSubjectLabels = []
+            // let notChecked
+            let siblingIds = JSON.parse(currentTarget.dataset.siblings)
 
-            siblingSubjectIds.forEach(function (el){
-                if (currentTarget.checked && !globalSiblingSubjectIds.includes(el)) {
-
-                    globalSiblingSubjectIds.push(el)
-
-                } else {
-
-                    console.log('asd')
-
+            siblingIds.forEach(function (id){
+                if (currentTarget.checked) {
+                    tempGlobalSiblingIds.push(currentTarget.value + '.' + id)
+                } else{
+                    tempGlobalSiblingIds = tempGlobalSiblingIds.filter(item => item !== currentTarget.value + '.' + id);
                 }
             })
 
-            subjectLabels.forEach(function (el){
-                if (!siblingSubjectIds.includes(Number(el.dataset.id))){
-                    notSiblingSubjectLabels.push(el)
+            let notSiblingLabels = []
+
+            globalSiblingIds = tempGlobalSiblingIds.map(id => Number(id.split('.')[1]))
+
+            allLabels.forEach(function (el){
+                if (!globalSiblingIds.includes(Number(el.dataset.id))){
+                    notSiblingLabels.push(el)
                 }
             })
 
-            notSiblingSubjectLabels.forEach(function (el){
+            notSiblingLabels.forEach(function (el){
                 if (currentTarget.checked) {
 
                     currentTarget.parentNode.style.filter = 'none'
@@ -50,7 +52,21 @@ window.addEventListener("load", () => {
                 }
             })
 
-            checkedSubjectsCount = currentTarget.checked ? checkedSubjectsCount++ : checkedSubjectsCount--
+            if (currentTarget.checked) {
+                checkedCount++
+            } else {
+                checkedCount--
+            }
+
+            if (checkedCount < 5){
+                startTestBtn.disabled = true
+                startTestBtn.style.filter = 'grayscale(100%)'
+
+                // disable rest of active subj that not checked
+            } else {
+                startTestBtn.disabled = false
+                startTestBtn.style.filter = 'grayscale(0%)'
+            }
 
         })
 
