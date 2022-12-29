@@ -1,7 +1,6 @@
 window.addEventListener("load", () => {
 
     let startTestBtn = document.querySelector('#subjectsForm button')
-    let checkedCount = 3;
     let tempGlobalSiblingIds = []
     let globalSiblingIds = []
     let allLabels = document.querySelectorAll('.subject-label')
@@ -12,7 +11,9 @@ window.addEventListener("load", () => {
 
         label.addEventListener('change', function ({currentTarget}){
 
-            // let notChecked
+            let notCheckedLabels = document.querySelectorAll('.subjects input[type=checkbox]:not(:checked)')
+            let checkedLabels = document.querySelectorAll('.subjects input[type=checkbox]:checked')
+
             let siblingIds = JSON.parse(currentTarget.dataset.siblings)
 
             siblingIds.forEach(function (id){
@@ -52,20 +53,16 @@ window.addEventListener("load", () => {
                 }
             })
 
-            if (currentTarget.checked) {
-                checkedCount++
-            } else {
-                checkedCount--
-            }
-
-            if (checkedCount < 5){
+            if (checkedLabels.length !== 2){
                 startTestBtn.disabled = true
                 startTestBtn.style.filter = 'grayscale(100%)'
 
-                // disable rest of active subj that not checked
+                notCheckedLabels.forEach(input => input.disabled = false)
             } else {
                 startTestBtn.disabled = false
                 startTestBtn.style.filter = 'grayscale(0%)'
+
+                notCheckedLabels.forEach(input => input.disabled = true)
             }
 
         })
