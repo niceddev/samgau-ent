@@ -3,6 +3,10 @@
 /public/storage/app
 /public/storage/framework
 /public/storage/logs
+/public/assets
+/public/js
+/public/css
+/public/fonts
 /storage/*.key
 /vendor
 .env
