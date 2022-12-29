@@ -76,7 +76,7 @@ class InsertIntoSubjects extends Migration
             ],
             [
                 'id' => 7,
-                'image_path' => 'assets/rule_rules.png',
+                'image_path' => 'assets/fundamentals_of_law.png',
                 'color' => '#B253ED',
                 'name' => json_encode([
                     'ru' => 'Основы права',
@@ -164,7 +164,7 @@ class InsertIntoSubjects extends Migration
             ],
             [
                 'id' => 15,
-                'image_path' => 'assets/it.png',
+                'image_path' => 'assets/informatics.png',
                 'color' => '#5BEB7B',
                 'name' => json_encode([
                     'ru' => 'Информатика',

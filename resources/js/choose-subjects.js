@@ -6,39 +6,53 @@ window.addEventListener("load", () => {
     subjectLabels.forEach(function (el){
 
         let subjectLabel = el.querySelector('.subject-item')
+        let globalSiblingSubjectIds = []
 
         subjectLabel.addEventListener('change', function ({currentTarget}){
 
-                let siblingSubjectIds = JSON.parse(currentTarget.dataset.siblings)
-                let notSiblingSubjectLabels = []
+            let siblingSubjectIds = JSON.parse(currentTarget.dataset.siblings)
+            let notSiblingSubjectLabels = []
 
-                subjectLabels.forEach(function (el){
-                    if (!siblingSubjectIds.includes(Number(el.dataset.id))){
-                        notSiblingSubjectLabels.push(el)
-                    }
-                })
+            siblingSubjectIds.forEach(function (el){
+                if (currentTarget.checked && !globalSiblingSubjectIds.includes(el)) {
 
-                if (currentTarget.checked){
+                    globalSiblingSubjectIds.push(el)
 
-                    notSiblingSubjectLabels.forEach(function (el){
-                        el.style.filter = 'grayscale(100%)'
-                        el.style.transition = 'all 0.3s ease-out'
-                        // el.querySelector('input').disabled = true
-                    })
+                } else {
 
-                    checkedSubjectsCount++
-                }else{
+                    console.log('asd')
 
-                    notSiblingSubjectLabels.forEach(function (el){
-                        el.style.filter = 'grayscale(0%)'
-                        el.style.transition = 'all 0.3s ease-out'
-                        // el.querySelector('input').disabled = false
-                    })
-
-                    checkedSubjectsCount--
                 }
-
             })
+
+            subjectLabels.forEach(function (el){
+                if (!siblingSubjectIds.includes(Number(el.dataset.id))){
+                    notSiblingSubjectLabels.push(el)
+                }
+            })
+
+            notSiblingSubjectLabels.forEach(function (el){
+                if (currentTarget.checked) {
+
+                    currentTarget.parentNode.style.filter = 'none'
+                    currentTarget.disabled = false
+
+                    el.style.filter = 'grayscale(100%)'
+                    el.style.transition = 'all 0.3s ease-out'
+                    el.querySelector('input').disabled = true
+
+                } else {
+
+                    el.style.filter = 'grayscale(0%)'
+                    el.style.transition = 'all 0.3s ease-out'
+                    el.querySelector('input').disabled = false
+
+                }
+            })
+
+            checkedSubjectsCount = currentTarget.checked ? checkedSubjectsCount++ : checkedSubjectsCount--
+
+        })
 
     })
 
