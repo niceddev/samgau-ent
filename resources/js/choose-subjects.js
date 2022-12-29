@@ -37,21 +37,26 @@ window.addEventListener("load", () => {
             notSiblingLabels.forEach(function (el){
                 if (currentTarget.checked) {
 
-                    currentTarget.parentNode.style.filter = 'none'
+                    currentTarget.parentNode.style.backgroundColor =
                     currentTarget.disabled = false
 
-                    el.style.filter = 'grayscale(100%)'
+                    if (el.dataset.id === currentTarget.parentNode.dataset.id) return
+
+                    el.style.backgroundColor = '#bfbfbf'
                     el.style.transition = 'all 0.3s ease-out'
                     el.querySelector('input').disabled = true
 
                 } else {
 
-                    el.style.filter = 'grayscale(0%)'
+                    el.style.backgroundColor = el.dataset.color
                     el.style.transition = 'all 0.3s ease-out'
                     el.querySelector('input').disabled = false
 
                 }
             })
+
+            console.log(notSiblingLabels)
+            console.log(siblingIds)
 
             if (checkedLabels.length !== 2){
                 startTestBtn.disabled = true

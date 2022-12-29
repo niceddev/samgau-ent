@@ -57,13 +57,14 @@
                             <div class="col-sm-4 overflow-hidden subjects" data-id="{{ $subject->id }}" data-siblings="{{ json_encode($subject->siblings) }}">
                                 <div class="text-center">
                                     <label class="d-grid">
-                                        <label data-id="{{ $subject->id }}" class="p-3 mb-2 rounded-4 custom-checkbox subject-label img d-flex justify-content-center" style="margin:0 auto;width:90px;height:90px;background-color: {{ $subject->color }};">
+                                        <label data-id="{{ $subject->id }}" class="p-3 mb-2 rounded-4 custom-checkbox subject-label img d-flex justify-content-center"
+                                               style="margin:0 auto;width:90px;height:90px;background-color: {{ $subject->color }};" data-color="{{ $subject->color }}">
                                             <img class="subject" src="{{ asset($subject->image_path) }}" alt="" >
                                             <input class="subject-item" type="checkbox" name="subjects[]" value="{{ $subject->id }}" data-siblings="{{ json_encode($subject->siblings) }}">
                                             <span class="little-checkmark"></span>
                                         </label>
                                         <h4 class="break-words" style="color: #737373;">
-                                            {{ $subject->getTranslation('name',  session()->get('lang', 'ru')) }}
+                                            {{ $subject->id . ' - '. $subject->getTranslation('name',  session()->get('lang', 'ru')) }}
                                         </h4>
                                     </label>
                                 </div>
