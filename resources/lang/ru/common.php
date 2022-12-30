@@ -51,6 +51,15 @@
         'max_score'          => 'Максимальный балл',
         'average_score'      => 'Средний балл',
         'add_question'       => 'Добавить вопрос',
+        'start_test'         => 'Начать тест',
 
-        'start_test' => 'Начать тест',
+        'you_have_completed_the_test' => 'Вы завершили тест!',
+        'check_out_the_test_results'  => 'Ознакомьтесь с результатами теста:',
+        'your_results'                => 'Ваши итоги:',
+        'work_on_mistakes'            => 'Работа над ошибками',
+        'repeat_test'                 => 'Пройти снова тест',
+        'statistics'                  => 'Статистика',
+        'exit_test'                   => 'Выйти',
+        'execution_time'              => 'Время исполнения:',
+
     ];

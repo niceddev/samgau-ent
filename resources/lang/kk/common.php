@@ -51,6 +51,15 @@
         'max_score'          => 'Максималды балл',
         'average_score'      => 'Орташа балл',
         'add_question'       => 'Сұрақ қосу',
+        'start_test'         => 'Начать тест',
 
-        'start_test' => 'Начать тест',
+        'you_have_completed_the_test' => 'Сіз тестті аяқтадыңыз!',
+        'check_out_the_test_results'  => 'Тест нәтижелерімен танысыңыз:',
+        'your_results'                => 'Қорытынды:',
+        'work_on_mistakes'            => 'Қателер бойынша жұмыс',
+        'repeat_test'                 => 'Қайтадан тапсыру',
+        'statistics'                  => 'Статистика',
+        'exit_test'                   => 'Шығу',
+        'execution_time'              => 'Орындау уақыты:',
+
     ];

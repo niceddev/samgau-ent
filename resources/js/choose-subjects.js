@@ -24,39 +24,55 @@ window.addEventListener("load", () => {
                 }
             })
 
-            let notSiblingLabels = []
-
             globalSiblingIds = tempGlobalSiblingIds.map(id => Number(id.split('.')[1]))
 
-            allLabels.forEach(function (el){
-                if (!globalSiblingIds.includes(Number(el.dataset.id))){
-                    notSiblingLabels.push(el)
-                }
-            })
+            allLabels.forEach(function (label){
 
-            notSiblingLabels.forEach(function (el){
-                if (currentTarget.checked) {
+                if (!globalSiblingIds.includes(Number(label.dataset.id))){
 
-                    currentTarget.parentNode.style.backgroundColor =
-                    currentTarget.disabled = false
+                    if (label.dataset.id === currentTarget.parentNode.dataset.id) return
 
-                    if (el.dataset.id === currentTarget.parentNode.dataset.id) return
+                    label.style.backgroundColor = '#bfbfbf'
+                    label.style.transition = 'all 0.3s ease-out'
+                    label.querySelector('input').disabled = true
 
-                    el.style.backgroundColor = '#bfbfbf'
-                    el.style.transition = 'all 0.3s ease-out'
-                    el.querySelector('input').disabled = true
+
+                    // if (currentTarget.checked) {
+                    //
+                    //     currentTarget.parentNode.style.backgroundColor = currentTarget.disabled = false
+                    //
+                    //     if (label.dataset.id === currentTarget.parentNode.dataset.id) return
+                    //
+                    //     label.style.backgroundColor = '#bfbfbf'
+                    //     label.style.transition = 'all 0.3s ease-out'
+                    //     label.querySelector('input').disabled = true
+                    //
+                    // } else {
+                    //
+                    //     label.style.backgroundColor = label.dataset.color
+                    //     label.style.transition = 'all 0.3s ease-out'
+                    //     label.querySelector('input').disabled = false
+                    //
+                    // }
 
                 } else {
 
-                    el.style.backgroundColor = el.dataset.color
-                    el.style.transition = 'all 0.3s ease-out'
-                    el.querySelector('input').disabled = false
+                    if (label.dataset.id === currentTarget.parentNode.dataset.id) return
+
+                    label.style.backgroundColor = label.dataset.color
+                    label.style.transition = 'all 0.3s ease-out'
+                    label.querySelector('input').disabled = false
 
                 }
+
+                if (label.querySelector('input').checked) {
+                    label.style.backgroundColor = label.dataset.color
+                    label.querySelector('input').disabled = false
+                }
+
             })
 
-            console.log(notSiblingLabels)
-            console.log(siblingIds)
+            console.log(globalSiblingIds)
 
             if (checkedLabels.length !== 2){
                 startTestBtn.disabled = true

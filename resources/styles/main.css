@@ -3,6 +3,11 @@
     src: url("../fonts/Helvetica Neue Condensed Bold.ttf");
 }
 
+@font-face {
+    font-family: "CustomHeadingProRegular";
+    src: url("../fonts/HeadingPro-Regular.ttf");
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -338,14 +343,6 @@ ol li:hover::marker {
 }
 
 
-
-
-
-
-
-
-
-
 /* The container */
 .custom-checkbox {
     display: block;
@@ -434,3 +431,24 @@ ol li:hover::marker {
     transform: rotate(45deg);
 }
 
+#test-finish .btns {
+    text-decoration: none;
+    font-family: "CustomHeadingProRegular";
+    justify-content: center;
+    text-align: center;
+    line-height: 110%;
+    border: 0;
+    border-radius: 25px;
+    font-size: 30px;
+    color: #fff;
+    padding-left: 60px;
+    padding-right: 60px;
+    height: 100px;
+    width: 270px;
+    background-color: #EDB021;
+}
+
+#test-finish .btns:hover {
+    font-family: "CustomHeadingProRegular";
+    background-color: #c9900a;
+}
