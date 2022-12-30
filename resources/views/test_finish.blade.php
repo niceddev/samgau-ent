@@ -28,7 +28,9 @@
             <div>
                 <ul>
                     @foreach([1,2,3,4,5] as $subject)
-                        <li>Математическая грамотность <span class="fw-bold">{{ $subject .'/'.$subject }}</span></li>
+                        <li data-correct_answers_count="{{ rand(1,30) }}" data-questions_count="30">
+                            Математическая грамотность <span class="fw-bold">{{ rand(1,30) .'/'. '30' }}</span>
+                        </li>
                     @endforeach
                 </ul>
             </div>

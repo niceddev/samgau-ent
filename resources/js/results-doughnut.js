@@ -1,24 +1,28 @@
 window.addEventListener("load", () => {
 
+    let subjects = [].slice.call(document.querySelectorAll('#test-finish li'))
+    let correctAnswersCount = subjects.map(el => Number(el.dataset.correct_answers_count)).reduce((a, b) => a + b, 0)
+    let questionsCount = subjects.map(el => Number(el.dataset.questions_count)).reduce((a, b) => a + b, 0)
+
     const ctx = document.getElementById('resultsDoughnut')
 
     const percentageText = {
         id: 'percentageText',
-        afterDatasetsDraw(chart, args, options){
-            const { ctx, chartArea: { left, right, top, bottom, width, height } } = chart
+        afterDatasetsDraw(chart){
+            const { ctx, chartArea: { top, width, height } } = chart
 
             ctx.save()
 
             ctx.font = 'bolder 80px Arial'
             ctx.fillStyle = 'rgba(0,0,0,1)'
             ctx.textAlign = 'center'
-            ctx.fillText('8' + '%', width/2, height/2 + top)
+            ctx.fillText(Math.ceil((100 * correctAnswersCount) / questionsCount) + '%', width/2, height/2 + top)
             ctx.restore()
 
             ctx.font = 'bolder 30px Arial'
             ctx.fillStyle = 'rgba(0,0,0,1)'
             ctx.textAlign = 'center'
-            ctx.fillText('(' + '4' + '/' + '125' + ')', width/2, height/1.5)
+            ctx.fillText('(' + correctAnswersCount + '/' + questionsCount + ')', width/2, height/1.5)
             ctx.restore()
 
         }
