@@ -10,18 +10,12 @@ class TestController extends Controller
 {
     public function index(Request $request)
     {
-        dd($request->input('subjects'));
-        $subjects = Subject::get();
+//        dd($request->input('subjects'));
+        $subjects = Subject::whereIn('id', [1,2,3,4,5])->get();
 
-        $subject = Subject::get()
-            ->filter(function($item) {
-                return $item->id;
-            })->first();
+        $questions = Question::where('subject_id', $subjects->first()->id)->orderBy('id')->get();
 
-
-        $questions = Question::where('subject_id', $subject->id)->orderBy('id')->get();
-
-        return view('test', compact('subject', 'subjects', 'questions'));
+        return view('test', compact( 'subjects', 'questions'));
     }
 
     public function testFinish()

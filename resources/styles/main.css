@@ -203,10 +203,6 @@ ol li:hover::marker {
     color: #545AE8;
 }
 
-.active_text {
-    color: #5BEB7B;
-}
-
 .subject_option {
     width: 100px;
     height: 100px;
@@ -474,3 +470,25 @@ ol li:hover::marker {
     font-size: 35px;
 }
 
+#questionNumbersSection {
+    border-right: 4px solid #A0B5C2;
+}
+
+#questionNumbersTab {
+    padding: 0;
+}
+
+#questionNumbersTab span {
+    width: 60px;
+    top: 7px;
+    left: -70px;
+    color: #9CA4C0;
+}
+
+#questionNumbersTab button {
+    background-color: #CAD5DD;
+    width: 55px;
+    height: 55px;
+    border: 4px solid rgba(47, 50, 125, 0.3);
+    border-radius: 90px;
+}
