@@ -26,12 +26,55 @@
                     @endforeach
                 </ul>
             </div>
-            <div id="questionContentSection" class="col-10">
-                2 of 2
+            <div id="questionContentSection" class="col-10 px-5">
+                <div class="row">
+                    <ul id="subjectsTab" class="d-flex gap-5 fs-5" role="tablist">
+                        @foreach($subjects as $subject)
+                            <div style="width: 120px;" role="presentation">
+                                <button id="subject-{{ $subject->id }}-tab" type="button" role="tab"
+                                    class=""
+                                >
+                                    <img class="img-fluid" src="{{ asset($subject->image_path) }}" alt="">
+                                </button>
+                                <p class="mt-2 text-break">{{ $subject->name }}</p>
+                            </div>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="row">
+
+
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"
+                                data-target="f1">
+                                Home
+                            </button>
+                            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"
+                                data-target="s1">
+                                Profile
+                            </button>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane f fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">F</div>
+                        <div class="tab-pane s fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">S</div>
+                    </div>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane f1 fade show active" data-content="f1" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">F1</div>
+                        <div class="tab-pane s1 fade" data-content="s1" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">S1</div>
+                    </div>
+
+
+
+                </div>
             </div>
 
         </div>
     </div>
+
 
 {{--    <div id="container" class="test-page">--}}
 {{--        <div class="row">--}}
@@ -82,26 +125,8 @@
 {{--    </div>--}}
 
     <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <script>
-        const nextBtn = document.querySelectorAll(".btnNext");
-        const prevBtn = document.querySelectorAll(".btnPrev");
+    @push('custom-scripts')
+        <script src="{{ asset('js/test-page.js') }}"></script>
+    @endpush
 
-        nextBtn.forEach(function(item, index){
-            item.addEventListener('click', function(){
-                let id = index + 1;
-                let tabElement = document.querySelectorAll("#myTabContent a")[id];
-                var lastTab = new bootstrap.Tab(tabElement);
-                lastTab.show();
-            });
-        });
-
-        prevBtn.forEach(function(item, index){
-            item.addEventListener('click', function(){
-                let id = index;
-                let tabElement = document.querySelectorAll("#myTabContent a")[id];
-                var lastTab = new bootstrap.Tab(tabElement);
-                lastTab.show();
-            });
-        });
-    </script>
 @endsection

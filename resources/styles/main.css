@@ -492,3 +492,21 @@ ol li:hover::marker {
     border: 4px solid rgba(47, 50, 125, 0.3);
     border-radius: 90px;
 }
+
+#subjectsTab {
+    color: #CAD5DD;
+    border-bottom: 4px solid #A0B5C2;
+}
+
+#subjectsTab button {
+    background-color: #CAD5DD;
+    width: 115px;
+    height: 115px;
+    border: 0;
+    border-radius: 90px;
+    padding: 15px;
+}
+
+#subjectsTab p {
+    line-height: 100%;
+}
