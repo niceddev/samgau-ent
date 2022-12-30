@@ -32,12 +32,15 @@
     "/assets/reading_literacy.png": "/assets/reading_literacy.png",
     "/assets/rus_lang.png": "/assets/rus_lang.png",
     "/assets/world_history.png": "/assets/world_history.png",
+    "/fonts/HeadingPro-Regular.ttf": "/fonts/HeadingPro-Regular.ttf",
     "/fonts/Helvetica Neue Condensed Bold.ttf": "/fonts/Helvetica Neue Condensed Bold.ttf",
     "/js/app.js": "/js/app.js",
     "/js/bootstrap.bundle.js": "/js/bootstrap.bundle.js",
     "/js/bootstrap.esm.js": "/js/bootstrap.esm.js",
     "/js/bootstrap.js": "/js/bootstrap.js",
+    "/js/chart.umd.js": "/js/chart.umd.js",
     "/js/choose-subjects.js": "/js/choose-subjects.js",
     "/js/main-bootstrap.js": "/js/main-bootstrap.js",
-    "/fonts/HeadingPro-Regular.ttf": "/fonts/HeadingPro-Regular.ttf"
+    "/js/results-doughnut.js": "/js/results-doughnut.js",
+    "/js/results-pie.js": "/js/results-pie.js"
 }

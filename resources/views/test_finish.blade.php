@@ -5,7 +5,7 @@
 @endsection()
 
 @section('content')
-    <div id="test-finish" class="container shadow-lg" style="margin-top: 120px; padding: 50px 100px 50px 100px">
+    <div id="test-finish" class="container" style="margin-top: 90px; padding: 0px 100px 50px 100px">
 
         <div class="d-flex justify-content-between mb-5">
             <div>
@@ -24,20 +24,21 @@
             </div>
         </div>
 
-        <div class="d-flex justify-content-between">
-            <div class="p-2" style="border-right: 2px solid #000">
+        <div class="d-flex">
+            <div>
                 <ul>
                     @foreach([1,2,3,4,5] as $subject)
-                        <li>Matematika {{ $subject }}</li>
+                        <li>Математическая грамотность <span class="fw-bold">{{ $subject .'/'.$subject }}</span></li>
                     @endforeach
                 </ul>
             </div>
-            <div>
-
+            <div class="results">
+                <p class="results-title text-center">{{ __('common.your_results') }}</p>
+                <canvas id="resultsDoughnut" width="235" height="235"></canvas>
             </div>
         </div>
 
-        <div class="d-flex gap-3 mt-5">
+        <div class="d-flex gap-3" style="margin-top: 180px">
 
             <a href="" class="btns d-flex align-items-center">
                 {{ __('common.work_on_mistakes') }}
@@ -58,6 +59,9 @@
         </div>
     </div>
 
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    @push('custom-scripts')
+        <script src="{{ asset('js/chart.umd.js') }}"></script>
+        <script src="{{ asset('js/results-doughnut.js') }}"></script>
+    @endpush
 
 @endsection

@@ -452,3 +452,25 @@ ol li:hover::marker {
     font-family: "CustomHeadingProRegular";
     background-color: #c9900a;
 }
+
+#test-finish ul {
+    font-family: "CustomHeadingProRegular";
+    list-style-type: none;
+    padding: 0 30px 0 0;
+    border-right: 2px solid #000;
+}
+
+#test-finish ul li {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+#test-finish .results {
+    padding-left: 130px;
+}
+
+#test-finish .results-title {
+    font-family: "CustomHeadingProRegular";
+    font-size: 35px;
+}
+
