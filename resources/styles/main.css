@@ -530,6 +530,10 @@ ol li:hover::marker {
     font-size: 20px;
 }
 
+#subjectsTab .active, #subjectsTab .active:hover {
+    background-color: #2F8C51;
+}
+
 #questionContentSection .options {
     list-style-type: none;
 }
@@ -541,6 +545,11 @@ ol li:hover::marker {
     margin: 5px 0;
     border: 1px solid #A0B5C2;
     font-size: 30px;
+}
+
+#questionContentSection .options li:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 8px rgba(86, 86, 86, 0.8);
 }
 
 .next-question {

@@ -1,34 +1,6 @@
 window.addEventListener("load", () => {
 
-
-        // target
-        //     .addClass('active show')
-        //     .siblings('.tab-pane.active')
-        //     .removeClass('active show')
-
-
-    const tabEl = document.querySelectorAll('button[data-bs-toggle="tab"]')
-
-    tabEl.forEach(function (el){
-
-        el.addEventListener('shown.bs.tab', event => {
-
-            let curTarget = document.querySelector('.' + event.currentTarget.dataset.target)
-
-            curTarget.classList.add("active", "show")
-            curTarget.parentNode.querySelectorAll('div').forEach(function (el){
-
-                if (el.dataset.content === event.currentTarget.dataset.target)
-                    return
-
-                el.classList.remove("active", "show")
-
-
-            })
-
-        })
-
-    })
+    // multipleTabContent()
 
 
     // const nextBtn = document.querySelectorAll(".btnNext");
@@ -53,8 +25,30 @@ window.addEventListener("load", () => {
     // });
 
 
-
-
-
-
 })
+
+function multipleTabContent(){
+
+    const tabEl = document.querySelectorAll('button[data-bs-toggle="tab"]')
+
+    tabEl.forEach(function (el){
+
+        el.addEventListener('shown.bs.tab', event => {
+
+            let curTarget = document.querySelector('.' + event.currentTarget.dataset.target)
+
+            curTarget.classList.add("active", "show")
+            curTarget.parentNode.querySelectorAll('div').forEach(function (el){
+
+                if (el.dataset.content === event.currentTarget.dataset.target)
+                    return
+
+                el.classList.remove("active", "show")
+
+            })
+
+        })
+
+    })
+
+}
