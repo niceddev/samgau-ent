@@ -46,12 +46,14 @@
         'phone'                 => 'Телефон',
         'more'                  => 'Қосымша',
         'correct_answer'        => 'Дұрыс жауап',
+        'variants'              => 'Жауаптар',
 
         'passed_tests_count' => 'Өткізілген тесттер саны',
         'max_score'          => 'Максималды балл',
         'average_score'      => 'Орташа балл',
         'add_question'       => 'Сұрақ қосу',
         'start_test'         => 'Начать тест',
+        'next_question'      => 'Келесі сұрақ',
 
         'you_have_completed_the_test' => 'Сіз тестті аяқтадыңыз!',
         'check_out_the_test_results'  => 'Тест нәтижелерімен танысыңыз:',

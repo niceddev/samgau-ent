@@ -46,12 +46,14 @@
         'phone'                 => 'Телефон',
         'more'                  => 'Дополнительно',
         'correct_answer'        => 'Правильный ответ',
+        'variants'              => 'Варианты',
 
         'passed_tests_count' => 'Количество пройденных тестов',
         'max_score'          => 'Максимальный балл',
         'average_score'      => 'Средний балл',
         'add_question'       => 'Добавить вопрос',
         'start_test'         => 'Начать тест',
+        'next_question'      => 'Следующий вопрос',
 
         'you_have_completed_the_test' => 'Вы завершили тест!',
         'check_out_the_test_results'  => 'Ознакомьтесь с результатами теста:',
