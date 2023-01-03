@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\AnswerOption;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
@@ -13,27 +12,18 @@ class Question extends Model
     protected $fillable = [
         'question',
         'sub_question',
-        'option_a',
-        'option_b',
-        'option_c',
-        'option_d',
-        'option_e',
-        'correct_answer',
+        'grade_id',
         'subject_id',
     ];
 
     public $translatable = [
         'question',
         'sub_question',
-        'option_a',
-        'option_b',
-        'option_c',
-        'option_d',
-        'option_e',
     ];
 
-    protected $casts = [
-        'correct_answer' => AnswerOption::class,
-    ];
+    public function options()
+    {
+        return $this->hasMany(Option::class);
+    }
 
 }

@@ -2,10 +2,11 @@
 
 namespace App\Orchid\Screens\Questions;
 
-use App\Enums\AnswerOption;
-use App\Http\Requests\Panel\QuestionsRequest;
+use App\Models\Grade;
 use App\Models\Question;
 use App\Models\Subject;
+use Orchid\Screen\Fields\CheckBox;
+use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Layouts\Modal;
@@ -14,6 +15,7 @@ use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
+use Illuminate\Http\Request;
 
 class QuestionsScreen extends Screen
 {
@@ -33,7 +35,8 @@ class QuestionsScreen extends Screen
         })->first();
 
         return [
-            'subject' => $this->subject->toArray(),
+            'subject'   => $this->subject->toArray(),
+            'grades'    => Grade::get(),
             'questions' => Question::where('subject_id', $this->subject->id)->get(),
         ];
     }
@@ -46,18 +49,6 @@ class QuestionsScreen extends Screen
     public function name(): ?string
     {
         return __('common.questions') . ': ' . $this->subject->name;
-    }
-
-    /**
-     * Create method.
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function create(QuestionsRequest $questionsRequest): void
-    {
-        Question::create($questionsRequest->validated());
-
-        Alert::info('Вопрос создан!');
     }
 
     /**
@@ -75,6 +66,19 @@ class QuestionsScreen extends Screen
     }
 
     /**
+     * Create method.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function create(Request $request): void
+    {
+        dd($request);
+        $question = Question::create($request->validated());
+
+        Alert::info('Вопрос создан!');
+    }
+
+    /**
      * Views.
      *
      * @return \Orchid\Screen\Layout[]|string[]
@@ -87,22 +91,30 @@ class QuestionsScreen extends Screen
 
                 Input::make('question')->title('Вопрос')->required(),
                 Quill::make('sub_question')->title('Дополнение'),
-                Input::make('option_a')->title('A')->required(),
-                Input::make('option_b')->title('B')->required(),
-                Input::make('option_c')->title('C')->required(),
-                Input::make('option_d')->title('D')->required(),
-                Input::make('option_e')->title('E')->required(),
-                Select::make('correct_answer')
-                    ->options([
-                        'option_a' => AnswerOption::A->name,
-                        'option_b' => AnswerOption::B->name,
-                        'option_c' => AnswerOption::C->name,
-                        'option_d' => AnswerOption::D->name,
-                        'option_e' => AnswerOption::E->name,
-                    ])
+                Group::make([
+                    Input::make('option[]')->title('Вариант A:')->required(),
+                    CheckBox::make('is_correct[]')->title('Правильный ответ')
+                ]),
+                Group::make([
+                    Input::make('option[]')->title('Вариант B:')->required(),
+                    CheckBox::make('is_correct[]')->title('Правильный ответ')
+                ]),
+                Group::make([
+                    Input::make('option[]')->title('Вариант C:')->required(),
+                    CheckBox::make('is_correct[]')->title('Правильный ответ')
+                ]),
+                Group::make([
+                    Input::make('option[]')->title('Вариант D:')->required(),
+                    CheckBox::make('is_correct[]')->title('Правильный ответ')
+                ]),
+                Group::make([
+                    Input::make('option[]')->title('Вариант E:')->required(),
+                    CheckBox::make('is_correct[]')->title('Правильный ответ')
+                ]),
+                Select::make('grade_id')
+                    ->fromModel(Grade::class, 'name')
                     ->empty('No select')
-                    ->title('Правильный ответ')
-                    ->required(),
+                    ->title('Выберите класс'),
                 Input::make('subject_id')
                     ->value($this->subject->id)
                     ->hidden(),

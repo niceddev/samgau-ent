@@ -2,34 +2,38 @@ window.addEventListener("load", () => {
 
     multipleTabContent()
 
-    // const nextBtn = document.querySelectorAll(".btnNext");
-    // const prevBtn = document.querySelectorAll(".btnPrev");
-    //
-    // nextBtn.forEach(function(item, index){
-    //     item.addEventListener('click', function(){
-    //         let id = index + 1;
-    //         let tabElement = document.querySelectorAll("#myTabContent a")[id];
-    //         var lastTab = new bootstrap.Tab(tabElement);
-    //         lastTab.show();
-    //     });
-    // });
-    //
-    // prevBtn.forEach(function(item, index){
-    //     item.addEventListener('click', function(){
-    //         let id = index;
-    //         let tabElement = document.querySelectorAll("#myTabContent a")[id];
-    //         var lastTab = new bootstrap.Tab(tabElement);
-    //         lastTab.show();
-    //     });
-    // });
-
+    // navigationBetweenQuestions()
 
 })
+
+function navigationBetweenQuestions(){
+
+    const nextBtn = document.querySelectorAll(".btnNext");
+    const prevBtn = document.querySelectorAll(".btnPrev");
+
+    nextBtn.forEach(function(item, index){
+        item.addEventListener('click', function(){
+            let id = index + 1;
+            let tabElement = document.querySelectorAll("#myTab li a")[id];
+            var lastTab = new bootstrap.Tab(tabElement);
+            lastTab.show();
+        });
+    });
+
+    prevBtn.forEach(function(item, index){
+        item.addEventListener('click', function(){
+            let id = index;
+            let tabElement = document.querySelectorAll("#myTab li a")[id];
+            var lastTab = new bootstrap.Tab(tabElement);
+            lastTab.show();
+        });
+    });
+
+}
 
 function multipleTabContent(){
 
     const tabEl = document.querySelectorAll('#subjectsTab button')
-    let questionsTab = document.querySelectorAll('#questionNumbersTab button')
 
     tabEl.forEach(function (el){
 
