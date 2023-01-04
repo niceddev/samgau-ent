@@ -2,7 +2,6 @@
 
 namespace App\Orchid\Screens\Questions;
 
-use App\Enums\AnswerOption;
 use App\Models\Grade;
 use App\Models\Option;
 use App\Models\Question;
@@ -23,6 +22,16 @@ class QuestionsEditScreen extends AbstractMultiLanguageScreen
     private Question $question;
 
     /**
+     * Display header name.
+     *
+     * @return string|null
+     */
+    public function name(): ?string
+    {
+        return __('common.edit') . ' ' . __('common.question');
+    }
+
+    /**
      * Query data.
      *
      * @return array
@@ -31,20 +40,26 @@ class QuestionsEditScreen extends AbstractMultiLanguageScreen
     {
         $this->question = $question;
 
+        dd($question->toArray(), $question->with('options')->get()->toArray());
+
         return [
             'question' => $question->toArray(),
-            'options' => Option::where('question_id', $question->id)->get()
         ];
     }
 
     /**
-     * Display header name.
+     * Save method.
      *
-     * @return string|null
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function name(): ?string
+    public function save(Question $question, Request $request)
     {
-        return __('common.edit') . ' ' . __('common.question');
+        dd($question);
+        $question->update($request->input('question'));
+
+        Alert::message('Сохранено!');
+
+        return redirect()->route('platform.questions.index', $question->subject_id);
     }
 
     /**
@@ -63,24 +78,8 @@ class QuestionsEditScreen extends AbstractMultiLanguageScreen
                 ->placeholder(__('common.example') . ' Дополнение к вопросу')
                 ->title('Дополнение к вопросу'),
             Group::make([
-                Input::make('option[]')->title('Вариант A:')->required(),
+                Input::make('option_a.option')->title('Вариант A:')->required(),
                 CheckBox::make('is_correct_a')->title('Правильный ответ')->sendTrueOrFalse()
-            ]),
-            Group::make([
-                Input::make('option[]')->title('Вариант B:')->required(),
-                CheckBox::make('is_correct_b')->title('Правильный ответ')->sendTrueOrFalse()
-            ]),
-            Group::make([
-                Input::make('option[]')->title('Вариант C:')->required(),
-                CheckBox::make('is_correct_c')->title('Правильный ответ')->sendTrueOrFalse()
-            ]),
-            Group::make([
-                Input::make('option[]')->title('Вариант D:')->required(),
-                CheckBox::make('is_correct_d')->title('Правильный ответ')->sendTrueOrFalse()
-            ]),
-            Group::make([
-                Input::make('option[]')->title('Вариант E:')->required(),
-                CheckBox::make('is_correct_e')->title('Правильный ответ')->sendTrueOrFalse()
             ]),
         ];
     }
@@ -107,27 +106,13 @@ class QuestionsEditScreen extends AbstractMultiLanguageScreen
     }
 
     /**
-     * Save method.
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function save(Question $question, Request $request)
-    {
-        $question->update($request->input('question'));
-
-        Alert::message('Сохранено!');
-
-        return redirect()->route('platform.questions.index', $question->subject_id);
-    }
-
-    /**
      * Remove method.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function remove(Question $question)
     {
-        $question->delete();
+//        $question->delete();
 
         Alert::error('Удалено!');
 
