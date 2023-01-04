@@ -3,6 +3,7 @@
 namespace App\Orchid\Screens\Questions;
 
 use App\Models\Grade;
+use App\Models\Option;
 use App\Models\Question;
 use App\Models\Subject;
 use Orchid\Screen\Fields\CheckBox;
@@ -72,8 +73,33 @@ class QuestionsScreen extends Screen
      */
     public function create(Request $request): void
     {
-        dd($request);
-        $question = Question::create($request->validated());
+        foreach(['a', 'b', 'c', 'd', 'e'] as $abc){
+            $optionStatuses[] = $request->input('is_correct_' . $abc);
+        }
+
+        $options = array_map(function ($option, $key) use ($optionStatuses) {
+            return [
+                'option' => $option,
+                'is_correct' => $optionStatuses[$key]
+            ];
+        },
+            $request->input('option'),
+            array_keys($request->input('option')));
+
+        $question = Question::create([
+            'question'     => $request->input('question'),
+            'sub_question' => $request->input('sub_question'),
+            'grade_id'     => $request->input('grade_id'),
+            'subject_id'   => $request->input('subject_id'),
+        ]);
+
+        foreach ($options as $option){
+            Option::create([
+                'option'      => $option['option'],
+                'question_id' => $question->id,
+                'is_correct'  => $option['is_correct'],
+            ]);
+        }
 
         Alert::info('Вопрос создан!');
     }
@@ -93,23 +119,23 @@ class QuestionsScreen extends Screen
                 Quill::make('sub_question')->title('Дополнение'),
                 Group::make([
                     Input::make('option[]')->title('Вариант A:')->required(),
-                    CheckBox::make('is_correct[]')->title('Правильный ответ')
+                    CheckBox::make('is_correct_a')->title('Правильный ответ')->sendTrueOrFalse()
                 ]),
                 Group::make([
                     Input::make('option[]')->title('Вариант B:')->required(),
-                    CheckBox::make('is_correct[]')->title('Правильный ответ')
+                    CheckBox::make('is_correct_b')->title('Правильный ответ')->sendTrueOrFalse()
                 ]),
                 Group::make([
                     Input::make('option[]')->title('Вариант C:')->required(),
-                    CheckBox::make('is_correct[]')->title('Правильный ответ')
+                    CheckBox::make('is_correct_c')->title('Правильный ответ')->sendTrueOrFalse()
                 ]),
                 Group::make([
                     Input::make('option[]')->title('Вариант D:')->required(),
-                    CheckBox::make('is_correct[]')->title('Правильный ответ')
+                    CheckBox::make('is_correct_d')->title('Правильный ответ')->sendTrueOrFalse()
                 ]),
                 Group::make([
                     Input::make('option[]')->title('Вариант E:')->required(),
-                    CheckBox::make('is_correct[]')->title('Правильный ответ')
+                    CheckBox::make('is_correct_e')->title('Правильный ответ')->sendTrueOrFalse()
                 ]),
                 Select::make('grade_id')
                     ->fromModel(Grade::class, 'name')

@@ -3,10 +3,14 @@
 namespace App\Orchid\Screens\Questions;
 
 use App\Enums\AnswerOption;
+use App\Models\Grade;
+use App\Models\Option;
 use App\Models\Question;
 use App\Orchid\Screens\AbstractMultiLanguageScreen;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
+use Orchid\Screen\Fields\CheckBox;
+use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\Select;
@@ -28,7 +32,8 @@ class QuestionsEditScreen extends AbstractMultiLanguageScreen
         $this->question = $question;
 
         return [
-            'question' => $question->toArray()
+            'question' => $question->toArray(),
+            'options' => Option::where('question_id', $question->id)->get()
         ];
     }
 
@@ -57,26 +62,26 @@ class QuestionsEditScreen extends AbstractMultiLanguageScreen
             Quill::make('question.sub_question')
                 ->placeholder(__('common.example') . ' Дополнение к вопросу')
                 ->title('Дополнение к вопросу'),
-            Input::make('question.option_a')
-                ->placeholder(__('common.example') . ' 30')
-                ->title('Ответ A')
-                ->required(),
-            Input::make('question.option_b')
-                ->placeholder(__('common.example') . ' 12')
-                ->title('Ответ B')
-                ->required(),
-            Input::make('question.option_c')
-                ->placeholder(__('common.example') . ' 26')
-                ->title('Ответ C')
-                ->required(),
-            Input::make('question.option_d')
-                ->placeholder(__('common.example') . ' 24')
-                ->title('Ответ D')
-                ->required(),
-            Input::make('question.option_e')
-                ->placeholder(__('common.example') . ' 777')
-                ->title('Ответ E')
-                ->required(),
+            Group::make([
+                Input::make('option[]')->title('Вариант A:')->required(),
+                CheckBox::make('is_correct_a')->title('Правильный ответ')->sendTrueOrFalse()
+            ]),
+            Group::make([
+                Input::make('option[]')->title('Вариант B:')->required(),
+                CheckBox::make('is_correct_b')->title('Правильный ответ')->sendTrueOrFalse()
+            ]),
+            Group::make([
+                Input::make('option[]')->title('Вариант C:')->required(),
+                CheckBox::make('is_correct_c')->title('Правильный ответ')->sendTrueOrFalse()
+            ]),
+            Group::make([
+                Input::make('option[]')->title('Вариант D:')->required(),
+                CheckBox::make('is_correct_d')->title('Правильный ответ')->sendTrueOrFalse()
+            ]),
+            Group::make([
+                Input::make('option[]')->title('Вариант E:')->required(),
+                CheckBox::make('is_correct_e')->title('Правильный ответ')->sendTrueOrFalse()
+            ]),
         ];
     }
 
@@ -89,17 +94,10 @@ class QuestionsEditScreen extends AbstractMultiLanguageScreen
     {
         return [
             Layout::rows([
-                Select::make('question.correct_answer')
-                    ->options([
-                        'option_a' => AnswerOption::A->name,
-                        'option_b' => AnswerOption::B->name,
-                        'option_c' => AnswerOption::C->name,
-                        'option_d' => AnswerOption::D->name,
-                        'option_e' => AnswerOption::E->name,
-                    ])
+                Select::make('grade_id')
+                    ->fromModel(Grade::class, 'name')
                     ->empty('No select')
-                    ->title('Правильный ответ')
-                    ->required(),
+                    ->title('Выберите класс'),
                 Input::make('question.subject_id')
                     ->value($this->question->subject_id)
                     ->required()

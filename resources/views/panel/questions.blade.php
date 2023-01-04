@@ -23,12 +23,6 @@
                             <th class="border-b font-medium p-4 pr-8 pb-3 text-dark-400">№</th>
                             <th class="w-25 border-b font-medium p-4 pl-8 pb-3 text-dark-400">{{ __('common.question') }}</th>
                             <th class="w-25 border-b font-medium p-4 pr-8 pb-3 text-dark-400">{{ __('common.more') }}</th>
-                            <th class="border-b font-medium p-4 pr-8 pb-3 text-dark-400">A</th>
-                            <th class="border-b font-medium p-4 pr-8 pb-3 text-dark-400">B</th>
-                            <th class="border-b font-medium p-4 pr-8 pb-3 text-dark-400">C</th>
-                            <th class="border-b font-medium p-4 pr-8 pb-3 text-dark-400">D</th>
-                            <th class="border-b font-medium p-4 pr-8 pb-3 text-dark-400">E</th>
-                            <th class="border-b font-medium p-4 pr-8 pb-3 text-dark-400">{{ __('common.correct_answer') }}</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -43,24 +37,6 @@
                                 </td>
                                 <td class="border-b border-slate-100 p-4 text-slate-500 ellipsis" style="inline-size: 10px">
                                     {!! $question->getTranslation('sub_question', $key) !!}
-                                </td>
-                                <td class="border-b border-slate-100 p-4 text-slate-500 ellipsis" style="inline-size: 10px">
-                                    {{ $question->getTranslation('option_a', $key) }}
-                                </td>
-                                <td class="border-b border-slate-100 p-4 text-slate-500 ellipsis" style="inline-size: 10px">
-                                    {{ $question->getTranslation('option_b', $key) }}
-                                </td>
-                                <td class="border-b border-slate-100 p-4 text-slate-500 ellipsis" style="inline-size: 10px">
-                                    {{ $question->getTranslation('option_c', $key) }}
-                                </td>
-                                <td class="border-b border-slate-100 p-4 text-slate-500 ellipsis" style="inline-size: 10px">
-                                    {{ $question->getTranslation('option_d', $key) }}
-                                </td>
-                                <td class="border-b border-slate-100 p-4 text-slate-500 ellipsis" style="inline-size: 10px">
-                                    {{ $question->getTranslation('option_e', $key) }}
-                                </td>
-                                <td class="border-b border-slate-100 p-4 text-slate-500 ellipsis" style="inline-size: 10px">
-                                    {{ $question->correct_answer->name }}
                                 </td>
                                 <td class="border-b border-slate-100 p-4 text-slate-500 text-right">
                                     <a href="{{ route('platform.questions.edit', $question->id) }}"
