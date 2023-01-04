@@ -3,6 +3,7 @@
 namespace App\Orchid\Screens\Questions;
 
 use App\Models\Grade;
+use App\Models\Option;
 use Orchid\Screen\Fields\Group;
 use App\Models\Question;
 use App\Orchid\Screens\AbstractMultiLanguageScreen;
@@ -40,7 +41,7 @@ class QuestionsEditScreen extends AbstractMultiLanguageScreen
      *
      * @return array
      */
-    public function query(int $id, Question $question): iterable
+    public function query(Question $question): iterable
     {
         $this->question = $question->load('options');
 
@@ -114,7 +115,7 @@ class QuestionsEditScreen extends AbstractMultiLanguageScreen
     {
         return [
             Layout::rows([
-                Select::make('grade_id')
+                Select::make('question.grade_id')
                     ->fromModel(Grade::class, 'name')
                     ->empty('No select')
                     ->title('Выберите класс'),
@@ -133,9 +134,54 @@ class QuestionsEditScreen extends AbstractMultiLanguageScreen
      */
     public function save(Question $question, Request $request)
     {
+//        $question->update([
+//            'question'     => $request->input('question'),
+//            'sub_question' => $request->input('sub_question'),
+//            'grade_id'     => $request->input('grade_id'),
+//            'subject_id'   => $request->input('subject_id'),
+//        ]);
+
+        // TODO: Надо узнать будут ли вообще переводы у вопросов
+
+        $options = [
+            $request->input('option_a'),
+            $request->input('option_b'),
+            $request->input('option_c'),
+            $request->input('option_d'),
+            $request->input('option_e'),
+        ];
+
+        foreach ($options as $optionKey => $optionData){
+            foreach ($optionData as $key => $option){
+
+                $optionData = array_map(function ($el) use ($optionData, $option) {
+
+//                    return [
+//                        'option'     => $el,
+//                        'is_correct' =>
+//                    ];
+//                    if (array_key_first($optionData) === 'is_correct'){
+//                        $isCorrect = (bool)reset($option);
+//                    }
+                }, $optionData);
+
+                dd('asd');
+
+            }
+
+        }
+
         dd('s');
-        dd($request, $question);
-        $question->update($request->input('question'));
+
+//        Option::where('question_id', $question->id)->update()
+
+//        foreach ($options as $option){
+//            Option::create([
+//                'option'      => $option['option'],
+//                'question_id' => $question->id,
+//                'is_correct'  => $option['is_correct'],
+//            ]);
+//        }
 
         Alert::message('Сохранено!');
 
