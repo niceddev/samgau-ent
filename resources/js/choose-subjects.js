@@ -28,14 +28,12 @@ window.addEventListener("load", () => {
 
             allLabels.forEach(function (label){
 
-                if (!globalSiblingIds.includes(Number(label.dataset.id))){
+                if (globalSiblingIds.includes(Number(label.dataset.id))){
+                    // Activated
 
-                    if (label.dataset.id === currentTarget.parentNode.dataset.id) return
-
-                    label.style.backgroundColor = '#bfbfbf'
+                    label.style.backgroundColor = label.dataset.color
                     label.style.transition = 'all 0.3s ease-out'
-                    label.querySelector('input').disabled = true
-
+                    label.querySelector('input').disabled = false
 
                     // if (currentTarget.checked) {
                     //
@@ -56,38 +54,71 @@ window.addEventListener("load", () => {
                     // }
 
                 } else {
+                    // Disabled
 
                     if (label.dataset.id === currentTarget.parentNode.dataset.id) return
 
-                    label.style.backgroundColor = label.dataset.color
+                    label.style.backgroundColor = '#bfbfbf'
                     label.style.transition = 'all 0.3s ease-out'
-                    label.querySelector('input').disabled = false
+                    label.querySelector('input').disabled = true
 
                 }
 
-                if (label.querySelector('input').checked) {
-                    label.style.backgroundColor = label.dataset.color
-                    label.querySelector('input').disabled = false
-                }
+                // if (label.querySelector('input').checked) {
+                //     label.style.backgroundColor = label.dataset.color
+                //     label.querySelector('input').disabled = false
+                // }
 
             })
 
             console.log(globalSiblingIds)
 
-            if (checkedLabels.length !== 2){
-                startTestBtn.disabled = true
-                startTestBtn.style.filter = 'grayscale(100%)'
-
-                notCheckedLabels.forEach(input => input.disabled = false)
-            } else {
-                startTestBtn.disabled = false
-                startTestBtn.style.filter = 'grayscale(0%)'
-
-                notCheckedLabels.forEach(input => input.disabled = true)
+            if(globalSiblingIds.length === 0){
+                activateAllSubjects(allLabels)
             }
+
+            console.log(checkedLabels)
+            // if(checkedLabels.length >= 2){
+            //     disableSubjectsExcept(allLabels, )
+            // }
+
+            toggleButton(checkedLabels, startTestBtn, notCheckedLabels)
 
         })
 
     })
 
 });
+
+
+function activateAllSubjects(allLabels){
+
+    allLabels.forEach(function (label){
+        label.style.backgroundColor = label.dataset.color
+        label.style.transition = 'all 0.3s ease-out'
+        label.querySelector('input').disabled = false
+    })
+
+}
+
+function disableSubjectsExcept(){
+
+
+
+}
+
+function toggleButton(checkedLabels, startTestBtn, notCheckedLabels){
+
+    if (checkedLabels.length !== 2){
+        startTestBtn.disabled = true
+        startTestBtn.style.filter = 'grayscale(100%)'
+
+        notCheckedLabels.forEach(input => input.disabled = false)
+    } else {
+        startTestBtn.disabled = false
+        startTestBtn.style.filter = 'grayscale(0%)'
+
+        notCheckedLabels.forEach(input => input.disabled = true)
+    }
+
+}
