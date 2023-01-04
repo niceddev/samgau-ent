@@ -26,13 +26,13 @@ use Illuminate\Support\Facades\Route;
 //    ->name('platform.subjects.edit');
 
 //Questions
-Route::screen('/questions', \App\Orchid\Screens\Questions\IndexScreen::class)
+Route::screen('/subjects', \App\Orchid\Screens\Questions\IndexScreen::class)
     ->name('platform.questions.subjects.index');
 
-Route::screen('/questions/{id}', \App\Orchid\Screens\Questions\QuestionsScreen::class)
+Route::screen('/subjects/{id}', \App\Orchid\Screens\Questions\QuestionsScreen::class)
     ->name('platform.questions.index');
 
-Route::screen('/question/{question}', \App\Orchid\Screens\Questions\QuestionsEditScreen::class)
+Route::screen('/subjects/{id}/question/{question}', \App\Orchid\Screens\Questions\QuestionsEditScreen::class)
     ->name('platform.questions.edit');
 
 //Students

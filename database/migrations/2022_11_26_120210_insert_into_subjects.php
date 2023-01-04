@@ -105,7 +105,7 @@ class InsertIntoSubjects extends Migration
                     'kk' => 'Орыс тілі',
                 ]),
                 'required' => false,
-                'siblings' => '[]',
+                'siblings' => '[16]',
             ],
             [
                 'id' => 10,
@@ -172,6 +172,17 @@ class InsertIntoSubjects extends Migration
                 ]),
                 'required' => false,
                 'siblings' => '[8]',
+            ],
+            [
+                'id' => 16,
+                'image_path' => 'assets/rus_lang.png',
+                'color' => '#987D74',
+                'name' => json_encode([
+                    'ru' => 'Русская литература',
+                    'kk' => 'Орыс әдебиеті',
+                ]),
+                'required' => false,
+                'siblings' => '[9]',
             ]
 
         ]);

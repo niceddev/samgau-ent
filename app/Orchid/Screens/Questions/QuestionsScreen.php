@@ -36,7 +36,7 @@ class QuestionsScreen extends Screen
         })->first();
 
         return [
-            'subject'   => $this->subject->toArray(),
+            'subject'   => $this->subject,
             'grades'    => Grade::get(),
             'questions' => Question::where('subject_id', $this->subject->id)->get(),
         ];

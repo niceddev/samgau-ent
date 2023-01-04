@@ -71,14 +71,13 @@ abstract class AbstractMultiLanguageScreen extends Screen
                             };
 
                             if ($field instanceof Group) {
-                                $group = [];
                                 foreach ($field->getGroup() as $input) {
-                                    $langField = clone $field;
-                                    $langField->set('name', $field->get('name') . '.' . $key);
+                                    $langField = clone $input;
+                                    $langField->set('name', $input->get('name') . '.' . $key);
 
                                     $langField->set(
                                         'required',
-                                        $key == config('app.locale') && $field->get('required')
+                                        $key == config('app.locale') && $input->get('required')
                                     );
 
                                     $group[] = $langField;
