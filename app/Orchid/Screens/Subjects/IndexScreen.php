@@ -3,7 +3,6 @@
 namespace App\Orchid\Screens\Subjects;
 
 use App\Models\Subject;
-use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 
@@ -16,8 +15,10 @@ class IndexScreen extends Screen
      */
     public function query(): iterable
     {
+        $subjects = Subject::get();
+
         return [
-            'subjects' => Subject::get()
+            'subjects' => $subjects,
         ];
     }
 
@@ -38,10 +39,7 @@ class IndexScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [
-            Link::make(__('Add'))
-                ->href(route('platform.subjects.create')),
-        ];
+        return [];
     }
 
     /**

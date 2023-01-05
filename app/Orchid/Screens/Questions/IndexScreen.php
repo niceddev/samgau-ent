@@ -2,23 +2,32 @@
 
 namespace App\Orchid\Screens\Questions;
 
+use App\Models\Question;
 use App\Models\Subject;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 
 class IndexScreen extends Screen
 {
+    private Object $subject;
+
     /**
      * Query data.
      *
      * @return array
      */
-    public function query(): iterable
+    public function query(int $id): iterable
     {
         $subjects = Subject::get();
 
+        $this->subject = $subjects->filter(function($item) use($id) {
+            return $item->id == $id;
+        })->first();
+
         return [
-            'subjects' => $subjects,
+            'subject'   => $this->subject,
+            'questions' => Question::where('subject_id', $this->subject->id)->get(),
         ];
     }
 
@@ -29,7 +38,7 @@ class IndexScreen extends Screen
      */
     public function name(): ?string
     {
-        return __('common.questions');
+        return __('common.questions') . ': ' . $this->subject->name;
     }
 
     /**
@@ -39,7 +48,10 @@ class IndexScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            Link::make(__('Create'))
+                ->href(route('platform.question.create', $this->subject)),
+        ];
     }
 
     /**
@@ -50,7 +62,8 @@ class IndexScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::view('panel.questions_subjects')
+            Layout::view('panel.questions'),
         ];
     }
+
 }

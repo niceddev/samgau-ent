@@ -24,3 +24,18 @@ input[name='subject[color]'] {
     width: 200px;
     height: 200px;
 }
+
+.align-items-baseline {
+    margin-top: -10px !important;
+    width: 200px !important;
+}
+
+.align-items-baseline label {
+    text-align: center !important;
+}
+
+.align-items-baseline .form-check {
+    display: flex !important;
+    justify-content: center !important;
+}
+

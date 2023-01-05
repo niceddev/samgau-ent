@@ -31,7 +31,7 @@ class PlatformProvider extends OrchidServiceProvider
 
             Menu::make(__('common.questions'))
                 ->icon('question')
-                ->route('platform.questions.subjects.index'),
+                ->route('platform.subjects.index'),
 
             Menu::make(__('common.students'))
                 ->icon('people')

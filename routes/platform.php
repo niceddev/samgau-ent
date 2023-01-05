@@ -16,24 +16,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Subjects
-//Route::screen('/subjects', \App\Orchid\Screens\Subjects\IndexScreen::class)
-//    ->name('platform.subjects.index');
-//
-//Route::screen('/subjects/form', \App\Orchid\Screens\Subjects\CreateScreen::class)
-//    ->name('platform.subjects.create');
-//
-//Route::screen('/subjects/form/{subject}', \App\Orchid\Screens\Subjects\EditScreen::class)
-//    ->name('platform.subjects.edit');
+Route::screen('/subjects', \App\Orchid\Screens\Subjects\IndexScreen::class)
+    ->name('platform.subjects.index');
 
 //Questions
-Route::screen('/subjects', \App\Orchid\Screens\Questions\IndexScreen::class)
-    ->name('platform.questions.subjects.index');
+Route::screen('/subject/{id}/questions', \App\Orchid\Screens\Questions\IndexScreen::class)
+    ->name('platform.subjects.questions.index');
 
-Route::screen('/subjects/{id}', \App\Orchid\Screens\Questions\QuestionsScreen::class)
-    ->name('platform.questions.index');
+Route::screen('/question/{subject}/create', \App\Orchid\Screens\Questions\CreateScreen::class)
+    ->name('platform.question.create');
 
-Route::screen('/question/{question}', \App\Orchid\Screens\Questions\QuestionsEditScreen::class)
-    ->name('platform.questions.edit');
+Route::screen('/question/{question}/edit', \App\Orchid\Screens\Questions\EditScreen::class)
+    ->name('platform.question.edit');
 
 //Students
 Route::screen('/students', \App\Orchid\Screens\Students\IndexScreen::class)
