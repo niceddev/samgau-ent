@@ -117,10 +117,16 @@
                                     <div class="row">
                                         <h2>{{ __('common.variants') }}:</h2>
                                         <ul class="options">
-                                            @foreach([1,2,3,4,5] as $option)
-                                                <li>
-                                                    {{ $option }}
-                                                </li>
+                                            @foreach($question->options as $option)
+                                                {{ dd(
+                                                        $question->options
+                                                            ->pluck('is_correct')
+
+                                                ) }}
+                                                <label>
+                                                    <input id="option-{{ $option->id }}" type="checkbox" value="{{ $option->getTranslation('option', session()->get('lang', 'ru')) }}">
+                                                    {{ $option->getTranslation('option', session()->get('lang', 'ru')) }}
+                                                </label>
                                             @endforeach
                                         </ul>
                                     </div>

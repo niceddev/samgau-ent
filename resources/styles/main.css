@@ -552,16 +552,17 @@ ol li:hover::marker {
     list-style-type: none;
 }
 
-#questionContentSection .options li{
+#questionContentSection .options label {
+    display: block;
     background-color: #F3F7F9;
     color: #A0B5C2;
     padding: 18px 25px;
-    margin: 5px 0;
+    margin: 5px 0px 5px 30px;
     border: 1px solid #A0B5C2;
     font-size: 30px;
 }
 
-#questionContentSection .options li:hover {
+#questionContentSection .options label:hover {
     cursor: pointer;
     box-shadow: 1px 1px 8px rgba(86, 86, 86, 0.8);
 }

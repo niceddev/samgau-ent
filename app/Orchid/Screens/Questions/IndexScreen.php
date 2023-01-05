@@ -27,7 +27,7 @@ class IndexScreen extends Screen
 
         return [
             'subject'   => $this->subject,
-            'questions' => Question::where('subject_id', $this->subject->id)->get(),
+            'questions' => Question::where('subject_id', $this->subject->id)->orderBy('id')->get(),
         ];
     }
 
