@@ -41,7 +41,7 @@
                                     <span class="checkmark"></span>
                                 </label>
                                 <h4 class="mt-4 fs-5" style="width:150px;margin:0 auto;color:#737373;">
-                                    {{ $requiredSubject->getTranslation('name',  `session()->get('lang', 'ru')`) }}
+                                    {{ $requiredSubject->getTranslation('name',  session()->get('lang', 'ru')) }}
                                 </h4>
                             </div>
                         @endforeach
