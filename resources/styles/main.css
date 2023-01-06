@@ -556,10 +556,12 @@ ol li:hover::marker {
     display: block;
     background-color: #F3F7F9;
     color: #A0B5C2;
-    padding: 18px 25px;
     margin: 5px 0px 5px 30px;
     border: 1px solid #A0B5C2;
     font-size: 30px;
+    position: relative;
+    height: 65px;
+    line-height: 200%;
 }
 
 #questionContentSection .options label:hover {
@@ -572,26 +574,19 @@ ol li:hover::marker {
     opacity: 0;
 }
 
+.option-text {
+    margin: 0 85px;
+}
+
 /* Create a custom checkbox */
 .option-checkmark {
     position: absolute;
-    background-color: green;
-    height: 50px;
-    width: 50px;
+    border-right: 1px solid #A0B5C2;
+    background-color: #46ec46;
+    height: 100%;
+    width: 65px;
     /*display: none;*/
 }
-
-/*.little-checkmark {*/
-/*    position: absolute;*/
-/*    top: 65px;*/
-/*    left: -12px;*/
-/*    background-color: #eee;*/
-/*    height: 40px;*/
-/*    width: 40px;*/
-/*    border-radius: 45px;*/
-/*    border: 2px solid #fff;*/
-/*    display: none;*/
-/*}*/
 
 /*!* When the checkbox is checked, add a blue background *!*/
 /*.custom-checkbox input:checked ~ .checkmark, .custom-checkbox input:checked ~ .little-checkmark {*/

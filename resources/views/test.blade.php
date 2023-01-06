@@ -58,43 +58,43 @@
 
                 <div class="row tab-content">
 
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-pills" id="myTab">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#home">Menu-1</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#menu1">Menu-2</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#menu2">Menu-3</a>
-                        </li>
-                    </ul>
+{{--                    <!-- Nav tabs -->--}}
+{{--                    <ul class="nav nav-pills" id="myTab">--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link active" data-bs-toggle="tab" href="#home">Menu-1</a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link" data-bs-toggle="tab" href="#menu1">Menu-2</a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link" data-bs-toggle="tab" href="#menu2">Menu-3</a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
 
-                    <!-- Tab panes -->
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane container active" id="home">
-                            <h1>Menu-1</h1>
-                            TEXT A:......
-                            <hr>
+{{--                    <!-- Tab panes -->--}}
+{{--                    <div class="tab-content" id="myTabContent">--}}
+{{--                        <div class="tab-pane container active" id="home">--}}
+{{--                            <h1>Menu-1</h1>--}}
+{{--                            TEXT A:......--}}
+{{--                            <hr>--}}
 
-                            <a class="btn btn-primary btnNext">Next</a>
-                        </div>
-                        <div class="tab-pane container fade" id="menu1">
-                            <h1>Menu-2</h1>
-                            TEXT B:....
-                            <hr>
-                            <a class="btn btn-primary btnPrev">Back</a>
-                            <a class="btn btn-primary btnNext">Next</a>
-                        </div>
-                        <div class="tab-pane container fade" id="menu2">
-                            <h1>Menu-3</h1>
-                            TEXT C:....
-                            <hr>
-                            <a class="btn btn-primary btnPrev">Back</a>
-                            <input class="btn btn-info" type="submit" value="Submit">
-                        </div>
-                    </div>
+{{--                            <a class="btn btn-primary btnNext">Next</a>--}}
+{{--                        </div>--}}
+{{--                        <div class="tab-pane container fade" id="menu1">--}}
+{{--                            <h1>Menu-2</h1>--}}
+{{--                            TEXT B:....--}}
+{{--                            <hr>--}}
+{{--                            <a class="btn btn-primary btnPrev">Back</a>--}}
+{{--                            <a class="btn btn-primary btnNext">Next</a>--}}
+{{--                        </div>--}}
+{{--                        <div class="tab-pane container fade" id="menu2">--}}
+{{--                            <h1>Menu-3</h1>--}}
+{{--                            TEXT C:....--}}
+{{--                            <hr>--}}
+{{--                            <a class="btn btn-primary btnPrev">Back</a>--}}
+{{--                            <input class="btn btn-info" type="submit" value="Submit">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
 
                     @foreach($subjects as $subject)
@@ -132,7 +132,9 @@
                                                            @endif
                                                            value="{{ $option->getTranslation('option', session()->get('lang', 'ru')) }}">
                                                     <span class="option-checkmark"></span>
-                                                    {{ $option->getTranslation('option', session()->get('lang', 'ru')) }}
+                                                    <span class="option-text">
+                                                        {{ $option->getTranslation('option', session()->get('lang', 'ru')) }}
+                                                    </span>
                                                 </label>
                                             @endforeach
                                         </ul>
