@@ -589,20 +589,20 @@ ol li:hover::marker {
 }
 
 /*!* When the checkbox is checked, add a blue background *!*/
-/*.custom-checkbox input:checked ~ .checkmark, .custom-checkbox input:checked ~ .little-checkmark {*/
+/*.custom-checkbox input:checked ~ .option-checkmark {*/
 /*    background-color: #0080C2;*/
 /*    display: block;*/
 /*}*/
 
 /*!* Create the checkmark/indicator (hidden when not checked) *!*/
-/*.checkmark:after, .little-checkmark:after {*/
+/*.option-checkmark:after {*/
 /*    content: "";*/
 /*    position: absolute;*/
 /*    display: none;*/
 /*}*/
 
 /*!* Show the checkmark when checked *!*/
-/*.custom-checkbox input:checked ~ .checkmark:after, .custom-checkbox input:checked ~ .little-checkmark:after  {*/
+/*.custom-checkbox input:checked ~ .option-checkmark:after {*/
 /*    display: block;*/
 /*}*/
 
@@ -618,19 +618,6 @@ ol li:hover::marker {
 /*    -ms-transform: rotate(45deg);*/
 /*    transform: rotate(45deg);*/
 /*}*/
-
-/*.custom-checkbox .little-checkmark:after {*/
-/*    width: 8px;*/
-/*    height: 18px;*/
-/*    margin-left: 15px;*/
-/*    margin-top: 8px;*/
-/*    border: solid #fff;*/
-/*    border-width: 0 2px 2px 0;*/
-/*    -webkit-transform: rotate(45deg);*/
-/*    -ms-transform: rotate(45deg);*/
-/*    transform: rotate(45deg);*/
-/*}*/
-
 
 
 
