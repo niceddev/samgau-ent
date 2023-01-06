@@ -131,6 +131,7 @@
                                                                type="checkbox"
                                                            @endif
                                                            value="{{ $option->getTranslation('option', session()->get('lang', 'ru')) }}">
+                                                    <span class="option-checkmark"></span>
                                                     {{ $option->getTranslation('option', session()->get('lang', 'ru')) }}
                                                 </label>
                                             @endforeach
