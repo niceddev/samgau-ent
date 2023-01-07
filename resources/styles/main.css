@@ -560,13 +560,13 @@ ol li:hover::marker {
     border: 1px solid #A0B5C2;
     font-size: 30px;
     position: relative;
-    height: 65px;
-    line-height: 200%;
+    height: 80px;
+    line-height: 260%;
 }
 
 #questionContentSection .options label:hover {
     cursor: pointer;
-    box-shadow: 1px 1px 8px rgba(86, 86, 86, 0.8);
+    box-shadow: 1px 1px 8px rgba(86, 86, 86, 0.5);
 }
 
 .options input {
@@ -575,52 +575,24 @@ ol li:hover::marker {
 }
 
 .option-text {
-    margin: 0 85px;
+    margin-left: 146px;
 }
 
 /* Create a custom checkbox */
 .option-checkmark {
     position: absolute;
     border-right: 1px solid #A0B5C2;
-    background-color: #46ec46;
+    background-color: #A0B5C2;
     height: 100%;
-    width: 65px;
+    width: 100px;
     /*display: none;*/
 }
 
-/*!* When the checkbox is checked, add a blue background *!*/
-/*.custom-checkbox input:checked ~ .option-checkmark {*/
-/*    background-color: #0080C2;*/
-/*    display: block;*/
-/*}*/
-
-/*!* Create the checkmark/indicator (hidden when not checked) *!*/
-/*.option-checkmark:after {*/
-/*    content: "";*/
-/*    position: absolute;*/
-/*    display: none;*/
-/*}*/
-
-/*!* Show the checkmark when checked *!*/
-/*.custom-checkbox input:checked ~ .option-checkmark:after {*/
-/*    display: block;*/
-/*}*/
-
-/*!* Style the checkmark/indicator *!*/
-/*.custom-checkbox .checkmark:after {*/
-/*    width: 11px;*/
-/*    height: 23px;*/
-/*    margin-left: 18px;*/
-/*    margin-top: 9px;*/
-/*    border: solid #fff;*/
-/*    border-width: 0 2px 2px 0;*/
-/*    -webkit-transform: rotate(45deg);*/
-/*    -ms-transform: rotate(45deg);*/
-/*    transform: rotate(45deg);*/
-/*}*/
-
-
-
+/* When the checkbox is checked, add a blue background */
+.options input:checked ~ .option-checkmark {
+    background-color: #68DA78;
+    display: block;
+}
 
 .next-question {
     width: 170px;
