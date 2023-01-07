@@ -7,12 +7,12 @@ window.addEventListener("load", () => {
 
     allLabels.forEach(function (el){
 
-        let label = el.querySelector('.subject-item')
+        let input = el.querySelector('.subject-item')
 
-        label.addEventListener('change', function ({currentTarget}){
+        input.addEventListener('change', function ({currentTarget}){
 
-            let notCheckedLabels = document.querySelectorAll('.subjects input[type=checkbox]:not(:checked)')
-            let checkedLabels = document.querySelectorAll('.subjects input[type=checkbox]:checked')
+            let notCheckedInputs = document.querySelectorAll('.subjects input[type=checkbox]:not(:checked)')
+            let checkedInputs = document.querySelectorAll('.subjects input[type=checkbox]:checked')
 
             let siblingIds = JSON.parse(currentTarget.dataset.siblings)
 
@@ -29,29 +29,11 @@ window.addEventListener("load", () => {
             allLabels.forEach(function (label){
 
                 if (globalSiblingIds.includes(Number(label.dataset.id))){
-                    // Activated
+                    // Active
 
                     label.style.backgroundColor = label.dataset.color
                     label.style.transition = 'all 0.3s ease-out'
                     label.querySelector('input').disabled = false
-
-                    // if (currentTarget.checked) {
-                    //
-                    //     currentTarget.parentNode.style.backgroundColor = currentTarget.disabled = false
-                    //
-                    //     if (label.dataset.id === currentTarget.parentNode.dataset.id) return
-                    //
-                    //     label.style.backgroundColor = '#bfbfbf'
-                    //     label.style.transition = 'all 0.3s ease-out'
-                    //     label.querySelector('input').disabled = true
-                    //
-                    // } else {
-                    //
-                    //     label.style.backgroundColor = label.dataset.color
-                    //     label.style.transition = 'all 0.3s ease-out'
-                    //     label.querySelector('input').disabled = false
-                    //
-                    // }
 
                 } else {
                     // Disabled
@@ -64,25 +46,33 @@ window.addEventListener("load", () => {
 
                 }
 
-                // if (label.querySelector('input').checked) {
-                //     label.style.backgroundColor = label.dataset.color
-                //     label.querySelector('input').disabled = false
-                // }
-
             })
 
-            console.log(globalSiblingIds)
-
             if(globalSiblingIds.length === 0){
-                activateAllSubjects(allLabels)
+                allLabels.forEach(function (label){
+                    label.style.backgroundColor = label.dataset.color
+                    label.style.transition = 'all 0.3s ease-out'
+                    label.querySelector('input').disabled = false
+                })
             }
 
-            console.log(checkedLabels)
-            // if(checkedLabels.length >= 2){
-            //     disableSubjectsExcept(allLabels, )
-            // }
+            if(checkedInputs.length >= 2){
+                notCheckedInputs.forEach(function (el){
+                    let label = el.parentNode
 
-            toggleButton(checkedLabels, startTestBtn, notCheckedLabels)
+                    label.style.backgroundColor = '#bfbfbf'
+                    label.style.transition = 'all 0.3s ease-out'
+                    label.querySelector('input').disabled = true
+                })
+            }
+
+            try {
+                checkedInputs[0].parentNode.style.backgroundColor = checkedInputs[0].parentNode.dataset.color
+                checkedInputs[0].parentNode.style.transition = 'all 0.3s ease-out'
+                checkedInputs[0].disabled = false
+            } catch(e){}
+
+            // toggleButton(checkedInputs, startTestBtn, notCheckedInputs)
 
         })
 
@@ -91,34 +81,13 @@ window.addEventListener("load", () => {
 });
 
 
-function activateAllSubjects(allLabels){
+function toggleButton(checkedInputs, startTestBtn, notCheckedInputs){
 
-    allLabels.forEach(function (label){
-        label.style.backgroundColor = label.dataset.color
-        label.style.transition = 'all 0.3s ease-out'
-        label.querySelector('input').disabled = false
-    })
-
-}
-
-function disableSubjectsExcept(){
-
-
-
-}
-
-function toggleButton(checkedLabels, startTestBtn, notCheckedLabels){
-
-    if (checkedLabels.length !== 2){
+    if (checkedInputs.length === 2){
         startTestBtn.disabled = true
         startTestBtn.style.filter = 'grayscale(100%)'
 
-        notCheckedLabels.forEach(input => input.disabled = false)
-    } else {
-        startTestBtn.disabled = false
-        startTestBtn.style.filter = 'grayscale(0%)'
-
-        notCheckedLabels.forEach(input => input.disabled = true)
+        notCheckedInputs.forEach(input => input.disabled = false)
     }
 
 }
