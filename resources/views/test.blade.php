@@ -122,7 +122,7 @@
                                             @endif
                                         </h2>
                                         <ul class="options">
-                                            @foreach($question->options as $option)
+                                            @foreach($question->options as $key => $option)
                                                 <label>
                                                     <input id="option-{{ $option->id }}" name="question-{{ $question->id }}"
                                                            @if($question->options->pluck('is_correct')->filter(fn($value) => $value)->count() === 1)
@@ -131,7 +131,9 @@
                                                                type="checkbox"
                                                            @endif
                                                            value="{{ $option->getTranslation('option', session()->get('lang', 'ru')) }}">
-                                                    <span class="option-checkmark"></span>
+                                                    <span class="option-checkmark">
+                                                        {{ chr($key + 65) }}
+                                                    </span>
                                                     <span class="option-text">
                                                         {{ $option->getTranslation('option', session()->get('lang', 'ru')) }}
                                                     </span>

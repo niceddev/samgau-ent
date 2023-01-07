@@ -585,7 +585,9 @@ ol li:hover::marker {
     background-color: #A0B5C2;
     height: 100%;
     width: 100px;
-    /*display: none;*/
+    display: block;
+    text-align: center;
+    color: #fff;
 }
 
 /* When the checkbox is checked, add a blue background */
