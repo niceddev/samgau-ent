@@ -64,7 +64,7 @@
                                             <span class="little-checkmark"></span>
                                         </label>
                                         <h4 class="break-words" style="color: #737373;">
-                                            {{ $subject->id . ' - '. $subject->getTranslation('name',  session()->get('lang', 'ru')) }}
+                                            {{ $subject->getTranslation('name',  session()->get('lang', 'ru')) }}
                                         </h4>
                                     </label>
                                 </div>

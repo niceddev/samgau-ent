@@ -9,9 +9,8 @@ class TestController extends Controller
 {
     public function index(Request $request)
     {
-//        dd($request->input('subjects'));
         $subjects = Subject::with('questions', 'questions.options')
-            ->whereIn('id', [1,2,3,4,10])
+            ->whereIn('id', $request->input('subjects'))
             ->get();
 
         return view('test', compact( 'subjects'));
