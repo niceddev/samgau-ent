@@ -56,6 +56,9 @@ window.addEventListener("load", () => {
                 })
             }
 
+            startTestBtn.disabled = true
+            startTestBtn.style.filter = 'grayscale(100%)'
+
             if(checkedInputs.length >= 2){
                 notCheckedInputs.forEach(function (el){
                     let label = el.parentNode
@@ -64,6 +67,9 @@ window.addEventListener("load", () => {
                     label.style.transition = 'all 0.3s ease-out'
                     label.querySelector('input').disabled = true
                 })
+
+                startTestBtn.disabled = false
+                startTestBtn.style.filter = 'grayscale(0)'
             }
 
             try {
@@ -72,22 +78,8 @@ window.addEventListener("load", () => {
                 checkedInputs[0].disabled = false
             } catch(e){}
 
-            // toggleButton(checkedInputs, startTestBtn, notCheckedInputs)
-
         })
 
     })
 
 });
-
-
-function toggleButton(checkedInputs, startTestBtn, notCheckedInputs){
-
-    if (checkedInputs.length === 2){
-        startTestBtn.disabled = true
-        startTestBtn.style.filter = 'grayscale(100%)'
-
-        notCheckedInputs.forEach(input => input.disabled = false)
-    }
-
-}
