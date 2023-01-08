@@ -1,30 +1,45 @@
 window.addEventListener("load", () => {
 
+    markAsComplete()
+
     multipleTabContent()
 
-    // navigationBetweenQuestions()
+    navigationBetweenQuestions()
 
 })
 
+function markAsComplete(){
+
+    let optionInputs = document.querySelectorAll('.options input')
+
+    optionInputs.forEach(function (input){
+        input.addEventListener('change', function ({currentTarget}){
+
+            let questionTab = document.querySelectorAll(`button[aria-controls="${currentTarget.name}"]`)
+            let questionOptions = document.querySelectorAll('#' + input.name + ' .options input')
+
+            if (Array.prototype.some.call(questionOptions, checkbox => checkbox.checked)) {
+                questionTab[0].style.backgroundColor = '#5beb7b'
+                questionTab[0].style.boxShadow = 'none'
+            } else {
+                questionTab[0].style.backgroundColor = '#bac4cb'
+                questionTab[0].style.boxShadow = '-0.1px -0.1px 9px 0.4px #33a94f inset'
+            }
+
+        })
+    })
+
+}
+
 function navigationBetweenQuestions(){
 
-    const nextBtn = document.querySelectorAll(".btnNext");
-    const prevBtn = document.querySelectorAll(".btnPrev");
+    const nextBtn = document.querySelectorAll(".next-question > button");
 
-    nextBtn.forEach(function(item, index){
-        item.addEventListener('click', function(){
+    nextBtn.forEach(function(btn, index){
+        btn.addEventListener('click', function(){
             let id = index + 1;
-            let tabElement = document.querySelectorAll("#myTab li a")[id];
-            var lastTab = new bootstrap.Tab(tabElement);
-            lastTab.show();
-        });
-    });
-
-    prevBtn.forEach(function(item, index){
-        item.addEventListener('click', function(){
-            let id = index;
-            let tabElement = document.querySelectorAll("#myTab li a")[id];
-            var lastTab = new bootstrap.Tab(tabElement);
+            let tabElement = document.querySelectorAll("#questionNumbersTab > div > button")[id];
+            let lastTab = new bootstrap.Tab(tabElement);
             lastTab.show();
         });
     });
