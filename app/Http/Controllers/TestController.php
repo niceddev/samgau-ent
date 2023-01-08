@@ -18,7 +18,26 @@ class TestController extends Controller
 
     public function testFinish(Request $request)
     {
-        dd($request->all());
+        $subjects = Subject::with('questions', 'questions.options')
+            ->whereIn('id', json_decode($request->input('subjects')))
+            ->get();
+
+        foreach ($subjects as $subject) {
+            foreach ($subject->questions as $question) {
+                foreach ($question->options->where('is_correct', true) as $option) {
+
+                    if(in_array($option->option, $request->input('question-' . $question->id))){
+
+                        dump($option->option);
+
+                    }
+
+                }
+            }
+        }
+
+        dd('asd');
+
         return view('test_finish');
     }
 

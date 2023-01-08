@@ -58,6 +58,7 @@
 
                 <form action="{{ route('test.finish') }}" method="POST">
                     @csrf
+                    <input type="text" class="visually-hidden" name="subjects" value="{{ $subjects->pluck('id') }}">
                     <div class="row tab-content">
                             @foreach($subjects as $subject)
                                 <div id="nav-subject-{{ $subject->id }}"
