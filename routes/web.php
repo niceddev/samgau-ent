@@ -25,10 +25,10 @@ Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {
             'index'
         ])->name('index');
 
-        Route::get('/test-finish', [
+        Route::post('/test-finish', [
             \App\Http\Controllers\TestController::class,
             'testFinish'
-        ])->name('test_finish');
+        ])->name('finish');
 
     });
 

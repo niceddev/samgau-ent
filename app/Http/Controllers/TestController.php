@@ -16,8 +16,9 @@ class TestController extends Controller
         return view('test', compact( 'subjects'));
     }
 
-    public function testFinish()
+    public function testFinish(Request $request)
     {
+        dd($request->all());
         return view('test_finish');
     }
 

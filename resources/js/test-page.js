@@ -15,8 +15,9 @@ function markAsComplete(){
     optionInputs.forEach(function (input){
         input.addEventListener('change', function ({currentTarget}){
 
-            let questionTab = document.querySelectorAll(`button[aria-controls="${currentTarget.name}"]`)
-            let questionOptions = document.querySelectorAll('#' + input.name + ' .options input')
+            // after choice any option colorize questionTab(circle) to green
+            let questionTab = document.querySelectorAll(`button[aria-controls="${currentTarget.dataset.question}"]`)
+            let questionOptions = document.querySelectorAll('#' + input.dataset.question + ' .options input')
 
             if (Array.prototype.some.call(questionOptions, checkbox => checkbox.checked)) {
                 questionTab[0].classList.add('question-complete-tab')
@@ -24,12 +25,31 @@ function markAsComplete(){
                 questionTab[0].classList.remove('question-complete-tab')
             }
 
+            // count answered questions and change innerHtml of span(above 'next' button)
             let completedTabs = questionTab[0].parentNode.parentNode.parentNode.querySelectorAll('.question-complete-tab')
-            let answeredQuestionsSpans = document.querySelectorAll('.answered-questions-count-' + questionTab[0].parentNode.parentNode.parentNode.id.replace('nav-subject-', ''))
+            let answeredQuestionsSpans = document.querySelectorAll('.control-section-' + questionTab[0].parentNode.parentNode.parentNode.id.replace('nav-subject-', '') + ' .answered-questions-count')
 
             answeredQuestionsSpans.forEach(function (span){
                 span.innerHTML = completedTabs.length
             })
+
+            // show Finish button after all questions complete
+            let answeredQuestionsButtons = document.querySelectorAll('.answered-questions-button')
+
+            if(document.querySelectorAll('.question-complete-tab').length === answeredQuestionsButtons.length){
+                answeredQuestionsButtons.forEach(function (button){
+                    button.style.backgroundColor = '#EDB021'
+                    button.style.height = '70px'
+                    button.innerHTML = 'Готово'
+                    button.setAttribute('type', 'submit');
+                })
+            } else {
+                answeredQuestionsButtons.forEach(function (button){
+                    button.style.backgroundColor = '#2695e0'
+                    button.innerHTML = 'Следующий вопрос'
+                    button.setAttribute('type', 'button');
+                })
+            }
 
         })
     })

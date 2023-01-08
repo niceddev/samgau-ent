@@ -56,66 +56,70 @@
                     </ul>
                 </div>
 
-                <div class="row tab-content">
-                    @foreach($subjects as $subject)
-                        <div id="nav-subject-{{ $subject->id }}"
-                                 class="tab-content tab-pane subject-{{ $subject->id }}-questions-content fade @if($loop->first)show active @endif"
-                                 role="tabpanel" aria-labelledby="nav-subject-{{ $subject->id }}-tab"
-                                 data-content="subject-{{ $subject->id }}-questions-content">
-                            @foreach($subject->questions as $question)
-                                <div id="question-{{ $question->id }}"
-                                     class="tab-pane fade @if($loop->first)show active @endif"
-                                     role="tabpanel" aria-labelledby="{{ $subject->id }}-tab">
+                <form action="{{ route('test.finish') }}" method="POST">
+                    @csrf
+                    <div class="row tab-content">
+                            @foreach($subjects as $subject)
+                                <div id="nav-subject-{{ $subject->id }}"
+                                         class="tab-content tab-pane subject-{{ $subject->id }}-questions-content fade @if($loop->first)show active @endif"
+                                         role="tabpanel" aria-labelledby="nav-subject-{{ $subject->id }}-tab"
+                                         data-content="subject-{{ $subject->id }}-questions-content">
+                                    @foreach($subject->questions as $question)
+                                        <div id="question-{{ $question->id }}"
+                                             class="tab-pane fade @if($loop->first)show active @endif"
+                                             role="tabpanel" aria-labelledby="{{ $subject->id }}-tab">
 
-                                    <div class="row pt-3">
-                                        <h2>{{ __('common.question') . ': '. $question->question }}</h2>
-                                        <div class="my-4">
-                                            {!! $question->sub_question !!}
+                                            <div class="row pt-3">
+                                                <h2>{{ __('common.question') . ': '. $question->question }}</h2>
+                                                <div class="my-4">
+                                                    {!! $question->sub_question !!}
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <h2>
+                                                    {{ __('common.variants') }}:
+                                                    @if($question->options->pluck('is_correct')->filter(fn($value) => $value)->count() !== 1)
+                                                        <span class="fs-6 m-2 align-middle text-black-50">(правильных ответов может быть несколько)</span>
+                                                    @endif
+                                                </h2>
+                                                <ul class="options">
+                                                    @foreach($question->options as $key => $option)
+                                                        <label>
+                                                            <input id="option-{{ $option->id }}" name="question-{{ $question->id }}[]"
+                                                                   data-question="question-{{ $question->id }}"
+                                                                   @if($question->options->pluck('is_correct')->filter(fn($value) => $value)->count() === 1)
+                                                                       type="radio"
+                                                                   @else
+                                                                       type="checkbox"
+                                                                   @endif
+                                                                   value="{{ $option->getTranslation('option', session()->get('lang', 'ru')) }}">
+                                                            <span class="option-checkmark">
+                                                                {{ chr($key + 65) }}
+                                                            </span>
+                                                            <span class="option-text">
+                                                                {{ $option->getTranslation('option', session()->get('lang', 'ru')) }}
+                                                            </span>
+                                                        </label>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+
+                                            <div class="row next-question float-end text-center control-section-{{ $subject->id }}">
+                                                <p>
+                                                    <span class="answered-questions-count">0</span>/<span>{{ $subject->questions->count() }}</span>
+                                                </p>
+                                                <button type="button" class="answered-questions-button">
+                                                    {{ __('common.next_question') }}
+                                                </button>
+                                            </div>
+
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <h2>
-                                            {{ __('common.variants') }}:
-                                            @if($question->options->pluck('is_correct')->filter(fn($value) => $value)->count() !== 1)
-                                                <span class="fs-6 m-2 align-middle text-black-50">(правильных ответов может быть несколько)</span>
-                                            @endif
-                                        </h2>
-                                        <ul class="options">
-                                            @foreach($question->options as $key => $option)
-                                                <label>
-                                                    <input id="option-{{ $option->id }}" name="question-{{ $question->id }}"
-                                                           @if($question->options->pluck('is_correct')->filter(fn($value) => $value)->count() === 1)
-                                                               type="radio"
-                                                           @else
-                                                               type="checkbox"
-                                                           @endif
-                                                           value="{{ $option->getTranslation('option', session()->get('lang', 'ru')) }}">
-                                                    <span class="option-checkmark">
-                                                        {{ chr($key + 65) }}
-                                                    </span>
-                                                    <span class="option-text">
-                                                        {{ $option->getTranslation('option', session()->get('lang', 'ru')) }}
-                                                    </span>
-                                                </label>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-
-                                    <div class="row next-question float-end text-center">
-                                        <p>
-                                            <span class="answered-questions-count-{{ $subject->id }}">0</span>/<span>{{ $subject->questions->count() }}</span>
-                                        </p>
-                                        <button>
-                                            {{ __('common.next_question') }}
-                                        </button>
-                                    </div>
-
+                                    @endforeach
                                 </div>
                             @endforeach
-                        </div>
-                    @endforeach
-                </div>
+                    </div>
+                </form>
 
             </div>
 
