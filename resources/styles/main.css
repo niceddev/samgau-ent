@@ -621,3 +621,7 @@ ol li:hover::marker {
     background-color: #2695e0;
 }
 
+.question-complete-tab {
+    background-color: #5beb7b !important;
+    box-shadow: none !important;
+}

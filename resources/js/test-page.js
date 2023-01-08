@@ -19,12 +19,17 @@ function markAsComplete(){
             let questionOptions = document.querySelectorAll('#' + input.name + ' .options input')
 
             if (Array.prototype.some.call(questionOptions, checkbox => checkbox.checked)) {
-                questionTab[0].style.backgroundColor = '#5beb7b'
-                questionTab[0].style.boxShadow = 'none'
+                questionTab[0].classList.add('question-complete-tab')
             } else {
-                questionTab[0].style.backgroundColor = '#bac4cb'
-                questionTab[0].style.boxShadow = '-0.1px -0.1px 9px 0.4px #33a94f inset'
+                questionTab[0].classList.remove('question-complete-tab')
             }
+
+            let completedTabs = questionTab[0].parentNode.parentNode.parentNode.querySelectorAll('.question-complete-tab')
+            let answeredQuestionsSpans = document.querySelectorAll('.answered-questions-count-' + questionTab[0].parentNode.parentNode.parentNode.id.replace('nav-subject-', ''))
+
+            answeredQuestionsSpans.forEach(function (span){
+                span.innerHTML = completedTabs.length
+            })
 
         })
     })

@@ -104,7 +104,7 @@
 
                                     <div class="row next-question float-end text-center">
                                         <p>
-                                            <span class="subject-{{ $subject->id }}-answered-questions">0</span>/<span>{{ $subject->questions->count() }}</span>
+                                            <span class="answered-questions-count-{{ $subject->id }}">0</span>/<span>{{ $subject->questions->count() }}</span>
                                         </p>
                                         <button>
                                             {{ __('common.next_question') }}
