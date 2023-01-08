@@ -63,5 +63,6 @@
         'statistics'                  => 'Статистика',
         'exit_test'                   => 'Выйти',
         'execution_time'              => 'Время исполнения:',
+        'test_analytics'              => 'Аналитика тестирования',
 
     ];

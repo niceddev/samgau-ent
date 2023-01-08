@@ -19,8 +19,8 @@
             {{ __('common.cabinet') }}
         </a>
     </div>
-    <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-        <div class="bg-white container rounded-4">
+    <div id="analyticsPage">
+        <div class="bg-white container rounded-4" style="padding: 116px 0">
             <div class="row">
 
                 <div class="container text-center">
@@ -40,12 +40,40 @@
                     </div>
                 </div>
 
-                <div class="py-4">
-                    Аналитика тестирования
+                <div>
+                    <p class="analytics-title">
+                        {{ __('common.test_analytics') }}
+                    </p>
                 </div>
 
-                <div class="py-4">
-                    Предметы
+                <div class="subjects-section py-2 d-flex justify-content-between">
+                    <div class="left-side">
+                        <p class="analytics-title">
+                            {{ __('common.subjects') }}
+                        </p>
+                        <ul class="analytics-subjects">
+                            @foreach($subjects as $subject)
+                                <li>
+                                    <a href="#{{$subject->id}}">
+                                        {{ $subject->getTranslation('name', session()->get('lang', 'ru')) }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="right-side">
+                        <p class="analytics-title">
+                            {{ __('common.analytics') }}:
+                        </p>
+                        <div class="d-flex">
+                            <div>
+                                <canvas id="anayticsPie" width="291" height="291"></canvas>
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -57,4 +85,10 @@
             window.location='{{ url('change-lang') }}/' + data.value;
         }
     </script>
+
+    @push('custom-scripts')
+        <script src="{{ asset('js/chart.umd.js') }}"></script>
+        <script src="{{ asset('js/analytics-pie.js') }}"></script>
+    @endpush
+
 @endsection

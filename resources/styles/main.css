@@ -625,3 +625,55 @@ ol li:hover::marker {
     background-color: #5beb7b !important;
     box-shadow: none !important;
 }
+
+#analyticsPage .subjects-section {
+    height: 440px;
+    margin-top: 22px;
+}
+
+#analyticsPage .analytics-title {
+    margin-bottom: 0;
+    background-color: #A0B5C2;
+    color: #fff;
+    padding: 4px 18px;
+    border-radius: 20px;
+    font-size: 45px;
+}
+
+#analyticsPage .subjects-section > div.left-side {
+    background-color: rgba(160, 181, 194, 0.5);
+    width: 550px;
+    margin-right: 44px;
+    border-radius: 20px;
+}
+
+#analyticsPage ul.analytics-subjects {
+    list-style-type: none;
+    padding: 0 18px 22px 18px;
+    height: 360px;
+    overflow: scroll;
+}
+
+#analyticsPage ul.analytics-subjects li {
+    font-size: 35px;
+    margin: 11px 0;
+}
+
+#analyticsPage ul.analytics-subjects li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#analyticsPage ::-webkit-scrollbar {
+    display: none;
+}
+
+#analyticsPage ::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+#analyticsPage .subjects-section > div.right-side {
+    background-color: rgba(160, 181, 194, 0.5);
+    border-radius: 20px;
+    width: 710px;
+}

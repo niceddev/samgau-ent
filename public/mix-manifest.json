@@ -43,5 +43,6 @@
     "/js/main-bootstrap.js": "/js/main-bootstrap.js",
     "/js/results-doughnut.js": "/js/results-doughnut.js",
     "/js/results-pie.js": "/js/results-pie.js",
-    "/js/test-page.js": "/js/test-page.js"
+    "/js/test-page.js": "/js/test-page.js",
+    "/js/analytics-pie.js": "/js/analytics-pie.js"
 }
