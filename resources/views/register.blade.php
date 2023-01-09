@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 @csrf
-                <div class="row px-5 py-4">
+                <div class="row px-5 py-3">
                     <div class="px-0 d-flex justify-content-between align-items-center">
                         <a class="fw-bold" style="text-decoration:none;color: #2F327D; font-size: 40px;">
                             {{ mb_strtoupper(__('common.sign_up')) }}
@@ -68,15 +68,36 @@
 
                 <div class="row px-5 mt-3">
                     <label for="select-school" class="custom-label">{{ __('common.school') }}:</label>
-                    <select id="select-school" name="school" class="custom-input border-0 rounded-3" required>
-                        <option disabled selected>{{ __('common.select_school') }}</option>
+                    <select id="select-school" class="custom-input border-0 rounded-3"
+                            name="school" required>
+                        <option disabled selected value="">{{ __('common.select_school') }}</option>
                         @foreach($regions as $region)
-                            <option disabled value="{{ $region->id }}">{{ $region->title }}</option>
+                            <option disabled>{{ $region->title }}</option>
                             @foreach($region->schools()->get() as $school)
                                 <option value="{{ $school->id }}">{{ $school->title }}</option>
                             @endforeach
                         @endforeach
                     </select>
+                </div>
+
+                <div class="row px-5 mt-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <label for="gradeId" class="custom-label">{{ __('common.grade') }}:</label>
+                    </div>
+                    <div class="d-flex gap-2 p-0">
+                        <input id="gradeId" class="col-10 custom-input border-0 rounded-3"
+                               name="grade_number" required
+                               value="{{ old('grade_number') }}"
+                               type="number" max="11" min="5"
+                               placeholder="{{ __('common.grade') }}">
+                        <select id="select-school" class="col-2 custom-input border-0 rounded-3"
+                                name="grade_letter" required>
+                            <option disabled selected></option>
+                            @foreach(config('app.kazakh_alphabet') as $letter)
+                                <option value="{{ $letter }}" {{ old('grade_letter') === $letter ? 'selected' : ''}}>{{ $letter }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div class="row mt-5">

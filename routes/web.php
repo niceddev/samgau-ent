@@ -50,4 +50,13 @@ Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {
 
     });
 
+    Route::name('profile.')->group(function (){
+
+        Route::get('/profile', [
+            \App\Http\Controllers\ProfileController::class,
+            'index'
+        ])->name('index');
+
+    });
+
 });

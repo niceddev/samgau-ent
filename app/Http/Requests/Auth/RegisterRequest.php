@@ -25,10 +25,12 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'fio'      => 'required|string|max:255',
-            'email'    => 'required|string|email|max:255|unique:students',
-            'password' => ['required', 'confirmed', Password::min(3)],
-            'school'   => 'required|integer|min:0'
+            'fio'          => 'required|string|max:255',
+            'email'        => 'required|string|email|max:255|unique:students',
+            'password'     => ['required', 'confirmed', Password::min(3)],
+            'school'       => 'required|integer|min:0',
+            'grade_number' => 'required|string|in:5,6,7,8,9,10,11',
+            'grade_letter' => 'required|string',
         ];
     }
 

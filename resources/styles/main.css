@@ -677,3 +677,15 @@ ol li:hover::marker {
     border-radius: 20px;
     width: 710px;
 }
+
+#profilePage .profile-title {
+    background: #FBA333;
+    border-radius: 7px;
+    color: #fff;
+    font-size: 25px;
+}
+
+#profilePage .profile-text {
+    font-size: 25px;
+    color: #2F327D;
+}

@@ -34,6 +34,7 @@
     "/assets/world_history.png": "/assets/world_history.png",
     "/fonts/HeadingPro-Regular.ttf": "/fonts/HeadingPro-Regular.ttf",
     "/fonts/Helvetica Neue Condensed Bold.ttf": "/fonts/Helvetica Neue Condensed Bold.ttf",
+    "/js/analytics-pie.js": "/js/analytics-pie.js",
     "/js/app.js": "/js/app.js",
     "/js/bootstrap.bundle.js": "/js/bootstrap.bundle.js",
     "/js/bootstrap.esm.js": "/js/bootstrap.esm.js",
@@ -43,6 +44,5 @@
     "/js/main-bootstrap.js": "/js/main-bootstrap.js",
     "/js/results-doughnut.js": "/js/results-doughnut.js",
     "/js/results-pie.js": "/js/results-pie.js",
-    "/js/test-page.js": "/js/test-page.js",
-    "/js/analytics-pie.js": "/js/analytics-pie.js"
+    "/js/test-page.js": "/js/test-page.js"
 }

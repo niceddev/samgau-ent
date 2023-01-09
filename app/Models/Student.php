@@ -26,4 +26,9 @@ class Student extends Authenticatable
         return $this->hasOne(Grade::class, 'id', 'grade_id');
     }
 
+    public function school()
+    {
+        return $this->hasOne(School::class, 'id', 'school_id');
+    }
+
 }

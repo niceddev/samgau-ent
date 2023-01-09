@@ -6,7 +6,7 @@
 
 @section('content')
     <div id="thin-container">
-        <div id="lang_switcher" class="mb-2">
+        <div id="lang_switcher">
             <div>
                 @foreach(config('app.languages') as $key => $lang)
                     <a href="#" onclick="changeLanguage(this.dataset)" class="{{ session()->get('lang') === $key ? 'active_lang' : '' }}"
@@ -17,8 +17,8 @@
                 @endforeach
             </div>
         </div>
-        <h3 class="fs-2 text-center mt-5">{{ __('common.cabinet') }}</h3>
-        <div class="row text-white fs-3 flex justify-content-center pt-4">
+        <h3 class="fs-2 text-center mt-3">{{ __('common.cabinet') }}</h3>
+        <div class="row text-white fs-3 flex justify-content-center pt-3">
             <div class="col-sm-6 text-center">
 
                 <div class="row rounded-5 flex justify-content-center" style="background-color:#0080C2">
@@ -28,7 +28,7 @@
                     </a>
                 </div>
 
-                <div class="row rounded-5 flex justify-content-center mt-5" style="background-color:#2F327D">
+                <div class="row rounded-5 flex justify-content-center mt-4" style="background-color:#2F327D">
                     <a class="link-light text-decoration-none" href="{{ route('subjects') }}">
                         <img class="mt-4" src="{{ asset('assets/bank.png') }}" alt="" style="width:90px;height: 110px">
                         <p>{{ __('common.subjects') }}</p>
@@ -47,6 +47,12 @@
                 <button type="submit" class="rounded-4 text-white p-2 mx-auto border-0" style="background-color:#EDB021">
                     {{ __('common.consultation') }}
                 </button>
+            </div>
+
+            <div class="row mt-4">
+                <a href="{{ route('profile.index') }}" class="rounded-4 text-white p-2 mx-auto border-0 text-decoration-none text-center" style="background-color:#EDB021">
+                    {{ __('common.profile') }}
+                </a>
             </div>
 
             <div class="row mt-4">

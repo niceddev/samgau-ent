@@ -6,7 +6,6 @@ use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\Region;
 use App\Models\School;
 use App\Models\Student;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
@@ -23,12 +22,13 @@ class RegisterController
 
     public function store(RegisterRequest $registerRequest)
     {
+        dd($registerRequest->all());
         $student = Student::create([
             'fio'       => $registerRequest->input('fio'),
             'email'     => $registerRequest->input('email'),
             'password'  => Hash::make($registerRequest->input('password')),
             'school_id' => $registerRequest->input('school'),
-            'grade_id'  => null,
+            'grade_id'  => $registerRequest->input('grade_number') . '-' . $registerRequest->input('grade_letter'),
         ]);
 
         Auth::login($student);

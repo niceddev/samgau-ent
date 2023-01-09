@@ -64,5 +64,6 @@
         'exit_test'                   => 'Шығу',
         'execution_time'              => 'Орындау уақыты:',
         'test_analytics'              => 'Тест аналитикасы',
+        'profile'                     => 'Жеке карточка',
 
     ];
