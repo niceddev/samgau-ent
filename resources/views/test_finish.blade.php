@@ -50,7 +50,7 @@
                 {{ __('common.repeat_test') }}
             </a>
 
-            <a href="" class="btns d-flex align-items-center">
+            <a href="{{ route('test.statistics') }}" class="btns d-flex align-items-center">
                 {{ __('common.statistics') }}
             </a>
 

@@ -30,6 +30,9 @@ class TestController extends Controller
 
                         dump($option->option);
 
+//                        correct answers count
+//                        Test::insert();
+
                     }
 
                 }
@@ -39,6 +42,13 @@ class TestController extends Controller
         dd('asd');
 
         return view('test_finish');
+    }
+
+    public function statistics()
+    {
+//        $test = Test::all()
+
+//        return view('statistics', compact( 'test'));
     }
 
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    {{ __('common.cabinet') }}
+    {{ __('common.profile') }}
 @endsection()
 
 @section('content')
