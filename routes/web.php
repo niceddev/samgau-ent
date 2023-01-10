@@ -30,7 +30,7 @@ Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {
             'testFinish'
         ])->name('finish');
 
-        Route::post('/statistics', [
+        Route::get('/statistics', [
             \App\Http\Controllers\TestController::class,
             'statistics'
         ])->name('statistics');

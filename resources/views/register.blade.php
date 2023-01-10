@@ -82,14 +82,16 @@
 
                 <div class="row px-5 mt-3">
                     <div class="d-flex align-items-center justify-content-between">
-                        <label for="gradeId" class="custom-label">{{ __('common.grade') }}:</label>
+                        <label for="grade-id" class="custom-label">{{ __('common.grade') }}:</label>
                     </div>
                     <div class="d-flex gap-2 p-0">
-                        <input id="gradeId" class="col-10 custom-input border-0 rounded-3"
-                               name="grade_number" required
-                               value="{{ old('grade_number') }}"
-                               type="number" max="11" min="5"
-                               placeholder="{{ __('common.grade') }}">
+                        <select id="grade-id" class="col-10 custom-input border-0 rounded-3"
+                                name="grade_number" required>
+                            <option disabled selected value="">{{ __('common.grade') }}</option>
+                            @foreach([10, 11] as $grade)
+                                <option value="{{ $grade }}" {{ old('grade_number') === $grade ? 'selected' : ''}}>{{ $grade }}</option>
+                            @endforeach
+                        </select>
                         <select id="select-school" class="col-2 custom-input border-0 rounded-3"
                                 name="grade_letter" required>
                             <option disabled selected></option>

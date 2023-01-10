@@ -46,9 +46,9 @@ class TestController extends Controller
 
     public function statistics()
     {
-//        $test = Test::all()
+        $test = Test::all();
 
-//        return view('statistics', compact( 'test'));
+        return view('statistics', compact( 'test'));
     }
 
 }
