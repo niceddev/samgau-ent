@@ -44,7 +44,7 @@
 
             <div class="row">
                 <p class="profile-title">{{ __('common.grade') }}</p>
-                <p class="profile-text">{{ $student->grade }}</p>
+                <p class="profile-text">{{ $student->grade_number . $student->grade_letter }}</p>
             </div>
 
         </div>

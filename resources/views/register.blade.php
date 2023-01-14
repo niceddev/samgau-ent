@@ -107,6 +107,7 @@
                         {{ __('common.sign_up') }}
                     </button>
                 </div>
+{{--        <form action="{{ route('sendCode') }}" method="GET">  --}}
 
             </form>
         </div>

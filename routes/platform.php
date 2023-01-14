@@ -38,14 +38,3 @@ Route::screen('/students/form', \App\Orchid\Screens\Students\CreateScreen::class
 
 Route::screen('/students/form/{student}', \App\Orchid\Screens\Students\EditScreen::class)
     ->name('platform.students.edit');
-
-//Grades
-//Route::screen('/grades', \App\Orchid\Screens\Grades\IndexScreen::class)
-//    ->name('platform.grades.index');
-//
-//Route::screen('/grades/form', \App\Orchid\Screens\Grades\CreateScreen::class)
-//    ->name('platform.grades.create');
-//
-//Route::screen('/grades/form/{grade}', \App\Orchid\Screens\Grades\EditScreen::class)
-//    ->name('platform.grades.edit');
-

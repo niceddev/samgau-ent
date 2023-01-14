@@ -8,7 +8,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $student = Student::with('school', 'grade')
+        $student = Student::with('school')
             ->where('id', auth()->user()->id)
             ->first();
 

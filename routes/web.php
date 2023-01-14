@@ -9,6 +9,11 @@ Route::get('/change-lang/{lang}', [
     'changeLanguage'
 ])->name('change-lang');
 
+Route::get('/send-code', [
+    \App\Http\Controllers\MailController::class,
+    'sendCode'
+])->name('sendCode');
+
 require __DIR__ . '/auth.php';
 
 Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {

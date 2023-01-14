@@ -25,10 +25,6 @@ class PlatformProvider extends OrchidServiceProvider
     public function registerMainMenu(): array
     {
         return [
-//            Menu::make(__('common.subjects'))
-//                ->icon('book-open')
-//                ->route('platform.subjects.index'),
-
             Menu::make(__('common.questions'))
                 ->icon('question')
                 ->route('platform.subjects.index'),
@@ -37,9 +33,6 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('people')
                 ->route('platform.students.index'),
 
-//            Menu::make(__('common.grades'))
-//                ->icon('layers')
-//                ->route('platform.grades.index'),
         ];
     }
 

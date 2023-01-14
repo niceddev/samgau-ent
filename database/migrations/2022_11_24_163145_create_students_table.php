@@ -19,7 +19,8 @@ class CreateStudentsTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->foreignId('school_id')->constrained();
-            $table->foreignId('grade_id')->nullable()->constrained();
+            $table->smallInteger('grade_number')->nullable();
+            $table->string('grade_letter')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

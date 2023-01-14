@@ -11,7 +11,8 @@ class Student extends Authenticatable
         'email',
         'password',
         'school_id',
-        'grade_id',
+        'grade_number',
+        'grade_letter',
     ];
 
     protected $table = 'students';
@@ -20,11 +21,6 @@ class Student extends Authenticatable
         'password',
         'remember_token',
     ];
-
-    public function grade()
-    {
-        return $this->hasOne(Grade::class, 'id', 'grade_id');
-    }
 
     public function school()
     {
