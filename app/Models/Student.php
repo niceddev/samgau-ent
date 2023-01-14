@@ -27,4 +27,9 @@ class Student extends Authenticatable
         return $this->hasOne(School::class, 'id', 'school_id');
     }
 
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class);
+    }
+
 }

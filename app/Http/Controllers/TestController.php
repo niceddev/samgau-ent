@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,9 @@ class TestController extends Controller
         $subjects = Subject::with('questions', 'questions.options')
             ->whereIn('id', $request->input('subjects'))
             ->get();
+
+        auth()->user()->load('subjects')
+            ->subjects()->sync($subjects);
 
         return view('test', compact( 'subjects'));
     }

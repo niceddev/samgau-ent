@@ -53,14 +53,16 @@
                         {{ __('common.subjects_by_profile') }}
                     </h4>
                     <div class="row flex justify-content-center">
-                        @foreach($subjects->where('required', false) as $subject)
+                        @foreach($subjects->load('students')->where('required', false) as $subject)
                             <div class="col-sm-4 overflow-hidden subjects" data-id="{{ $subject->id }}" data-siblings="{{ json_encode($subject->siblings) }}">
                                 <div class="text-center">
                                     <label class="d-grid">
                                         <label data-id="{{ $subject->id }}" class="p-3 mb-2 rounded-4 custom-checkbox subject-label img d-flex justify-content-center"
                                                style="margin:0 auto;width:90px;height:90px;background-color: {{ $subject->color }};" data-color="{{ $subject->color }}">
                                             <img class="subject" src="{{ asset($subject->image_path) }}" alt="" >
-                                            <input class="subject-item" type="checkbox" name="subjects[]" value="{{ $subject->id }}" data-siblings="{{ json_encode($subject->siblings) }}">
+                                            <input class="subject-item" type="checkbox" name="subjects[]"
+                                                   value="{{ $subject->id }}" data-siblings="{{ json_encode($subject->siblings) }}"
+                                                   @if($subject->students->find(auth()->user()->id)) checked @endif >
                                             <span class="little-checkmark"></span>
                                         </label>
                                         <h4 class="break-words" style="color: #737373;">

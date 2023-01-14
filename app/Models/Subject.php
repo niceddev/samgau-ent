@@ -30,4 +30,9 @@ class Subject extends Model
         return $this->hasMany(Question::class)->orderBy('id');
     }
 
+    public function students()
+    {
+        return $this->belongsToMany(Student::class);
+    }
+
 }

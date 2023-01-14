@@ -1,9 +1,41 @@
 window.addEventListener("load", () => {
 
+    let alreadyCheckedInputs = document.querySelectorAll('.subject-item[type=checkbox]:checked')
+
     let startTestBtn = document.querySelector('#subjectsForm button')
     let tempGlobalSiblingIds = []
     let globalSiblingIds = []
     let allLabels = document.querySelectorAll('.subject-label')
+
+    if (alreadyCheckedInputs.length !== 0){
+        let notCheckedInputs = document.querySelectorAll('.subjects input[type=checkbox]:not(:checked)')
+
+        alreadyCheckedInputs.forEach(function(input){
+            let siblingIds = JSON.parse(input.dataset.siblings)
+
+            siblingIds.forEach(function (id){
+                if (input.checked) {
+                    tempGlobalSiblingIds.push(input.value + '.' + id)
+                } else{
+                    tempGlobalSiblingIds = tempGlobalSiblingIds.filter(item => item !== input.value + '.' + id);
+                }
+            })
+
+            globalSiblingIds = tempGlobalSiblingIds.map(id => Number(id.split('.')[1]))
+
+        })
+
+        notCheckedInputs.forEach(function (el){
+            let label = el.parentNode
+
+            label.style.backgroundColor = '#bfbfbf'
+            label.style.transition = 'all 0.3s ease-out'
+            label.querySelector('input').disabled = true
+        })
+
+        startTestBtn.disabled = false
+        startTestBtn.style.filter = 'grayscale(0)'
+    }
 
     allLabels.forEach(function (el){
 
