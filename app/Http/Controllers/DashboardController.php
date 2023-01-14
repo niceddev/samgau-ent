@@ -9,9 +9,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $subjects = Subject::get();
+        $studentsSubjects = auth()->user()->load('subjects')->subjects;
 
-        return view('dashboard', compact('subjects'));
+        return view('dashboard', compact('studentsSubjects'));
     }
 
 }

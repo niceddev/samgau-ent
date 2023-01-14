@@ -52,7 +52,7 @@
                             {{ __('common.subjects') }}
                         </p>
                         <ul class="analytics-subjects">
-                            @foreach($subjects as $subject)
+                            @foreach($studentsSubjects as $subject)
                                 <li>
                                     <a href="#{{$subject->id}}">
                                         {{ $subject->getTranslation('name', session()->get('lang', 'ru')) }}
