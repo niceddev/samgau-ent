@@ -49,6 +49,11 @@ Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {
             'index'
         ])->name('index');
 
+        Route::get('/dashboard/subject/{subject}', [
+            \App\Http\Controllers\DashboardController::class,
+            'subject'
+        ])->name('subject');
+
     });
 
     Route::name('cabinet.')->group(function (){

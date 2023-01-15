@@ -54,7 +54,7 @@
                         <ul class="analytics-subjects">
                             @foreach($studentsSubjects as $subject)
                                 <li>
-                                    <a href="#{{$subject->id}}">
+                                    <a href="{{ route('dashboard.subject', $subject->id) }}">
                                         {{ $subject->getTranslation('name', session()->get('lang', 'ru')) }}
                                     </a>
                                 </li>
@@ -65,12 +65,21 @@
                         <p class="analytics-title">
                             {{ __('common.analytics') }}:
                         </p>
-                        <div class="d-flex">
+                        <div class="d-flex p-4">
                             <div>
                                 <canvas id="anayticsPie" width="291" height="291"></canvas>
                             </div>
                             <div>
-
+                                <ul class="list-unstyled fs-5 p-4">
+                                    @foreach($studentsSubjects as $subject)
+                                        <li>
+                                            <a class="text-white text-decoration-none" href="#{{$subject->id}}">
+                                                {{ $subject->getTranslation('name', session()->get('lang', 'ru')) }}
+                                                - 99
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -89,6 +98,8 @@
     @push('custom-scripts')
         <script src="{{ asset('js/chart.umd.js') }}"></script>
         <script src="{{ asset('js/analytics-pie.js') }}"></script>
+        <script src="{{ asset('js/chartjs-plugin-datalabels.js') }}"></script>
+        <script src="{{ asset('js/chartjs-plugin-datalabels.min.js') }}"></script>
     @endpush
 
 @endsection

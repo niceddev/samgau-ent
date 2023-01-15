@@ -14,4 +14,10 @@ class DashboardController extends Controller
         return view('dashboard', compact('studentsSubjects'));
     }
 
+    public function subject(Subject $subject)
+    {
+
+        return view('dashboard-subject', compact('subject'));
+    }
+
 }
