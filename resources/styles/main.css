@@ -701,11 +701,38 @@ ol li:hover::marker {
     font-size: 40px;
     background-color: #CFDAE0;
     box-shadow: 1px 1px 11px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #subjectAnalyticPage .right-side .row .content-side {
     font-size: 20px;
     background-color: rgba(207, 218, 224, 0.3);
+    display: flex;
+    align-items: center;
+}
+
+#subjectAnalyticPage .left-side .subject-title {
+    background: #A0B5C2;
+    border-radius: 20px;
+    color: #fff;
+}
+
+#subjectAnalyticPage .left-side .calendar {
+    background: #FFFFFF;
+    box-shadow: 1px 1px 11px rgba(0, 0, 0, 0.4);
+    border-radius: 23px;
+}
+
+#subjectAnalyticPage .left-side .test-results > p {
+    color: #A0B5C2;
+    font-size: 25px;
+}
+
+#subjectAnalyticPage .left-side .test-results > div {
+    background: #CFDAE0;
+    border-radius: 20px;
 }
 
 

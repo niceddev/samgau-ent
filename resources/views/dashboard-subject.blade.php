@@ -23,11 +23,25 @@
         <div class="bg-white container rounded-4" style="padding: 116px 0">
             <div class="row d-flex justify-content-between">
 
-                <div class="left-side bg-danger col-5">
+                <div class="left-side col-5 px-5">
 
-                    <p class="analytics-title fs-2 text-center">
+                    <p class="subject-title fs-2 text-center">
                         {{ $subject->getTranslation('name', session()->get('lang', 'ru')) }}
                     </p>
+
+                    <div class="calendar">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem enim ex, id iusto labore, laboriosam laudantium maxime pariatur quas reiciendis veniam veritatis voluptatem. Aliquam facilis odit officia tempore temporibus vel?
+
+                    </div>
+
+                    <div class="test-results">
+                        <p>{{ __('common.test_results') }}</p>
+
+                        <div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 

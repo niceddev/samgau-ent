@@ -17,7 +17,8 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->jsonb('question');
             $table->jsonb('sub_question')->nullable();
-            $table->foreignId('grade_id')->nullable()->constrained();
+            $table->smallInteger('grade_number')->nullable();
+            $table->string('grade_letter')->nullable();
             $table->integer('subject_id');
             $table->timestamps();
         });

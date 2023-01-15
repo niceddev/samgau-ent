@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subject;
+use App\Models\Test;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -16,8 +17,9 @@ class DashboardController extends Controller
 
     public function subject(Subject $subject)
     {
+        $tests = Test::where('student_id', auth()->user()->id)->get();
 
-        return view('dashboard-subject', compact('subject'));
+        return view('dashboard-subject', compact('subject', 'tests'));
     }
 
 }

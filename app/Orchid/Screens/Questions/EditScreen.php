@@ -2,8 +2,6 @@
 
 namespace App\Orchid\Screens\Questions;
 
-use App\Models\Grade;
-use App\Models\Option;
 use App\Models\Question;
 use App\Models\Subject;
 use App\Orchid\Screens\AbstractMultiLanguageScreen;
@@ -104,11 +102,15 @@ class EditScreen extends AbstractMultiLanguageScreen
                     CheckBox::make('options.e.is_correct')->title('E')->value($optionE['is_correct'])->sendTrueOrFalse(),
                 ]),
 
-                Select::make('question.grade_id')
-                    ->fromModel(Grade::class, 'name')
-                    ->empty('No select')
-                    ->value($this->question->grade_id)
+                Input::make('question.grade_number')
+                    ->type('number')
                     ->title('Выберите класс'),
+                Select::make('question.grade_letter')
+                    ->options(array_combine(
+                        config('app.kazakh_alphabet'),
+                        config('app.kazakh_alphabet')
+                    ))
+                    ->title('Буква'),
                 Input::make('question.subject_id')
                     ->value($this->subject->id)
                     ->hidden(),

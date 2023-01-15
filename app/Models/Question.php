@@ -12,7 +12,8 @@ class Question extends Model
     protected $fillable = [
         'question',
         'sub_question',
-        'grade_id',
+        'grade_number',
+        'grade_letter',
         'subject_id',
     ];
 
