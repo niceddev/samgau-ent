@@ -689,3 +689,23 @@ ol li:hover::marker {
     font-size: 25px;
     color: #2F327D;
 }
+
+#subjectAnalyticPage .right-side .row > div {
+    height: 122px;
+    border-radius: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+#subjectAnalyticPage .right-side .row .title-side {
+    font-size: 40px;
+    background-color: #CFDAE0;
+    box-shadow: 1px 1px 11px rgba(0, 0, 0, 0.4);
+}
+
+#subjectAnalyticPage .right-side .row .content-side {
+    font-size: 20px;
+    background-color: rgba(207, 218, 224, 0.3);
+}
+
+
