@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
@@ -10,7 +9,7 @@ class TestController extends Controller
 {
     public function index(Request $request)
     {
-        $subjects = Subject::with('questions', 'questions.options')
+        $subjects = Subject::with('questions')
             ->whereIn('id', $request->input('subjects'))
             ->get();
 
@@ -27,16 +26,16 @@ class TestController extends Controller
             ->get();
 
         foreach ($subjects as $subject) {
-            foreach ($subject->questions as $question) {
+            foreach ($subject->questions->where('grade_number', auth()->user()->grade_number) as $question) {
                 foreach ($question->options->where('is_correct', true) as $option) {
 
                     if(in_array($option->option, $request->input('question-' . $question->id))){
 
                         dump($option->option);
-
-//                        correct answers count
-//                        Test::insert();
-
+//
+////                        correct answers count
+////                        Test::insert();
+//
                     }
 
                 }
