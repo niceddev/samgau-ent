@@ -59,6 +59,10 @@ body {
     background: #FBA333;
 }
 
+#lang_switcher div > a.back_btn {
+    background: #2F327D;
+}
+
 #lang_switcher > a {
     background: #FBA333;
     border-radius: 6px;
