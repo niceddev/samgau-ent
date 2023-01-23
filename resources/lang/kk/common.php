@@ -53,7 +53,7 @@
         'max_score'          => 'Максималды балл',
         'average_score'      => 'Орташа балл',
         'add_question'       => 'Сұрақ қосу',
-        'start_test'         => 'Начать тест',
+        'start_test'         => 'Тестті бастаңыз',
         'next_question'      => 'Келесі сұрақ',
 
         'you_have_completed_the_test' => 'Сіз тестті аяқтадыңыз!',

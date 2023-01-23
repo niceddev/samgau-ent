@@ -25,22 +25,22 @@
         <h3 class="fs-3 text-center mt-5">{{ __('common.choose_profile_and_start') }}</h3>
 
         <div class="row">
-            <form id="subjectsForm" action="{{ route('test.index') }}" method="GET" class="d-inline-flex justify-content-center">
+            <form id="subjectsForm" action="{{ route('test.index') }}" method="GET" class="d-inline-flex justify-content-center gap-5">
                 <div class="col-sm-5">
-                    <h4 class="secondary text-center mb-3 mt-2 fs-5">
+                    <h4 class="secondary text-center mb-4 mt-3 fs-5 pb-3">
                         {{ __('common.must_subjects_title') }}
                     </h4>
-                    <div class="row">
+                    <div class="row gap-3">
                         @foreach($subjects->where('required', true) as $requiredSubject)
                             <div class="text-center mb-3">
                                 <input type="hidden" name="subjects[]" value="{{ $requiredSubject->id }}">
                                 <label class="p-3 rounded-4 custom-checkbox d-flex justify-content-center"
-                                       style="margin:0 auto;width:144px;height:144px;background-color: {{ $requiredSubject->color }}">
+                                       style="margin:0 auto;width:151px;height:151px;background-color: {{ $requiredSubject->color }}">
                                     <img src="{{ asset($requiredSubject->image_path) }}" alt="">
                                     <input type="checkbox" checked disabled name="subjects[]" value="{{ $requiredSubject->id }}">
                                     <span class="checkmark"></span>
                                 </label>
-                                <h4 class="mt-4 fs-5" style="width:150px;margin:0 auto;color:#737373;">
+                                <h4 class="mt-4" style="width:150px;margin:0 auto;color:#737373;font-size:17px !important;">
                                     {{ $requiredSubject->getTranslation('name',  session()->get('lang', 'ru')) }}
                                 </h4>
                             </div>
@@ -48,8 +48,8 @@
                     </div>
                 </div>
 
-                <div class="col-sm-9">
-                    <h4 class="mb-3 mt-2 fs-5 text-center">
+                <div class="col-sm-7">
+                    <h4 class="mb-4 mt-3 fs-5 text-center pb-3">
                         {{ __('common.subjects_by_profile') }}
                     </h4>
                     <div class="row flex justify-content-center">
@@ -58,23 +58,23 @@
                                 <div class="text-center">
                                     <label class="d-grid">
                                         <label data-id="{{ $subject->id }}" class="p-3 mb-2 rounded-4 custom-checkbox subject-label img d-flex justify-content-center"
-                                               style="margin:0 auto;width:90px;height:90px;background-color: {{ $subject->color }};" data-color="{{ $subject->color }}">
+                                               style="margin:0 auto;width:80px;height:80px;background-color: {{ $subject->color }};" data-color="{{ $subject->color }}">
                                             <img class="subject" src="{{ asset($subject->image_path) }}" alt="" >
                                             <input class="subject-item" type="checkbox" name="subjects[]"
                                                    value="{{ $subject->id }}" data-siblings="{{ json_encode($subject->siblings) }}"
                                                    @if($subject->students->find(auth()->user()->id)) checked @endif >
                                             <span class="little-checkmark"></span>
                                         </label>
-                                        <h4 class="break-words" style="color: #737373;">
+                                        <h6 class="break-words" style="color: #737373; font-size: 14px">
                                             {{ $subject->getTranslation('name',  session()->get('lang', 'ru')) }}
-                                        </h4>
+                                        </h6>
                                     </label>
                                 </div>
                             </div>
                         @endforeach
                         <div class="row">
-                            <button type="submit" form="subjectsForm" class="login-btn text-white fs-2 mt-2 p-3 rounded-4 border-0"
-                                disabled style="filter: grayscale(100%)">
+                            <button type="submit" form="subjectsForm" class="login-btn text-white mt-2  rounded-4 border-0"
+                                disabled style="filter: grayscale(100%); font-size: 40px">
                                 {{ __('common.start_test') }}
                             </button>
                         </div>

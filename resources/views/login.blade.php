@@ -46,7 +46,6 @@
                         <div class="row px-5">
                             <div class="d-flex px-0 align-items-center justify-content-between">
                                 <label for="email" class="custom-label">Email:</label>
-                                <a href="#" class="golden-text">{{ __('common.link_sign_in') }}:</a>
                             </div>
                             <input id="email" name="email"
                                    value="{{ old('email') }}"
