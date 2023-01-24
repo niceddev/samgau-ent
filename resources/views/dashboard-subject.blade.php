@@ -30,8 +30,38 @@
                     </p>
 
                     <div class="calendar">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem enim ex, id iusto labore, laboriosam laudantium maxime pariatur quas reiciendis veniam veritatis voluptatem. Aliquam facilis odit officia tempore temporibus vel?
 
+                        <div>
+                            <div id="year-tab" class="visually-hidden nav nav-tabs" role="tablist">
+                                @foreach($dates as date)
+                                    <span id="tab-{{ $date['year'] }}" class="nav-link @if($loop->first)active @endif"
+                                          data-bs-toggle="tab" data-bs-target="#year-{{ $year }}"
+                                          type="button" role="tab"
+                                          aria-labelledby="nav-{{ $year }}"></span>
+                                @endforeach
+                            </div>
+                            <div class="d-flex justify-content-around">
+                                <div>
+                                    prev
+                                </div>
+                                <div>
+                                    January
+                                </div>
+                                <div>
+                                    next
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            @foreach(['ПОН', 'ВТР', 'СРД', 'ЧЕТ', 'ПЯТ', 'СУБ', 'ВОС'] as $day)
+                                <span class="col text-center my-2 p-0 week">{{ $day }}</span>
+                            @endforeach
+                        </div>
+                        <div>
+
+
+
+                        </div>
                     </div>
 
                     <div class="test-results">
@@ -90,6 +120,10 @@
         </div>
     </div>
 
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    @push('custom-scripts')
+        <script src="{{ asset('js/dashboard-calendar.js') }}"></script>
+    @endpush
     <script>
         function changeLanguage(data){
             window.location='{{ url('change-lang') }}/' + data.value;

@@ -602,6 +602,8 @@ ol li:hover::marker {
     display: block;
 }
 
+
+
 .next-question {
     width: 170px;
 }
@@ -739,6 +741,13 @@ ol li:hover::marker {
 #subjectAnalyticPage .left-side .test-results > div {
     background: #CFDAE0;
     border-radius: 20px;
+}
+
+.calendar .week {
+    font-size: 10px;
+    color: #212121;
+    max-width: 44px;
+    font-weight: 600;
 }
 
 
