@@ -22,15 +22,12 @@ class DashboardController extends Controller
 
         $dates = collect();
         for ($i = 1; $i <= 12; $i++) {
-            $dates->push(
-                collect(
+            $dates->push((object)[
                 'month' => Carbon::now()->month($i)->monthName,
-                    'year'  => Carbon::now()->format('Y'),
-                    'days'  => Carbon::now()->month($i)->daysInMonth
-                )
-            );
+                'year' => Carbon::now()->format('Y'),
+                'days' => Carbon::now()->month($i)->daysInMonth
+            ]);
         }
-        dd($dates);
 
         return view('dashboard-subject', compact('subject', 'tests', 'dates'));
     }

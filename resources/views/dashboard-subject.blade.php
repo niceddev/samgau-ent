@@ -33,11 +33,11 @@
 
                         <div>
                             <div id="year-tab" class="visually-hidden nav nav-tabs" role="tablist">
-                                @foreach($dates as date)
-                                    <span id="tab-{{ $date['year'] }}" class="nav-link @if($loop->first)active @endif"
-                                          data-bs-toggle="tab" data-bs-target="#year-{{ $year }}"
+                                @foreach($dates as $date)
+                                    <span id="tab-{{ $date->year }}" class="nav-link @if($loop->first)active @endif"
+                                          data-bs-toggle="tab" data-bs-target="#year-{{ $date->year }}"
                                           type="button" role="tab"
-                                          aria-labelledby="nav-{{ $year }}"></span>
+                                          aria-labelledby="nav-{{ $date->year }}"></span>
                                 @endforeach
                             </div>
                             <div class="d-flex justify-content-around">
