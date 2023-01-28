@@ -40,7 +40,7 @@
                             @endforeach
                         </div>
 
-                        <div class="tab-content">
+                        <div class="calendar-days">
 
                         </div>
                     </div>
