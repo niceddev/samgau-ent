@@ -30,48 +30,18 @@
                     </p>
 
                     <div class="calendar">
-                        <div>
-                            <div id="year-tab" class="visually-hidden nav nav-tabs" role="presentation">
-                                @foreach($dates as $date)
-                                    <span id="tab-{{ $date->year }}" class="nav-link @if($loop->first)active @endif"
-                                          data-bs-toggle="tab" data-bs-target="#year-{{ $date->month }}"
-                                          type="button" role="presentation"
-                                          aria-labelledby="nav-{{ $date->year }}"></span>
-                                @endforeach
-                            </div>
-                            <div class="tab-content" style="background-color: #A0B5C2; border-radius: 20px 20px 0 0;">
-                                @foreach($dates as $date)
-                                    <div class="d-flex justify-content-around tab-pane fade @if($loop->first)show active @endif" id="year-{{ $date->month }}" role="tabpanel">
-                                        <div class="prev-month">
-                                            prev
-                                        </div>
-                                        <div>
-                                            {{ $date->month }}
-                                        </div>
-                                        <div class="next-month">
-                                            next
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
+                        <div class="text-center text-white" style="border-radius: 20px 20px 0 0; background-color: #A0B5C2; font-size: 37px">
+                            <input type="month" id="calendarMonths" name="calendar" value="2023-01">
                         </div>
 
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center py-3">
                             @foreach(['ПОН', 'ВТР', 'СРД', 'ЧЕТ', 'ПЯТ', 'СУБ', 'ВОС'] as $day)
-                                <span class="col text-center my-2 p-0 week">{{ $day }}</span>
+                                <span class="col text-center p-0 week">{{ $day }}</span>
                             @endforeach
                         </div>
 
                         <div class="tab-content">
-                            @foreach($dates as $date)
-                                <div class="d-flex justify-content-around tab-pane fade @if($loop->first)show active @endif" id="year-{{ $date->month }}" role="tabpanel">
-                                    @for($i = 0; $i <= $date->days; $i++)
-                                        <a class="" href="{{ $date->month }}/{{ $i }}">
-                                            {{ $i }}
-                                        </a>
-                                    @endfor
-                                </div>
-                            @endforeach
+
                         </div>
                     </div>
 

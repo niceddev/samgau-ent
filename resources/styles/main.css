@@ -700,6 +700,18 @@ ol li:hover::marker {
     width: 710px;
 }
 
+#calendarMonths {
+    border: none;
+    outline: none;
+    color: #fff;
+    text-align: center;
+    background-color: rgba(0,0,0,0);
+}
+
+#calendarMonths::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
 #profilePage .profile-title {
     background: #FBA333;
     border-radius: 7px;
@@ -758,10 +770,10 @@ ol li:hover::marker {
 }
 
 .calendar .week {
-    font-size: 10px;
+    font-size: 14px;
     color: #212121;
-    max-width: 44px;
-    font-weight: 600;
+    max-width: 60px;
+    font-family: 'Nunito', sans-serif;
 }
 
 
