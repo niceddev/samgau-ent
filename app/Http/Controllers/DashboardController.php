@@ -16,8 +16,9 @@ class DashboardController extends Controller
         return view('dashboard', compact('studentsSubjects'));
     }
 
-    public function subject(Subject $subject)
+    public function showDetailed(Request $request)
     {
+        $subject = Subject::where('id', $request->input('subject-id'))->first();
         $tests = Test::where('student_id', auth()->user()->id)->get();
 
         $dates = collect();

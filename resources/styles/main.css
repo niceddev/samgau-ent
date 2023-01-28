@@ -657,7 +657,7 @@ ol li:hover::marker {
 
 #analyticsPage ul.analytics-subjects {
     list-style-type: none;
-    padding: 0 18px 22px 18px;
+    padding: 0 0 22px 0;
     height: 360px;
     overflow: scroll;
 }
@@ -665,11 +665,25 @@ ol li:hover::marker {
 #analyticsPage ul.analytics-subjects li {
     font-size: 35px;
     margin: 12px 0;
+    padding-left: 18px;
+    padding-right: 18px;
 }
 
 #analyticsPage ul.analytics-subjects li a {
     color: #fff;
     text-decoration: none;
+}
+
+#analyticsPage ul li {
+    cursor: pointer;
+}
+
+#analyticsPage ul.analytics-subjects input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
 }
 
 #analyticsPage ::-webkit-scrollbar {

@@ -29,7 +29,9 @@
         'subjects_by_profile'      => 'Профиль бойынша пәндер',
         'talk_with_tp'             => 'Техникалық қолдауға жазу',
         'consultation'             => 'Консультация',
+        'detailed_analytics'       => 'Толық ақпарат',
 
+        'return_back'           => 'Артқа қайту',
         'log_out'               => 'Шығу',
         'to_back'               => 'Артқа',
         'sign_in'               => 'Кіру',

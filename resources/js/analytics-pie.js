@@ -1,14 +1,11 @@
 window.addEventListener("load", () => {
 
     const ctx = document.getElementById('anayticsPie')
-    const backgroundColors = ['#f33c3c', '#A0B5C2', '#ffd823', '#0090ec', '#ccc'];
+    const backgroundColors = ['#fff', '#A0B5C2'];
 
     const testScores = [
         30,
         90,
-        40,
-        145,
-        25
     ]
 
     new Chart(ctx, {
@@ -29,14 +26,14 @@ window.addEventListener("load", () => {
                 datalabels: {
                     font: (context) => {
                         let width = context.chart.width;
-                        let size = Math.round(width/10);
+                        let size = Math.round(width/5);
 
                         return {
                             size: size,
                             weight: 'bold',
                         };
                     },
-                    color: '#fff'
+                    color: '#c2d1dc',
                 },
                 legend: {
                     display: false,

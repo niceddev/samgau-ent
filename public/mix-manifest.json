@@ -43,8 +43,9 @@
     "/js/chartjs-plugin-datalabels.js": "/js/chartjs-plugin-datalabels.js",
     "/js/chartjs-plugin-datalabels.min.js": "/js/chartjs-plugin-datalabels.min.js",
     "/js/choose-subjects.js": "/js/choose-subjects.js",
+    "/js/dashboard-calendar.js": "/js/dashboard-calendar.js",
     "/js/main-bootstrap.js": "/js/main-bootstrap.js",
     "/js/results-doughnut.js": "/js/results-doughnut.js",
-    "/js/test-page.js": "/js/test-page.js",
-    "/js/dashboard-calendar.js": "/js/dashboard-calendar.js"
+    "/js/results-pie.js": "/js/results-pie.js",
+    "/js/test-page.js": "/js/test-page.js"
 }

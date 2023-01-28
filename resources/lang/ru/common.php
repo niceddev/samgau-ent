@@ -29,7 +29,9 @@
         'subjects_by_profile'      => 'Предметы по профилю',
         'talk_with_tp'             => 'Написать в тех поддержку',
         'consultation'             => 'Консультация',
+        'detailed_analytics'       => 'Детальная аналитика',
 
+        'return_back'           => 'Вернуться назад',
         'log_out'               => 'Выход',
         'to_back'               => 'Назад',
         'sign_in'               => 'Вход',
