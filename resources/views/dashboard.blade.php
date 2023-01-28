@@ -78,7 +78,7 @@
                 </div>
 
             </div>
-            <button form="detailed-analytics" class="border-0 mt-2 float-end text-white p-1 px-4 rounded-4 text-decoration-none" style="font-size: 30px; background-color: #FBA333">
+            <button form="detailed-analytics" class="border-0 mt-2 mb-5 float-end text-white p-1 px-4 rounded-4 text-decoration-none" style="font-size: 30px; background-color: #FBA333">
                 {{ __('common.detailed_analytics') }}
             </button>
         </div>

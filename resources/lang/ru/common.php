@@ -30,6 +30,7 @@
         'talk_with_tp'             => 'Написать в тех поддержку',
         'consultation'             => 'Консультация',
         'detailed_analytics'       => 'Детальная аналитика',
+        'begin_test_again'         => 'Начать тест заного',
 
         'return_back'           => 'Вернуться назад',
         'log_out'               => 'Выход',

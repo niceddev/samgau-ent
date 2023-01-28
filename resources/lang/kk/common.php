@@ -30,6 +30,7 @@
         'talk_with_tp'             => 'Техникалық қолдауға жазу',
         'consultation'             => 'Консультация',
         'detailed_analytics'       => 'Толық ақпарат',
+        'begin_test_again'         => 'Тестті қайтадан бастау',
 
         'return_back'           => 'Артқа қайту',
         'log_out'               => 'Шығу',

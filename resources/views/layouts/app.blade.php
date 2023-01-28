@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="content-language" content="ru">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-reboot.css') }}">
