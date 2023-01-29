@@ -20,7 +20,7 @@
 {{--        </a>--}}
 {{--    </div>--}}
     <div id="subjectAnalyticPage">
-        <div class="bg-white container rounded-4" style="padding: 116px 0">
+        <div class="bg-white container rounded-4" style="padding: 56px 0">
             <div class="row d-flex justify-content-between">
 
                 <div class="left-side col-5 px-5">
@@ -88,12 +88,21 @@
                         </div>
                     </div>
 
-                    <div class="row gap-1 d-flex justify-content-around">
+                    <div class="row gap-1 d-flex justify-content-around mb-4">
                         <div class="title-side col-4">
                             {{ mb_strtoupper(__('common.topic')) }}
                         </div>
                         <div class="content-side col-7">
                             asdasda
+                        </div>
+                    </div>
+
+                    <div class="row gap-1 d-flex justify-content-around">
+                        <div class="title-side col-4">
+                            {{ mb_strtoupper(__('common.fix_mistakes')) }}
+                        </div>
+                        <div class="content-side col-7">
+                            <a href class="text-white">ссылка на тему урока, в котором ошибся ученик</a>
                         </div>
                     </div>
 
