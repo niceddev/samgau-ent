@@ -772,8 +772,29 @@ ol li:hover::marker {
 .calendar .week {
     font-size: 14px;
     color: #212121;
-    max-width: 60px;
+    max-width: 50px;
     font-family: 'Nunito', sans-serif;
 }
 
+.calendar-days span {
+    margin-top: 20px;
+}
+
+.calendar-days span a {
+    text-decoration: none;
+    color: #212121;
+    position: relative;
+}
+
+.calendar-days span::before {
+    content: '';
+    display: block;
+    position: absolute;
+    margin-top: -4px;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: #EDEFF1;
+    border-radius: 100%;
+}
 

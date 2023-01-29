@@ -1,21 +1,40 @@
 window.addEventListener("load", () => {
 
-    let calendarMonths = document.getElementById('calendarMonths')
+    let calendarMonths = document.getElementById("calendarMonths")
 
-    calendarMonths.addEventListener('change', function ({input}){
+    let date = new Date(calendarMonths.value)
+    let daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
+    let calendarDays = document.querySelector(".calendar-days")
+    calendarDays.innerHTML = ""
 
-        let date = new Date(calendarMonths.value);
-        let daysInMonth = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
-        let calendarDays = document.querySelector('.calendar-days')
-        calendarDays.innerHTML = ''
+    let days = Array.from({length: daysInMonth}, (_, i) => i + 1);
+    let weeks = [];
 
-        for (let i = 1; i <= daysInMonth; i++) {
-            const span = document.createElement("span");
-            const node = document.createTextNode(i);
-            span.appendChild(node);
+    while (days.length) {
+        weeks.push(days.splice(0, 7));
+    }
 
-            calendarDays.appendChild(span);
-        }
+    weeks.map(function (week){
+        const rowDiv = document.createElement("div")
+        rowDiv.classList.add("row")
+
+        week.map(function (day){
+            const span = document.createElement("span")
+            span.classList.add("col", "text-center", "p-0")
+            span.style.maxWidth = "50px"
+
+            const link = document.createElement("a")
+            link.href = day
+            link.innerHTML = day
+            span.appendChild(link)
+
+            rowDiv.appendChild(span)
+        })
+
+        calendarDays.appendChild(rowDiv)
+    })
+
+    calendarMonths.addEventListener("change", function ({input}){
 
     })
 

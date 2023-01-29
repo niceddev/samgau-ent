@@ -29,20 +29,21 @@
                         {{ mb_strtoupper($subject->getTranslation('name', session()->get('lang', 'ru'))) }}
                     </p>
 
-                    <div class="calendar">
+                    <div class="calendar pb-4">
                         <div class="text-center text-white" style="border-radius: 20px 20px 0 0; background-color: #A0B5C2; font-size: 37px">
                             <input type="month" id="calendarMonths" name="calendar" value="2023-01">
                         </div>
 
-                        <div class="row justify-content-center py-3">
-                            @foreach(['ПОН', 'ВТР', 'СРД', 'ЧЕТ', 'ПЯТ', 'СУБ', 'ВОС'] as $day)
-                                <span class="col text-center p-0 week">{{ $day }}</span>
-                            @endforeach
+                        <div style="width: 326px; margin: 0 auto">
+                            <div class="row mt-3">
+                                @foreach(['ПОН', 'ВТР', 'СРД', 'ЧЕТ', 'ПЯТ', 'СУБ', 'ВОС'] as $day)
+                                    <span class="col text-center p-0 week">{{ $day }}</span>
+                                @endforeach
+                            </div>
+
+                            <div class="calendar-days"></div>
                         </div>
 
-                        <div class="calendar-days">
-
-                        </div>
                     </div>
 
                     <div class="test-results my-4">
@@ -95,7 +96,6 @@
                             asdasda
                         </div>
                     </div>
-                    <input type="month" id="asd">
 
                 </div>
 
