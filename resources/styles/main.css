@@ -798,3 +798,21 @@ ol li:hover::marker {
     border-radius: 100%;
 }
 
+.test-results div.col {
+    margin: 5px;
+    color: #fff;
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    line-height: 25px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.test-results .correct {
+    background: #2F8C51;
+}
+
+.test-results .error {
+    background: #CA2828;
+}

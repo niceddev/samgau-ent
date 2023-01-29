@@ -51,8 +51,15 @@
                             {{ mb_strtoupper(__('common.test_results')) }}
                         </p>
 
-                        <div style="background: #CFDAE0; border-radius: 20px; width: 330px; height: 200px;">
-
+                        <div class="p-3 container" style="background: #CFDAE0; border-radius: 20px;">
+                            <div class="row row-cols-6 px-4 p-1">
+                                @foreach(range(1,30) as $key => $num)
+    {{--                                <span class="if $num->correct .correct else .error">--}}
+                                    <div class="col text-center correct">
+                                        {{ $num }}
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
 
                     </div>
