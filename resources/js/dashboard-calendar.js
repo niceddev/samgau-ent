@@ -1,6 +1,14 @@
 window.addEventListener("load", () => {
 
     let calendarMonths = document.getElementById("calendarMonths")
+    let currentDate = new URLSearchParams(window.location.search).get("date")
+    if (currentDate === null){
+        calendarMonths.value = "2023-01"
+    } else {
+        calendarMonths.value = currentDate.slice(0,7)
+    }
+
+    const subjectId = new URLSearchParams(window.location.search).get('subject-id')
 
     let date = new Date(calendarMonths.value)
     let daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
@@ -24,9 +32,9 @@ window.addEventListener("load", () => {
             span.style.maxWidth = "50px"
 
             const link = document.createElement("a")
-            link.href = 'date=' + calendarMonths.value + '-' + day
+            link.href = "detailed?subject-id=" + subjectId + "&date=" + calendarMonths.value + "-" + (day < 10 ? "0" + day : day)
+
             link.innerHTML = day
-            console.log(link)
             span.appendChild(link)
 
             rowDiv.appendChild(span)
@@ -58,7 +66,7 @@ window.addEventListener("load", () => {
                 span.style.maxWidth = "50px"
 
                 const link = document.createElement("a")
-                link.href = 'date=' + calendarMonths.value + '-' + day
+                link.href = "detailed?subject-id=" + subjectId + "&date=" + calendarMonths.value + "-" + (day < 10 ? "0" + day : day)
                 link.innerHTML = day
                 span.appendChild(link)
 

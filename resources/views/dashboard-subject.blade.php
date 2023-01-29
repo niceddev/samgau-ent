@@ -31,7 +31,7 @@
 
                     <div class="calendar pb-4">
                         <div class="text-center text-white" style="border-radius: 20px 20px 0 0; background-color: #A0B5C2; font-size: 37px">
-                            <input type="month" id="calendarMonths" name="calendar" value="2023-01">
+                            <input type="month" id="calendarMonths" name="calendar">
                         </div>
 
                         <div style="width: 326px; margin: 0 auto">
