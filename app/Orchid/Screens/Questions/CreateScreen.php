@@ -75,6 +75,9 @@ class CreateScreen extends AbstractMultiLanguageScreen
             Input::make('option.c')->title('Вариант C:')->required(),
             Input::make('option.d')->title('Вариант D:')->required(),
             Input::make('option.e')->title('Вариант E:')->required(),
+            Input::make('option.f')->title('Вариант F:'),
+            Input::make('option.g')->title('Вариант G:'),
+            Input::make('option.h')->title('Вариант H:'),
 
         ];
     }
@@ -96,6 +99,9 @@ class CreateScreen extends AbstractMultiLanguageScreen
                     CheckBox::make('is_correct_c')->title('C')->sendTrueOrFalse(),
                     CheckBox::make('is_correct_d')->title('D')->sendTrueOrFalse(),
                     CheckBox::make('is_correct_e')->title('E')->sendTrueOrFalse(),
+                    CheckBox::make('is_correct_f')->title('F')->sendTrueOrFalse(),
+                    CheckBox::make('is_correct_g')->title('G')->sendTrueOrFalse(),
+                    CheckBox::make('is_correct_h')->title('H')->sendTrueOrFalse(),
                 ]),
 
                 Input::make('grade_number')
@@ -122,7 +128,7 @@ class CreateScreen extends AbstractMultiLanguageScreen
      */
     public function save(Request $request, int $subjectId)
     {
-        foreach(['a', 'b', 'c', 'd', 'e'] as $abc){
+        foreach(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] as $abc){
             $options[] = [
                 'option' => $request->input('option.' . $abc),
                 'is_correct' => $request->input('is_correct_' . $abc),

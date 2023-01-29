@@ -31,7 +31,7 @@ class EditScreen extends AbstractMultiLanguageScreen
         $this->subject = Subject::find($question->subject_id);
         $this->question = $question;
 
-        [ $optionA, $optionB, $optionC, $optionD, $optionE ] = $this->question->options()->get()->toArray();
+        [ $optionA, $optionB, $optionC, $optionD, $optionE, $optionF, $optionG, $optionH ] = $this->question->options()->get()->toArray();
 
         return [
             'question' => $question->load('options')->toArray(),
@@ -41,6 +41,9 @@ class EditScreen extends AbstractMultiLanguageScreen
                 'c' => $optionC,
                 'd' => $optionD,
                 'e' => $optionE,
+                'f' => $optionF,
+                'g' => $optionG,
+                'h' => $optionH,
             ]
         ];
     }
@@ -77,6 +80,9 @@ class EditScreen extends AbstractMultiLanguageScreen
                 ->required(),
             Input::make('options.e.option')->title('Вариант E:')
                 ->required(),
+            Input::make('options.f.option')->title('Вариант D:'),
+            Input::make('options.g.option')->title('Вариант G:'),
+            Input::make('options.h.option')->title('Вариант H:'),
 
         ];
     }
@@ -100,6 +106,9 @@ class EditScreen extends AbstractMultiLanguageScreen
                     CheckBox::make('options.c.is_correct')->title('C')->value($optionC['is_correct'])->sendTrueOrFalse(),
                     CheckBox::make('options.d.is_correct')->title('D')->value($optionD['is_correct'])->sendTrueOrFalse(),
                     CheckBox::make('options.e.is_correct')->title('E')->value($optionE['is_correct'])->sendTrueOrFalse(),
+                    CheckBox::make('options.f.is_correct')->title('F')->value($optionC['is_correct'])->sendTrueOrFalse(),
+                    CheckBox::make('options.g.is_correct')->title('G')->value($optionD['is_correct'])->sendTrueOrFalse(),
+                    CheckBox::make('options.h.is_correct')->title('H')->value($optionE['is_correct'])->sendTrueOrFalse(),
                 ]),
 
                 Input::make('question.grade_number')
@@ -126,7 +135,7 @@ class EditScreen extends AbstractMultiLanguageScreen
      */
     public function save(Question $question, Request $request)
     {
-        foreach(['a', 'b', 'c', 'd', 'e'] as $abc){
+        foreach(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] as $abc){
             $options[] = $request->input('options.' . $abc);
         }
 
