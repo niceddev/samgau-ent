@@ -19,7 +19,7 @@ class TestController extends Controller
         return view('test', compact( 'subjects'));
     }
 
-    public function testFinish(Request $request)
+    public function showFinish(Request $request)
     {
         $subjects = Subject::with('questions', 'questions.options')
             ->whereIn('id', json_decode($request->input('subjects')))
@@ -47,11 +47,21 @@ class TestController extends Controller
         return view('test_finish');
     }
 
-    public function statistics()
+    public function showStatistics()
     {
         $test = Test::all();
 
         return view('statistics', compact( 'test'));
+    }
+
+    public function showWorkOnMistakes(Request $request)
+    {
+        $subjects = Subject::with('questions')
+//            ->whereIn('id', $request->input('subjects'))
+            ->whereIn('id', [1,2,3,4,5])
+            ->get();
+
+        return view('test-work-on-mistakes', compact('subjects'));
     }
 
 }

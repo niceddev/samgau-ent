@@ -23,21 +23,27 @@ Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {
         'index'
     ])->name('subjects');
 
-    Route::name('test.')->group(function (){
+    Route::name('test.')->prefix('test')->group(function (){
 
-        Route::get('/test', [
+        Route::get('/', [
             \App\Http\Controllers\TestController::class,
             'index'
         ])->name('index');
 
-        Route::post('/test-finish', [
+        Route::post('/finish', [
             \App\Http\Controllers\TestController::class,
-            'testFinish'
+            'showFinish'
         ])->name('finish');
+
+//        Route::post('/work-on-mistakes/{testId}', [
+        Route::get('/work-on-mistakes', [
+            \App\Http\Controllers\TestController::class,
+            'showWorkOnMistakes'
+        ])->name('work-on-mistakes');
 
         Route::get('/statistics', [
             \App\Http\Controllers\TestController::class,
-            'statistics'
+            'showStatistics'
         ])->name('statistics');
 
     });
