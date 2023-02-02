@@ -31,11 +31,7 @@ class EditScreen extends AbstractMultiLanguageScreen
         $this->subject = Subject::find($question->subject_id);
         $this->question = $question;
 
-        if ($this->question->options()->count() === 8) {
-            [ $optionA, $optionB, $optionC, $optionD, $optionE, $optionF, $optionG, $optionH ] = $this->question->options()->get()->toArray();
-        } else {
-            [ $optionA, $optionB, $optionC, $optionD, $optionE ] = $this->question->options()->get()->toArray();
-        }
+        [ $optionA, $optionB, $optionC, $optionD, $optionE, $optionF, $optionG, $optionH ] = $this->question->options()->get()->toArray();
 
         return [
             'question' => $question->load('options')->toArray(),
@@ -45,9 +41,9 @@ class EditScreen extends AbstractMultiLanguageScreen
                 'c' => $optionC,
                 'd' => $optionD,
                 'e' => $optionE,
-                'f' => $optionF ?? null,
-                'g' => $optionG ?? null,
-                'h' => $optionH ?? null,
+                'f' => $optionF,
+                'g' => $optionG,
+                'h' => $optionH,
             ]
         ];
     }

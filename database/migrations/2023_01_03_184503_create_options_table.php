@@ -15,7 +15,7 @@ class CreateOptionsTable extends Migration
     {
         Schema::create('options', function (Blueprint $table) {
             $table->id();
-            $table->string('option');
+            $table->string('option')->nullable();
             $table->foreignId('question_id')->constrained()->onDelete('cascade');
             $table->boolean('is_correct')->default(false);
             $table->timestamps();
