@@ -20,6 +20,7 @@ use Orchid\Support\Facades\Layout;
 class CreateScreen extends AbstractMultiLanguageScreen
 {
     private Subject $subject;
+
     /**
      * Query data.
      *
@@ -55,7 +56,7 @@ class CreateScreen extends AbstractMultiLanguageScreen
             Link::make(__('Cancel'))
                 ->href(route('platform.subjects.questions.index', $this->subject->id)),
             Button::make(__('Save'))
-                ->method('save', [ $this->subject->id ]),
+                ->method('save', [$this->subject->id]),
         ];
     }
 
@@ -67,6 +68,7 @@ class CreateScreen extends AbstractMultiLanguageScreen
     protected function multiLanguageFields(): array
     {
         return [
+            Input::make('topic')->title('Тема')->required(),
             Input::make('question')->title('Вопрос')->required(),
             Quill::make('sub_question')->title('Дополнение'),
 
@@ -104,8 +106,8 @@ class CreateScreen extends AbstractMultiLanguageScreen
                     CheckBox::make('is_correct_h')->title('H')->sendTrueOrFalse(),
                 ]),
 
-                Input::make('grade_number')
-                    ->type('number')
+                Select::make('grade_number')
+                    ->options(['10' => 10, '11' => 11])
                     ->title('Выберите класс'),
                 Select::make('grade_letter')
                     ->options(array_combine(
@@ -128,11 +130,21 @@ class CreateScreen extends AbstractMultiLanguageScreen
      */
     public function save(Request $request, int $subjectId)
     {
-        foreach(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] as $abc){
-            $options[] = [
-                'option' => $request->input('option.' . $abc),
-                'is_correct' => $request->input('is_correct_' . $abc),
-            ];
+//      if 5 options
+        if (is_null($request->input('option.f')['ru'])) {
+            foreach (['a', 'b', 'c', 'd', 'e'] as $abc) {
+                $options[] = [
+                    'option'     => $request->input('option.' . $abc),
+                    'is_correct' => $request->input('is_correct_' . $abc),
+                ];
+            }
+        } else {
+            foreach (['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] as $abc) {
+                $options[] = [
+                    'option'     => $request->input('option.' . $abc),
+                    'is_correct' => $request->input('is_correct_' . $abc),
+                ];
+            }
         }
 
         $question = Question::create([
@@ -141,9 +153,10 @@ class CreateScreen extends AbstractMultiLanguageScreen
             'grade_number' => $request->input('grade_number'),
             'grade_letter' => $request->input('grade_letter'),
             'subject_id'   => $request->input('subject_id'),
+            'topic'        => $request->input('topic'),
         ]);
 
-        foreach ($options as $option){
+        foreach ($options as $option) {
             Option::create([
                 'option'      => $option['option'],
                 'question_id' => $question->id,

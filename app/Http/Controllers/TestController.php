@@ -21,6 +21,8 @@ class TestController extends Controller
 
     public function showFinish(Request $request)
     {
+        $score = 0;
+
         $subjects = Subject::with('questions', 'questions.options')
             ->whereIn('id', json_decode($request->input('subjects')))
             ->get();
@@ -28,21 +30,29 @@ class TestController extends Controller
         foreach ($subjects as $subject) {
             foreach ($subject->questions->where('grade_number', auth()->user()->grade_number) as $question) {
                 foreach ($question->options->where('is_correct', true) as $option) {
-
-                    if(in_array($option->option, $request->input('question-' . $question->id))){
-
-                        dump($option->option);
-//
-////                        correct answers count
-////                        Test::insert();
-//
-                    }
+                    dump($option);
+//                    switch ($question->options->count()) {
+//                        case 8:
+//                            if(in_array($option->option, $request->input('question-' . $question->id))){
+//                                dump(88888888888);
+//                                dump($question->options->toArray());
+//                                dump($request->all());
+//                            }
+//                            break;
+//                        default:
+//                            if(in_array($option->option, $request->input('question-' . $question->id))){
+//                                dump(555555555555);
+//                                dump($question->options->toArray());
+//                                dump($request->all());
+//                            }
+//                            break;
+//                    }
 
                 }
             }
         }
 
-        dd('asd');
+        dd('QQQQQQQQQQQQQQQ');
 
         return view('test_finish');
     }

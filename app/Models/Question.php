@@ -15,11 +15,13 @@ class Question extends Model
         'grade_number',
         'grade_letter',
         'subject_id',
+        'topic',
     ];
 
     public $translatable = [
         'question',
         'sub_question',
+        'topic',
     ];
 
     public function options()

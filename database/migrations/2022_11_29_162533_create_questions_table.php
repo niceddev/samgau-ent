@@ -20,6 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->smallInteger('grade_number')->nullable();
             $table->string('grade_letter')->nullable();
             $table->integer('subject_id');
+            $table->string('topic');
             $table->timestamps();
         });
     }

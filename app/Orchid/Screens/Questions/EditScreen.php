@@ -31,7 +31,11 @@ class EditScreen extends AbstractMultiLanguageScreen
         $this->subject = Subject::find($question->subject_id);
         $this->question = $question;
 
-        [ $optionA, $optionB, $optionC, $optionD, $optionE, $optionF, $optionG, $optionH ] = $this->question->options()->get()->toArray();
+        if ($this->question->options()->count() === 8) {
+            [ $optionA, $optionB, $optionC, $optionD, $optionE, $optionF, $optionG, $optionH ] = $this->question->options()->get()->toArray();
+        } else {
+            [ $optionA, $optionB, $optionC, $optionD, $optionE ] = $this->question->options()->get()->toArray();
+        }
 
         return [
             'question' => $question->load('options')->toArray(),
@@ -41,9 +45,9 @@ class EditScreen extends AbstractMultiLanguageScreen
                 'c' => $optionC,
                 'd' => $optionD,
                 'e' => $optionE,
-                'f' => $optionF,
-                'g' => $optionG,
-                'h' => $optionH,
+                'f' => $optionF ?? null,
+                'g' => $optionG ?? null,
+                'h' => $optionH ?? null,
             ]
         ];
     }
@@ -67,6 +71,7 @@ class EditScreen extends AbstractMultiLanguageScreen
     {
 
         return [
+            Input::make('question.topic')->title('Тема')->required(),
             Input::make('question.question')->title('Вопрос')->required(),
             Quill::make('question.sub_question')->title('Дополнение'),
 
@@ -111,8 +116,8 @@ class EditScreen extends AbstractMultiLanguageScreen
                     CheckBox::make('options.h.is_correct')->title('H')->value($optionE['is_correct'])->sendTrueOrFalse(),
                 ]),
 
-                Input::make('question.grade_number')
-                    ->type('number')
+                Select::make('question.grade_number')
+                    ->options(['10' => 10, '11' => 11])
                     ->title('Выберите класс'),
                 Select::make('question.grade_letter')
                     ->options(array_combine(
