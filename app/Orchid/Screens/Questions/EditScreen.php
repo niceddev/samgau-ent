@@ -2,6 +2,7 @@
 
 namespace App\Orchid\Screens\Questions;
 
+use App\Models\Option;
 use App\Models\Question;
 use App\Models\Subject;
 use App\Orchid\Screens\AbstractMultiLanguageScreen;
@@ -31,9 +32,10 @@ class EditScreen extends AbstractMultiLanguageScreen
         $this->subject = Subject::find($question->subject_id);
         $this->question = $question;
 
-        [ $optionA, $optionB, $optionC, $optionD, $optionE, $optionF, $optionG, $optionH ] = $this->question->options()->get()->toArray();
+        @[ $optionA, $optionB, $optionC, $optionD, $optionE, $optionF, $optionG, $optionH ] = $this->question->options()->get()->toArray();
 
         return [
+            'question_id' => $question->id,
             'question' => $question->load('options')->toArray(),
             'options' => [
                 'a' => $optionA,
@@ -81,7 +83,7 @@ class EditScreen extends AbstractMultiLanguageScreen
                 ->required(),
             Input::make('options.e.option')->title('Вариант E:')
                 ->required(),
-            Input::make('options.f.option')->title('Вариант D:'),
+            Input::make('options.f.option')->title('Вариант F:'),
             Input::make('options.g.option')->title('Вариант G:'),
             Input::make('options.h.option')->title('Вариант H:'),
 
@@ -95,11 +97,12 @@ class EditScreen extends AbstractMultiLanguageScreen
      */
     protected function singleLanguageFields(): array
     {
-        [ $optionA, $optionB, $optionC, $optionD, $optionE ] = $this->question->options()->get()->toArray();
+        @[ $optionA, $optionB, $optionC, $optionD, $optionE, $optionF, $optionG, $optionH ] = $this->question->options()->get()->toArray();
 
         return [
             Layout::rows([
                 Input::make('question.subject_id')->title('Выберите правильные варианты:')->hidden(),
+                Input::make('question_id')->hidden(),
 
                 Group::make([
                     CheckBox::make('options.a.is_correct')->title('A')->value($optionA['is_correct'])->sendTrueOrFalse(),
@@ -107,9 +110,9 @@ class EditScreen extends AbstractMultiLanguageScreen
                     CheckBox::make('options.c.is_correct')->title('C')->value($optionC['is_correct'])->sendTrueOrFalse(),
                     CheckBox::make('options.d.is_correct')->title('D')->value($optionD['is_correct'])->sendTrueOrFalse(),
                     CheckBox::make('options.e.is_correct')->title('E')->value($optionE['is_correct'])->sendTrueOrFalse(),
-                    CheckBox::make('options.f.is_correct')->title('F')->value($optionC['is_correct'])->sendTrueOrFalse(),
-                    CheckBox::make('options.g.is_correct')->title('G')->value($optionD['is_correct'])->sendTrueOrFalse(),
-                    CheckBox::make('options.h.is_correct')->title('H')->value($optionE['is_correct'])->sendTrueOrFalse(),
+                    CheckBox::make('options.f.is_correct')->title('F')->value($optionF['is_correct'] ?? null)->sendTrueOrFalse(),
+                    CheckBox::make('options.g.is_correct')->title('G')->value($optionG['is_correct'] ?? null)->sendTrueOrFalse(),
+                    CheckBox::make('options.h.is_correct')->title('H')->value($optionH['is_correct'] ?? null)->sendTrueOrFalse(),
                 ]),
 
                 Select::make('question.grade_number')
@@ -136,14 +139,17 @@ class EditScreen extends AbstractMultiLanguageScreen
      */
     public function save(Question $question, Request $request)
     {
-        foreach(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] as $abc){
-            $options[] = $request->input('options.' . $abc);
-        }
+        $questionId = $request->input('question_id');
 
+        Option::where('question_id', $questionId)->delete();
         $question->update($request->input('question'));
 
-        foreach ($question->options()->get() as $key => $option) {
-            $option->update($options[$key]);
+        foreach ($request->input('options') as $option) {
+            Option::create([
+                'option' => $option['option'],
+                'question_id' => $questionId,
+                'is_correct' => $option['option']['ru'] === null ? false : $option['is_correct'],
+            ]);
         }
 
         Alert::message('Вопрос №' . $question->id . ' изменен!');

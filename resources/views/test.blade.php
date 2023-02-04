@@ -80,13 +80,12 @@
                                         <div class="row">
                                             <h2>
                                                 {{ __('common.variants') }}:
-                                                {{ dd($question->options->where('option', '!=', '{"kk":null}')) }} // TODO
                                                 @if($question->options->pluck('is_correct')->filter(fn($value) => $value)->count() !== 1)
                                                     <span class="fs-6 m-2 align-middle text-black-50">(правильных ответов может быть несколько)</span>
                                                 @endif
                                             </h2>
                                             <ul class="options">
-                                                @foreach($question->options->where('option', '!=', '{"kk":null}') as $key => $option)
+                                                @foreach($question->optionsForTest as $key => $option)
                                                     <label>
                                                         <input id="option-{{ $option->id }}" name="question-{{ $question->id }}[]"
                                                                data-question="question-{{ $question->id }}"

@@ -29,4 +29,9 @@ class Question extends Model
         return $this->hasMany(Option::class)->orderBy('id');
     }
 
+    public function optionsForTest()
+    {
+        return $this->hasMany(Option::class)->where('option','!=', '{"kk":null}')->orderBy('id');
+    }
+
 }

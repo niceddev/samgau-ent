@@ -130,11 +130,20 @@ class CreateScreen extends AbstractMultiLanguageScreen
      */
     public function save(Request $request, int $subjectId)
     {
-        foreach (['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] as $abc) {
-            $options[] = [
-                'option'     => $request->input('option.' . $abc),
-                'is_correct' => $request->input('is_correct_' . $abc),
-            ];
+        if (is_null($request->input('option.f')['ru'])) {
+            foreach (['a', 'b', 'c', 'd', 'e'] as $abc) {
+                $options[] = [
+                    'option'     => $request->input('option.' . $abc),
+                    'is_correct' => $request->input('option.' . $abc)['ru'] === null ? false : $request->input('is_correct_' . $abc),
+                ];
+            }
+        } else {
+            foreach (['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] as $abc) {
+                $options[] = [
+                    'option'     => $request->input('option.' . $abc),
+                    'is_correct' => $request->input('option.' . $abc)['ru'] === null ? false : $request->input('is_correct_' . $abc),
+                ];
+            }
         }
 
         $question = Question::create([
