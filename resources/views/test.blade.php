@@ -81,7 +81,7 @@
                                             <h2>
                                                 {{ __('common.variants') }}:
                                                 @if($question->options->pluck('is_correct')->filter(fn($value) => $value)->count() !== 1)
-                                                    <span class="fs-6 m-2 align-middle text-black-50">(правильных ответов может быть несколько)</span>
+                                                    <span class="fs-6 m-2 align-middle text-black-50">(правильных ответов несколько)</span>
                                                 @endif
                                             </h2>
                                             <ul class="options">
@@ -108,7 +108,7 @@
 
                                         <div class="row next-question float-end text-center control-section-{{ $subject->id }}">
                                             <p>
-                                                <span class="answered-questions-count">0</span>/<span>{{ $subject->questions->count() }}</span>
+                                                <span class="answered-questions-count">0</span>/<span>{{ $subject->questionsByGrade->count() }}</span>
                                             </p>
                                             <button type="button" class="answered-questions-button">
                                                 {{ __('common.next_question') }}

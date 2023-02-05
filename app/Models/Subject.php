@@ -30,6 +30,13 @@ class Subject extends Model
         return $this->hasMany(Question::class)->orderBy('id');
     }
 
+    public function questionsByGrade()
+    {
+        return $this->hasMany(Question::class)
+            ->where('grade_number', auth()->user()->grade_number)
+            ->orderBy('id');
+    }
+
     public function students()
     {
         return $this->belongsToMany(Student::class);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subject;
+use App\Services\TestService;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -19,40 +20,32 @@ class TestController extends Controller
         return view('test', compact( 'subjects'));
     }
 
-    public function showFinish(Request $request)
+    public function showFinish(Request $request, TestService $testService)
     {
         $score = 0;
 
-        $subjects = Subject::with('questions', 'questions.options')
+        $subjects = Subject::with('questionsByGrade')
             ->whereIn('id', json_decode($request->input('subjects')))
             ->get();
 
         foreach ($subjects as $subject) {
-            foreach ($subject->questions->where('grade_number', auth()->user()->grade_number) as $question) {
-                foreach ($question->options->where('is_correct', true) as $option) {
-                    dump($option);
-//                    switch ($question->options->count()) {
-//                        case 8:
-//                            if(in_array($option->option, $request->input('question-' . $question->id))){
-//                                dump(88888888888);
-//                                dump($question->options->toArray());
-//                                dump($request->all());
-//                            }
-//                            break;
-//                        default:
-//                            if(in_array($option->option, $request->input('question-' . $question->id))){
-//                                dump(555555555555);
-//                                dump($question->options->toArray());
-//                                dump($request->all());
-//                            }
-//                            break;
-//                    }
+            foreach ($subject->questionsByGrade as $question) {
 
-                }
+                $rightAnswers = $question->optionsForTest->where('is_correct', true)->pluck('option')->toArray();
+                $userAnswers = $request->input('question-' . $question->id);
+
+                $mistakes = array_diff($userAnswers, $rightAnswers);
+                $correctAnswers = array_intersect($userAnswers, $rightAnswers);
+
+                $score += $testService->scoreSystem(
+                    count($rightAnswers),
+                    count($correctAnswers),
+                    count($mistakes),
+                );
             }
         }
 
-        dd('QQQQQQQQQQQQQQQ');
+        dd('Score: ' . $score);
 
         return view('test_finish');
     }
