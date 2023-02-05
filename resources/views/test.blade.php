@@ -59,6 +59,7 @@
                 <form action="{{ route('test.finish') }}" method="POST">
                     @csrf
                     <input type="text" class="visually-hidden" name="subjects" value="{{ $subjects->pluck('id') }}">
+                    <input id="timer" type="text" class="" name="timer">
                     <div class="row tab-content">
                         @foreach($subjects as $subject)
                             <div id="nav-subject-{{ $subject->id }}"
@@ -110,7 +111,7 @@
                                             <p>
                                                 <span class="answered-questions-count">0</span>/<span>{{ $subject->questionsByGrade->count() }}</span>
                                             </p>
-                                            <button type="button" class="answered-questions-button">
+                                            <button type="button" class="answered-questions-button finish-button">
                                                 {{ __('common.next_question') }}
                                             </button>
                                         </div>

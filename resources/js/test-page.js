@@ -1,5 +1,13 @@
 window.addEventListener("load", () => {
 
+    let seconds = 0
+    let timer = document.getElementById('timer')
+    setInterval(function () {
+
+        timer.value = seconds++
+
+    }, 1000)
+
     markAsComplete()
 
     multipleTabContent()

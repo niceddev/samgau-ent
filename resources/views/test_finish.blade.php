@@ -19,7 +19,7 @@
             <div>
                 <div class="fs-4 rounded-4 px-5 text-white text-center" style="background-color:#2F327D">
                     <p class="mb-0 fw-lighter">{{ __('common.execution_time') }}</p>
-                    <p class="mb-0 fs-2">99 мин 99 сек</p>
+                    <p class="mb-0 fs-2">{{ $minutes }} мин {{ $seconds }} сек</p>
                 </div>
             </div>
         </div>
@@ -27,9 +27,10 @@
         <div class="d-flex">
             <div>
                 <ul>
-                    @foreach([1,2,3,4,5] as $subject)
+                    @foreach($subjects as $subject)
                         <li data-correct_answers_count="{{ rand(1,30) }}" data-questions_count="30">
-                            Математическая грамотность <span class="fw-bold">{{ rand(1,30) .'/'. '30' }}</span>
+                            {{ $subject->getTranslation('name', session()->get('lang', 'ru')) }}
+                            <span class="fw-bold">{{ 0 .'/'. $subject->questionsByGrade->count() }}</span>
                         </li>
                     @endforeach
                 </ul>
@@ -61,6 +62,7 @@
         </div>
     </div>
 
+    {{ $score }}
     @push('custom-scripts')
         <script src="{{ asset('js/chart.umd.js') }}"></script>
         <script src="{{ asset('js/results-doughnut.js') }}"></script>

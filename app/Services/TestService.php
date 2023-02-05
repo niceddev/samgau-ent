@@ -8,10 +8,6 @@ class TestService
 {
     public function scoreSystem(int $rightAnswersCount, int $correctAnswersCount, int $mistakesCount): int
     {
-        dump('$rightAnswersCount: '.$rightAnswersCount);
-        dump('$correctAnswers: '.$correctAnswersCount);
-        dump('$mistakesCount: '.$mistakesCount);
-
         if ($rightAnswersCount !== 1) {
 
             return match(true) {

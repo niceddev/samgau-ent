@@ -22,6 +22,10 @@ class TestController extends Controller
 
     public function showFinish(Request $request, TestService $testService)
     {
+        $allSeconds = $request->input('timer');
+        $minutes = $allSeconds / 60 % 60;
+        $seconds = $allSeconds % 60;
+
         $score = 0;
 
         $subjects = Subject::with('questionsByGrade')
@@ -45,9 +49,9 @@ class TestController extends Controller
             }
         }
 
-        dd('Score: ' . $score);
-
-        return view('test_finish');
+        return view('test_finish',
+            compact('subjects', 'score', 'minutes', 'seconds')
+        );
     }
 
     public function showStatistics()
