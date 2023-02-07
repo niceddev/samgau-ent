@@ -88,7 +88,7 @@
                                             <ul class="options">
                                                 @foreach($question->optionsForTest as $key => $option)
                                                     <label>
-                                                        <input id="option-{{ $option->id }}" name="question-{{ $question->id }}[]"
+                                                        <input id="option-{{ $option->id }}" name="subject-{{$subject->id}}[questions-{{ $question->id }}][]"
                                                                data-question="question-{{ $question->id }}"
                                                                @if($question->options->pluck('is_correct')->filter(fn($value) => $value)->count() === 1)
                                                                    type="radio"

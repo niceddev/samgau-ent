@@ -22,6 +22,7 @@ class TestController extends Controller
 
     public function showFinish(Request $request, TestService $testService)
     {
+        dd($request->all());
         $allSeconds = $request->input('timer');
         $minutes = $allSeconds / 60 % 60;
         $seconds = $allSeconds % 60;
@@ -36,7 +37,7 @@ class TestController extends Controller
             foreach ($subject->questionsByGrade as $question) {
 
                 $rightAnswers = $question->optionsForTest->where('is_correct', true)->pluck('option')->toArray();
-                $userAnswers = $request->input('question-' . $question->id);
+                $userAnswers = $request->input('questions.' . $question->id);
 
                 $mistakes = array_diff($userAnswers, $rightAnswers);
                 $correctAnswers = array_intersect($userAnswers, $rightAnswers);
