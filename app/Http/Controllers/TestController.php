@@ -37,7 +37,7 @@ class TestController extends Controller
             foreach ($subject->questionsByGrade as $question) {
 
                 $rightAnswers = $question->optionsForTest->where('is_correct', true)->pluck('option')->toArray();
-                $userAnswers = $request->input('questions.' . $question->id);
+                $userAnswers = $request->input('subject-' . $subject->id . '.questions-' . $question->id);
 
                 $mistakes = array_diff($userAnswers, $rightAnswers);
                 $correctAnswers = array_intersect($userAnswers, $rightAnswers);

@@ -8,9 +8,7 @@ class Test extends Model
 {
     protected $fillable = [
         'local_uuid',
-        'subject_id',
-        'student_id',
-
+        'grade_number',
     ];
 
 }
