@@ -18,7 +18,7 @@
                              class="tab-pane fade @if($loop->first)show active @endif"
                              role="tabpanel" aria-labelledby="nav-subject-{{ $subject->id }}-tab">
                             <ul id="questionNumbersTab" class="d-flex flex-column align-items-center gap-2 fs-3" role="tablist">
-                                @foreach($subject->questions->where('grade_number', auth()->user()->grade_number) as $question)
+                                @foreach($subject->questionsByGrade as $question)
                                     <div class="position-relative">
                                         <span class="position-absolute text-end">
                                             <p>{{ $loop->iteration }}</p>
@@ -66,7 +66,7 @@
                                      class="tab-content tab-pane subject-{{ $subject->id }}-questions-content fade @if($loop->first)show active @endif"
                                      role="tabpanel" aria-labelledby="nav-subject-{{ $subject->id }}-tab"
                                      data-content="subject-{{ $subject->id }}-questions-content">
-                                @foreach($subject->questions->where('grade_number', auth()->user()->grade_number) as $question)
+                                @foreach($subject->questionsByGrade as $question)
                                     <div id="question-{{ $question->id }}"
                                          class="tab-pane fade @if($loop->first)show active @endif"
                                          role="tabpanel" aria-labelledby="{{ $subject->id }}-tab">

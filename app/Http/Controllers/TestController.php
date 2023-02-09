@@ -10,9 +10,11 @@ class TestController extends Controller
 {
     public function index(Request $request)
     {
-        $subjects = Subject::with('questions')
+        $subjects = Subject::with('questionsByGrade')
             ->whereIn('id', $request->input('subjects'))
             ->get();
+
+        dd($subjects);
 
         auth()->user()->load('subjects')
             ->subjects()->sync($subjects);
