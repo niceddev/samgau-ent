@@ -31,20 +31,9 @@ class Subject extends Model
             ->orderBy('id');
     }
 
-    public function questionsByGrade(?int $subjectId = null)
+    public function questionsByGrade()
     {
-        $limit = match ($subjectId) {
-            1,3 => 15,
-            2 => 20,
-            default => 35
-        };
-
-        return $this->hasMany(Question::class)
-            ->where('grade_number', auth()->user()->grade_number)
-            ->where('are_many_answers', false)
-            ->when('subject_id', function ($query) use ($limit) {
-                return $query->take($limit);
-            });
+        return $this->hasMany(Question::class)->byGradeNumber()->inRandomOrder('id');
     }
 
     public function students()

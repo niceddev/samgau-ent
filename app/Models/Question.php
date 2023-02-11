@@ -38,4 +38,8 @@ class Question extends Model
             ->orderBy('id');
     }
 
+    public function scopeByGradeNumber($query)
+    {
+        return $query->where('grade_number', auth()->user()->grade_number);
+    }
 }

@@ -57,37 +57,37 @@ class DatabaseSeeder extends Seeder
                 if ($question->id <= 100) {
                     $options[] = [
                         [
-                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
                             'question_id' => $question->id,
                             'is_correct'  => false,
                         ],
                         [
-                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
                             'question_id' => $question->id,
                             'is_correct'  => false
                         ],
                         [
-                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
                             'question_id' => $question->id,
                             'is_correct'  => false
                         ],
                         [
-                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
                             'question_id' => $question->id,
                             'is_correct'  => false
                         ],
                         [
-                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
                             'question_id' => $question->id,
                             'is_correct'  => false
                         ],
                         [
-                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
                             'question_id' => $question->id,
                             'is_correct'  => false
                         ],
                         [
-                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
                             'question_id' => $question->id,
                             'is_correct'  => false
                         ],
@@ -100,37 +100,37 @@ class DatabaseSeeder extends Seeder
                 } else {
                     $options[] = [
                         [
-                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
                             'question_id' => $question->id,
                             'is_correct'  => false,
                         ],
                         [
-                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
                             'question_id' => $question->id,
                             'is_correct'  => false
                         ],
                         [
-                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
                             'question_id' => $question->id,
                             'is_correct'  => false
                         ],
                         [
-                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
                             'question_id' => $question->id,
                             'is_correct'  => false
                         ],
                         [
-                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
                             'question_id' => $question->id,
                             'is_correct'  => false
                         ],
                         [
-                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
                             'question_id' => $question->id,
                             'is_correct'  => true
                         ],
                         [
-                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
                             'question_id' => $question->id,
                             'is_correct'  => true
                         ],

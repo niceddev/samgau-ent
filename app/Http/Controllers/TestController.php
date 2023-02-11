@@ -12,14 +12,18 @@ class TestController extends Controller
     {
         $subjects = Subject::with('questionsByGrade')
             ->whereIn('id', $request->input('subjects'))
-            ->get();
+            ->get()
+            ->map(function ($subject) {
+                $subject->questions = match ($subject->id) {
+                    1, 3    => $subject->questionsByGrade()->take(15)->get(),
+                    2       => $subject->questionsByGrade()->take(20)->get(),
+                    default => $subject->questionsByGrade()->take(35)->get(),
+                };
+                return $subject;
+            });
 
         auth()->user()->load('subjects')
             ->subjects()->sync($subjects);
-
-
-
-
 
         return view('test', compact( 'subjects'));
     }

@@ -18,7 +18,7 @@
                              class="tab-pane fade @if($loop->first)show active @endif"
                              role="tabpanel" aria-labelledby="nav-subject-{{ $subject->id }}-tab">
                             <ul id="questionNumbersTab" class="d-flex flex-column align-items-center gap-2 fs-3" role="tablist">
-                                @foreach($subject->questionsByGrade($subject->id)->get() as $question)
+                                @foreach($subject->questions as $question)
                                     <div class="position-relative">
                                         <span class="position-absolute text-end">
                                             <p>{{ $loop->iteration }}</p>
@@ -66,7 +66,7 @@
                                      class="tab-content tab-pane subject-{{ $subject->id }}-questions-content fade @if($loop->first)show active @endif"
                                      role="tabpanel" aria-labelledby="nav-subject-{{ $subject->id }}-tab"
                                      data-content="subject-{{ $subject->id }}-questions-content">
-                                @foreach($subject->questionsByGrade($subject->id)->get() as $question)
+                                @foreach($subject->questions as $question)
                                     <div id="question-{{ $question->id }}"
                                          class="tab-pane fade @if($loop->first)show active @endif"
                                          role="tabpanel" aria-labelledby="{{ $subject->id }}-tab">
@@ -109,7 +109,7 @@
 
                                         <div class="row next-question float-end text-center control-section-{{ $subject->id }}">
                                             <p>
-                                                <span class="answered-questions-count">0</span>/<span>{{ $subject->questionsByGrade($subject->id)->get()->count() }}</span>
+                                                <span class="answered-questions-count">0</span>/<span>{{ $subject->questions->count() }}</span>
                                             </p>
                                             <button type="button" class="answered-questions-button finish-button">
                                                 {{ __('common.next_question') }}
