@@ -18,7 +18,7 @@
                              class="tab-pane fade @if($loop->first)show active @endif"
                              role="tabpanel" aria-labelledby="nav-subject-{{ $subject->id }}-tab">
                             <ul id="questionNumbersTab" class="d-flex flex-column align-items-center gap-2 fs-3" role="tablist">
-                                @foreach($subject->questionsByGrade as $question)
+                                @foreach($subject->questionsByGradeTake($subject->id)->get() as $question)
                                     <div class="position-relative">
                                         <span class="position-absolute text-end">
                                             <p>{{ $loop->iteration }}</p>

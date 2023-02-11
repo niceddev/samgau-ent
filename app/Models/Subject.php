@@ -34,11 +34,22 @@ class Subject extends Model
     public function questionsByGrade()
     {
         return $this->hasMany(Question::class)
+            ->where('grade_number', auth()->user()->grade_number);
+    }
+
+    public function questionsByGradeTake(?int $subjectId = null)
+    {
+        $limit = match ($subjectId) {
+            1,3 => 15,
+            2 => 20,
+            default => 35
+        };
+
+        return $this->hasMany(Question::class)
             ->where('grade_number', auth()->user()->grade_number)
-//            ->when('subject_id', function ($query) {
-//                return $query->take(15);
-//            })
-            ->inRandomOrder('id');
+            ->when('subject_id', function ($query) use ($limit) {
+                return $query->take($limit);
+            });
     }
 
     public function students()
