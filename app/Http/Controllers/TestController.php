@@ -22,6 +22,7 @@ class TestController extends Controller
                 return $subject;
             });
 
+
         auth()->user()->load('subjects')
             ->subjects()->sync($subjects);
 
@@ -30,7 +31,6 @@ class TestController extends Controller
 
     public function showFinish(Request $request, TestService $testService)
     {
-        dd($request->all());
         $allSeconds = $request->input('timer');
         $minutes = $allSeconds / 60 % 60;
         $seconds = $allSeconds % 60;
@@ -57,6 +57,8 @@ class TestController extends Controller
                 );
             }
         }
+
+        dd($rightAnswers, $correctAnswers, $mistakes);
 
         return view('test_finish',
             compact('subjects', 'score', 'minutes', 'seconds')

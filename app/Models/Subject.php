@@ -33,7 +33,9 @@ class Subject extends Model
 
     public function questionsByGrade()
     {
-        return $this->hasMany(Question::class)->byGradeNumber()->inRandomOrder('id');
+        return $this->hasMany(Question::class)
+            ->byGradeNumber()
+            ->inRandomOrder('id');
     }
 
     public function students()
