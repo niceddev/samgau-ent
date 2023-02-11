@@ -67,7 +67,7 @@ function markAsComplete(){
 function navigationBetweenQuestions(){
 
     const nextBtn = document.querySelectorAll(".next-question > button");
-
+    console.log(nextBtn)
     nextBtn.forEach(function(btn, index){
         btn.addEventListener('click', function(){
             let id = index + 1;

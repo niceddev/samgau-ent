@@ -31,13 +31,7 @@ class Subject extends Model
             ->orderBy('id');
     }
 
-    public function questionsByGrade()
-    {
-        return $this->hasMany(Question::class)
-            ->where('grade_number', auth()->user()->grade_number);
-    }
-
-    public function questionsByGradeTake(?int $subjectId = null)
+    public function questionsByGrade(?int $subjectId = null)
     {
         $limit = match ($subjectId) {
             1,3 => 15,
