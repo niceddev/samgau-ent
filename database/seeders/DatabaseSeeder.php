@@ -22,12 +22,25 @@ class DatabaseSeeder extends Seeder
 
                 for ($i = 1; $i <= 100; $i++) {
                     $questions[] = [
-                        'question'     => '{"ru":"' . $this->generateRandomString(20) . '"}',
-                        'sub_question' => null,
-                        'grade_number' => rand(10, 11),
-                        'grade_letter' => 'Б',
-                        'subject_id'   => $subject->id,
-                        'topic'        => $subject->name,
+                        'question'         => '{"ru":"' . $this->generateRandomString(20) . '"}',
+                        'sub_question'     => null,
+                        'grade_number'     => rand(10, 11),
+                        'grade_letter'     => 'Б',
+                        'subject_id'       => $subject->id,
+                        'topic'            => $subject->name,
+                        'are_many_answers' => false
+                    ];
+                }
+
+                for ($i = 1; $i <= 20; $i++) {
+                    $questions[] = [
+                        'question'         => '{"ru":"' . $this->generateRandomString(20) . '"}',
+                        'sub_question'     => null,
+                        'grade_number'     => rand(10, 11),
+                        'grade_letter'     => 'Б',
+                        'subject_id'       => $subject->id,
+                        'topic'            => $subject->name,
+                        'are_many_answers' => true
                     ];
                 }
 
@@ -41,48 +54,93 @@ class DatabaseSeeder extends Seeder
 
         Question::chunk(500, function ($questions) use ($options) {
             foreach ($questions as $question) {
-                $options[] = [
-                    [
-                        'option'      => '{"ru":"asd"}',
-                        'question_id' => $question->id,
-                        'is_correct'  => rand(true, false),
-                    ],
-                    [
-                        'option'      => '{"ru":"zxc"}',
-                        'question_id' => $question->id,
-                        'is_correct'  => rand(true, false),
-                    ],
-                    [
-                        'option'      => '{"ru":"qwe"}',
-                        'question_id' => $question->id,
-                        'is_correct'  => rand(true, false),
-                    ],
-                    [
-                        'option'      => '{"ru":"9090"}',
-                        'question_id' => $question->id,
-                        'is_correct'  => rand(true, false),
-                    ],
-                    [
-                        'option'      => '{"ru":"657"}',
-                        'question_id' => $question->id,
-                        'is_correct'  => rand(true, false),
-                    ],
-                    [
-                        'option'      => '{"ru":"456"}',
-                        'question_id' => $question->id,
-                        'is_correct'  => rand(true, false),
-                    ],
-                    [
-                        'option'      => '{"ru":"123"}',
-                        'question_id' => $question->id,
-                        'is_correct'  => rand(true, false),
-                    ],
-                    [
-                        'option'      => '{"ru":"321"}',
-                        'question_id' => $question->id,
-                        'is_correct'  => rand(true, false),
-                    ],
-                ];
+                if ($question->id <= 100) {
+                    $options[] = [
+                        [
+                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => false,
+                        ],
+                        [
+                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => false
+                        ],
+                        [
+                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => false
+                        ],
+                        [
+                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => false
+                        ],
+                        [
+                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => false
+                        ],
+                        [
+                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => false
+                        ],
+                        [
+                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => false
+                        ],
+                        [
+                            'option'      => '{"ru":"000000"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => true
+                        ],
+                    ];
+                } else {
+                    $options[] = [
+                        [
+                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => false,
+                        ],
+                        [
+                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => false
+                        ],
+                        [
+                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => false
+                        ],
+                        [
+                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => false
+                        ],
+                        [
+                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => false
+                        ],
+                        [
+                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => true
+                        ],
+                        [
+                            'option'      => '{"ru":"'.$this->generateRandomString().'"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => true
+                        ],
+                        [
+                            'option'      => '{"ru":"000000"}',
+                            'question_id' => $question->id,
+                            'is_correct'  => true
+                        ],
+                    ];
+                }
             }
 
             foreach (array_chunk($options, 100) as $optionsChunk) {
@@ -93,7 +151,7 @@ class DatabaseSeeder extends Seeder
         });
     }
 
-    private function generateRandomString($length = 10)
+    private function generateRandomString($length = 10): string
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);

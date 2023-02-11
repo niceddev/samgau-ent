@@ -39,9 +39,9 @@ class Subject extends Model
             default => 35
         };
 
-
         return $this->hasMany(Question::class)
             ->where('grade_number', auth()->user()->grade_number)
+            ->where('are_many_answers', false)
             ->when('subject_id', function ($query) use ($limit) {
                 return $query->take($limit);
             });

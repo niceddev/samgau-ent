@@ -14,12 +14,12 @@ class TestController extends Controller
             ->whereIn('id', $request->input('subjects'))
             ->get();
 
-
-        dd($subjects);
-
-
         auth()->user()->load('subjects')
             ->subjects()->sync($subjects);
+
+
+
+
 
         return view('test', compact( 'subjects'));
     }

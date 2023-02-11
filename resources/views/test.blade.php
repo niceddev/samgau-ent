@@ -81,7 +81,7 @@
                                         <div class="row">
                                             <h2>
                                                 {{ __('common.variants') }}:
-                                                @if($question->options->pluck('is_correct')->filter(fn($value) => $value)->count() !== 1)
+                                                @if($question->optionsForTest->pluck('is_correct')->filter(fn($value) => $value)->count() !== 1)
                                                     <span class="fs-6 m-2 align-middle text-black-50">(правильных ответов несколько)</span>
                                                 @endif
                                             </h2>
@@ -90,7 +90,7 @@
                                                     <label>
                                                         <input id="option-{{ $option->id }}" name="subject-{{$subject->id}}[questions-{{ $question->id }}][]"
                                                                data-question="question-{{ $question->id }}"
-                                                               @if($question->options->pluck('is_correct')->filter(fn($value) => $value)->count() === 1)
+                                                               @if($question->optionsForTest->pluck('is_correct')->filter(fn($value) => $value)->count() === 1)
                                                                    type="radio"
                                                                @else
                                                                    type="checkbox"
