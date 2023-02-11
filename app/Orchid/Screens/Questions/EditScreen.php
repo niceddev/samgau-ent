@@ -142,6 +142,8 @@ class EditScreen extends AbstractMultiLanguageScreen
         $questionId = $request->input('question_id');
 
         Option::where('question_id', $questionId)->delete();
+
+        $question->are_many_answers = array_count_values(array_column($request->input('options'), 'is_correct'))['1'] != 1;
         $question->update($request->input('question'));
 
         foreach ($request->input('options') as $option) {

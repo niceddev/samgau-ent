@@ -17,6 +17,7 @@ class Question extends Model
         'grade_letter',
         'subject_id',
         'topic',
+        'are_many_answers'
     ];
 
     public $translatable = [

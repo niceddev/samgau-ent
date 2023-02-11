@@ -147,12 +147,13 @@ class CreateScreen extends AbstractMultiLanguageScreen
         }
 
         $question = Question::create([
-            'question'     => $request->input('question'),
-            'sub_question' => $request->input('sub_question'),
-            'grade_number' => $request->input('grade_number'),
-            'grade_letter' => $request->input('grade_letter'),
-            'subject_id'   => $request->input('subject_id'),
-            'topic'        => $request->input('topic'),
+            'question'         => $request->input('question'),
+            'sub_question'     => $request->input('sub_question'),
+            'grade_number'     => $request->input('grade_number'),
+            'grade_letter'     => $request->input('grade_letter'),
+            'subject_id'       => $request->input('subject_id'),
+            'topic'            => $request->input('topic'),
+            'are_many_answers' => array_count_values(array_column($options, 'is_correct'))['1'] != 1
         ]);
 
         foreach ($options as $option) {

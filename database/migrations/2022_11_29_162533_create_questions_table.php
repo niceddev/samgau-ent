@@ -21,6 +21,7 @@ class CreateQuestionsTable extends Migration
             $table->string('grade_letter')->nullable();
             $table->integer('subject_id');
             $table->string('topic');
+            $table->boolean('are_many_answers')->default(false);
             $table->timestamps();
         });
     }
