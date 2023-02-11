@@ -27,23 +27,18 @@ class Subject extends Model
 
     public function questions()
     {
-        return $this->hasMany(Question::class)->orderBy('id');
+        return $this->hasMany(Question::class)
+            ->orderBy('id');
     }
 
     public function questionsByGrade()
     {
         return $this->hasMany(Question::class)
             ->where('grade_number', auth()->user()->grade_number)
-            ->when(1, function ($query) {
-                return $query->whereIn('subject_id', [1,3])->take(15);
-            })
-//            ->when(1, function ($query) {
-//                return $query->where('subject_id', 2)->take(20);
+//            ->when('subject_id', function ($query) {
+//                return $query->take(15);
 //            })
-//            ->when(1, function ($query) {
-//                return $query->whereNotIn('subject_id', [1,2,3])->take(35);
-//            })
-            ->orderBy('id');
+            ->inRandomOrder('id');
     }
 
     public function students()

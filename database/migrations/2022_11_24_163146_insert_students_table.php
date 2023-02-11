@@ -14,8 +14,8 @@ class InsertStudentsTable extends Migration
                 'email'        => 'naruto@kz',
                 'password'     => Hash::make('123123'),
                 'school_id'    => 1,
-                'grade_number' => null,
-                'grade_letter' => null
+                'grade_number' => 11,
+                'grade_letter' => 'A'
             ],
         ]);
     }
