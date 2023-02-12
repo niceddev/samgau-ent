@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Option;
 use App\Models\Question;
 use App\Models\Subject;
+use App\Models\Test;
 use App\Services\TestService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class TestController extends Controller
 {
@@ -52,41 +54,26 @@ class TestController extends Controller
         $minutes = $allSeconds / 60 % 60;
         $seconds = $allSeconds % 60;
 
-        $score = 0;
-
         $subjects = Subject::with('questionsByGrade')
             ->whereIn('id', json_decode($request->input('subjects')))
             ->get();
 
         $questionsIds = [];
-
         foreach (json_decode($request->input('subjects')) as $subjectId) {
-            foreach ((array)$request->input('subject-'. $subjectId) as $question => $answers) {
+            foreach ((array)$request->input('answers.subject-'. $subjectId) as $question => $answers) {
                 $questionsIds[] = intval(substr($question, 10));
             }
         }
 
-        $questions = Question::with('options')
-            ->whereIn('id', $questionsIds)
-            ->get();
+        $score = $testService->scoreSystem(
+            $questionsIds,
+            $request->input('answers')
+        );
 
-        foreach ($questions as $question) {
-            $rightAnswers = $question->optionsForTest
-                ->where('is_correct', true)
-                ->pluck('option')
-                ->toArray();
-
-            $userAnswers = $request->input('subject-' . $question->subject_id . '.questions-' . $question->id) ?? [];
-
-            $correctAnswers = array_intersect($userAnswers, $rightAnswers);
-            $mistakes = array_diff($userAnswers, $rightAnswers);
-
-            $score += $testService->scoreSystem(
-                count($rightAnswers),
-                count($correctAnswers),
-                count($mistakes),
-            );
-        }
+//        $test = Test::create([
+//           'local_uuid' => Str::uuid(),
+//           'student_id' => auth()->user()->id
+//        ]);
 
         return view('test_finish',
             compact('subjects', 'score', 'minutes', 'seconds')

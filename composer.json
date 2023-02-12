@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "orchid/platform": "^11.0",
+        "predis/predis": "^2.1",
         "spatie/laravel-translatable": "^4.6"
     },
     "require-dev": {
