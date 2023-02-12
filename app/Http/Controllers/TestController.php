@@ -70,7 +70,8 @@ class TestController extends Controller
 
         $test = Test::create([
             'local_uuid' => Str::uuid(),
-            'student_id' => auth()->user()->id
+            'student_id' => auth()->user()->id,
+            'score' => $score
         ]);
 
         foreach ($subjectIds as $subjectId) {
@@ -98,7 +99,7 @@ class TestController extends Controller
 
         DB::commit();
 
-        return view('test_finish',
+        return view('test-finish',
             compact('subjects', 'score', 'minutes', 'seconds')
         );
     }

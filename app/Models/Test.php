@@ -9,6 +9,7 @@ class Test extends Model
     protected $fillable = [
         'local_uuid',
         'student_id',
+        'score',
     ];
 
 }
