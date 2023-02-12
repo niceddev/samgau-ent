@@ -4,13 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SubjectQuestion extends Model
+class TestSubjectQuestion extends Model
 {
     protected $fillable = [
-        'test_subject_id',
-        'question_id',
         'test_id',
+        'subject_id',
+        'question_id',
     ];
+
+    public function test()
+    {
+        return $this->belongsTo(Test::class);
+    }
 
     public function subject()
     {
@@ -21,4 +26,5 @@ class SubjectQuestion extends Model
     {
         return $this->hasMany(Question::class);
     }
+
 }

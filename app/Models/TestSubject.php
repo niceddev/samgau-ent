@@ -16,8 +16,4 @@ class TestSubject extends Model
         return $this->belongsTo(Test::class);
     }
 
-    public function questions()
-    {
-        return $this->hasMany(Question::class);
-    }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStudentAnswersTable extends Migration
+class CreateTestStudentAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateStudentAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('student_answers', function (Blueprint $table) {
+        Schema::create('test_student_answers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('subject_question_id')->constrained();
-            $table->jsonb('answers');
             $table->foreignId('test_id')->constrained();
+            $table->foreignId('test_subject_question_id')->constrained();
+            $table->jsonb('answers');
             $table->timestamps();
         });
     }

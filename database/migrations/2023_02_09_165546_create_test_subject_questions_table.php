@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubjectQuestionsTable extends Migration
+class CreateTestSubjectQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateSubjectQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subject_questions', function (Blueprint $table) {
+        Schema::create('test_subject_questions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('test_subject_id')->constrained();
-            $table->foreignId('question_id')->constrained();
             $table->foreignId('test_id')->constrained();
+            $table->foreignId('subject_id')->constrained();
+            $table->foreignId('question_id')->constrained();
             $table->timestamps();
         });
     }
