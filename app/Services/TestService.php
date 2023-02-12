@@ -7,9 +7,18 @@ use App\Models\Question;
 
 class TestService
 {
-    public function scoreSystem(array $questionsIds, array $userAnswers): int
+    public function scoreSystem(array $subjectIds, array $userAnswers): int
     {
         $score = 0;
+
+        $questionsIds = [];
+        foreach ($subjectIds as $subjectId) {
+            if (!empty($userAnswers['subject-' . $subjectId])) {
+                foreach ((array)$userAnswers['subject-' . $subjectId] as $question => $answers) {
+                    $questionsIds[] = intval(substr($question, 10));
+                }
+            }
+        }
 
         $questions = Question::with('options')
             ->whereIn('id', $questionsIds)

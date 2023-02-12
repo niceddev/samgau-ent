@@ -58,15 +58,8 @@ class TestController extends Controller
             ->whereIn('id', json_decode($request->input('subjects')))
             ->get();
 
-        $questionsIds = [];
-        foreach (json_decode($request->input('subjects')) as $subjectId) {
-            foreach ((array)$request->input('answers.subject-'. $subjectId) as $question => $answers) {
-                $questionsIds[] = intval(substr($question, 10));
-            }
-        }
-
         $score = $testService->scoreSystem(
-            $questionsIds,
+            json_decode($request->input('subjects')),
             $request->input('answers')
         );
 
