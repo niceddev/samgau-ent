@@ -52,98 +52,106 @@ class DatabaseSeeder extends Seeder
 
         $options = [];
 
-        Question::chunk(500, function ($questions) use ($options) {
+        Question::where('are_many_answers', false)->chunk(500, function ($questions) use ($options) {
             foreach ($questions as $question) {
-                if ($question->id <= 100) {
-                    $options[] = [
-                        [
-                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => false,
-                        ],
-                        [
-                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => false
-                        ],
-                        [
-                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => false
-                        ],
-                        [
-                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => false
-                        ],
-                        [
-                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => false
-                        ],
-                        [
-                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => false
-                        ],
-                        [
-                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => false
-                        ],
-                        [
-                            'option'      => '{"ru":"000000"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => true
-                        ],
-                    ];
-                } else {
-                    $options[] = [
-                        [
-                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => false,
-                        ],
-                        [
-                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => false
-                        ],
-                        [
-                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => false
-                        ],
-                        [
-                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => false
-                        ],
-                        [
-                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => false
-                        ],
-                        [
-                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => true
-                        ],
-                        [
-                            'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => true
-                        ],
-                        [
-                            'option'      => '{"ru":"000000"}',
-                            'question_id' => $question->id,
-                            'is_correct'  => true
-                        ],
-                    ];
-                }
+                $options[] = [
+                    [
+                        'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => false,
+                    ],
+                    [
+                        'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => false
+                    ],
+                    [
+                        'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => false
+                    ],
+                    [
+                        'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => false
+                    ],
+                    [
+                        'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => false
+                    ],
+                    [
+                        'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => false
+                    ],
+                    [
+                        'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => false
+                    ],
+                    [
+                        'option'      => '{"ru":"000000"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => true
+                    ],
+                ];
             }
 
-            foreach (array_chunk($options, 100) as $optionsChunk) {
+            foreach (array_chunk($options, 500) as $optionsChunk) {
+                foreach ($optionsChunk as $chunk) {
+                    Option::insert($chunk);
+                }
+            }
+        });
+
+        Question::where('are_many_answers', true)->chunk(500, function ($questions) use ($options) {
+            foreach ($questions as $question) {
+                $options[] = [
+                    [
+                        'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => false,
+                    ],
+                    [
+                        'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => false
+                    ],
+                    [
+                        'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => false
+                    ],
+                    [
+                        'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => false
+                    ],
+                    [
+                        'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => false
+                    ],
+                    [
+                        'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => true
+                    ],
+                    [
+                        'option'      => '{"ru":"'. $question->id . ' - ' .$this->generateRandomString().'"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => true
+                    ],
+                    [
+                        'option'      => '{"ru":"000000"}',
+                        'question_id' => $question->id,
+                        'is_correct'  => true
+                    ],
+                ];
+            }
+
+            foreach (array_chunk($options, 500) as $optionsChunk) {
                 foreach ($optionsChunk as $chunk) {
                     Option::insert($chunk);
                 }

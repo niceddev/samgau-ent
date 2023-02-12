@@ -43,8 +43,4 @@ class Question extends Model
         return $query->where('grade_number', auth()->user()->grade_number);
     }
 
-    public function scopeIsManyAnswers($query)
-    {
-        return $query->where('are_many_answers', true);
-    }
 }

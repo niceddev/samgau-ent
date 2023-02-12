@@ -23,6 +23,8 @@ class TestController extends Controller
             });
 
 
+
+
         auth()->user()->load('subjects')
             ->subjects()->sync($subjects);
 
