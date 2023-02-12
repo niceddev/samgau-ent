@@ -15,15 +15,27 @@ class TestController extends Controller
             ->get()
             ->map(function ($subject) {
                 $subject->questions = match ($subject->id) {
-                    1, 3    => $subject->questionsByGrade()->take(15)->get(),
-                    2       => $subject->questionsByGrade()->take(20)->get(),
-                    default => $subject->questionsByGrade()->take(35)->get(),
+                    1, 3    => $subject->questionsByGrade()
+                        ->where('are_many_answers', false)
+                        ->take(15)
+                        ->get(),
+                    2       => $subject->questionsByGrade()
+                        ->where('are_many_answers', false)
+                        ->take(20)
+                        ->get(),
+                    default => $subject->questionsByGrade()
+                        ->where('are_many_answers', true)
+                        ->take(10)
+                        ->get()
+                        ->concat(
+                            $subject->questionsByGrade()
+                                ->where('are_many_answers', false)
+                                ->take(25)
+                                ->get()
+                        )->shuffle(),
                 };
                 return $subject;
             });
-
-
-
 
         auth()->user()->load('subjects')
             ->subjects()->sync($subjects);

@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
                     ];
                 }
 
-                for ($i = 1; $i <= 20; $i++) {
+                for ($i = 1; $i <= 100; $i++) {
                     $questions[] = [
                         'question'         => '{"ru":"' . $this->generateRandomString(20) . '"}',
                         'sub_question'     => null,

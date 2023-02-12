@@ -34,7 +34,7 @@ class Subject extends Model
     public function questionsByGrade()
     {
         return $this->hasMany(Question::class)
-            ->byGradeNumber()
+            ->where('grade_number', auth()->user()->grade_number)
             ->inRandomOrder('id');
     }
 

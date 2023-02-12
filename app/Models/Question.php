@@ -37,10 +37,4 @@ class Question extends Model
             ->where('option','!=', '{"kk":null}')
             ->orderBy('id');
     }
-
-    public function scopeByGradeNumber($query)
-    {
-        return $query->where('grade_number', auth()->user()->grade_number);
-    }
-
 }
