@@ -38,6 +38,18 @@ services:
         ports:
             - 5436:5432
 
+    redis:
+        image: 'redis:alpine'
+        container_name: samgau-redis
+        restart: always
+        command: redis-server
+        volumes:
+            - panel-redis:/data
+        ports:
+            - 6386:6379
+
 volumes:
     samgau-postgres:
+        external: true
+    samgau-redis:
         external: true
