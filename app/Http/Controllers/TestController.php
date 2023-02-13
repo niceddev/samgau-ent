@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\CreateTestTransactionJob;
 use App\Models\Subject;
 use App\Models\TestStudentAnswer;
 use App\Models\TestSubjectQuestion;
@@ -66,38 +67,12 @@ class TestController extends Controller
             $request->input('answers')
         );
 
-        DB::beginTransaction();
-
-        $test = Test::create([
-            'local_uuid' => Str::uuid(),
-            'student_id' => auth()->user()->id,
-            'score' => $score
-        ]);
-
-        foreach ($subjectIds as $subjectId) {
-            TestSubject::create([
-                'test_id'    => $test->id,
-                'subject_id' => $subjectId,
-            ]);
-
-            if (!empty($request->input('answers')['subject-' . $subjectId])) {
-                foreach ($request->input('answers')['subject-' . $subjectId] as $question => $answers) {
-                    $testSubjectQuestion = TestSubjectQuestion::create([
-                        'test_id'     => $test->id,
-                        'subject_id'  => $subjectId,
-                        'question_id' => substr($question, 10),
-                    ]);
-
-                    TestStudentAnswer::create([
-                        'test_id'                  => $test->id,
-                        'test_subject_question_id' => $testSubjectQuestion->id,
-                        'answers'                  => json_encode($answers),
-                    ]);
-                }
-            }
-        }
-
-        DB::commit();
+        CreateTestTransactionJob::dispatch(
+            auth()->user()->id,
+            $score,
+            $subjectIds,
+            $request->input('answers')
+        );
 
         return view('test-finish',
             compact('subjects', 'score', 'minutes', 'seconds')
