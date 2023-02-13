@@ -40,11 +40,11 @@ services:
 
     redis:
         image: 'redis:alpine'
-        container_name: samgau-redis
+        container_name: samgau_redis
         restart: always
         command: redis-server
         volumes:
-            - panel-redis:/data
+            - samgau-redis:/data
         ports:
             - 6386:6379
 
