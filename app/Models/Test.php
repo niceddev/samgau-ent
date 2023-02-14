@@ -13,4 +13,9 @@ class Test extends Model
         'duration',
     ];
 
+    public function testSubjects()
+    {
+        return $this->hasMany(TestSubject::class);
+    }
+
 }

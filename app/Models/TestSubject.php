@@ -16,4 +16,9 @@ class TestSubject extends Model
         return $this->belongsTo(Test::class);
     }
 
+    public function subjectQuestions()
+    {
+        return $this->hasMany(TestSubjectQuestion::class,  'test_subjects_id', 'id');
+    }
+
 }

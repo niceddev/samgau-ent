@@ -25,9 +25,9 @@ class CreateTestTransactionJob implements ShouldQueue
      * @return void
      */
     public function __construct(
-        protected int $userId,
-        protected int $score,
-        protected int $duration,
+        protected int   $userId,
+        protected int   $score,
+        protected int   $duration,
         protected array $subjectIds,
         protected array $userAnswers
     )
@@ -47,12 +47,12 @@ class CreateTestTransactionJob implements ShouldQueue
             $test = Test::create([
                 'local_uuid' => Str::uuid(),
                 'student_id' => $this->userId,
-                'score' => $this->score,
-                'duration' => $this->duration,
+                'score'      => $this->score,
+                'duration'   => $this->duration,
             ]);
 
             foreach ($this->subjectIds as $subjectId) {
-                TestSubject::create([
+                $testSubject = TestSubject::create([
                     'test_id'    => $test->id,
                     'subject_id' => $subjectId,
                 ]);
@@ -60,9 +60,10 @@ class CreateTestTransactionJob implements ShouldQueue
                 if (!empty($this->userAnswers['subject-' . $subjectId])) {
                     foreach ($this->userAnswers['subject-' . $subjectId] as $question => $answers) {
                         $testSubjectQuestion = TestSubjectQuestion::create([
-                            'test_id'     => $test->id,
-                            'subject_id'  => $subjectId,
-                            'question_id' => substr($question, 10),
+                            'test_id'          => $test->id,
+                            'test_subjects_id' => $testSubject->id,
+                            'subject_id'       => $subjectId,
+                            'question_id'      => substr($question, 10),
                         ]);
 
                         TestStudentAnswer::create([

@@ -8,6 +8,7 @@ class TestSubjectQuestion extends Model
 {
     protected $fillable = [
         'test_id',
+        'test_subjects_id',
         'subject_id',
         'question_id',
     ];
@@ -25,6 +26,16 @@ class TestSubjectQuestion extends Model
     public function questions()
     {
         return $this->hasMany(Question::class);
+    }
+
+    public function studentAnswers()
+    {
+        return $this->hasOne(TestStudentAnswer::class);
+    }
+
+    public function testSubjects()
+    {
+        return $this->belongsTo(TestSubject::class);
     }
 
 }
