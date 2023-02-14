@@ -18,6 +18,7 @@ class CreateTestsTable extends Migration
             $table->uuid('local_uuid')->index();
             $table->foreignId('student_id')->constrained();
             $table->unsignedTinyInteger('score')->default(0);
+            $table->unsignedBigInteger('duration')->nullable();
             $table->timestamps();
         });
     }

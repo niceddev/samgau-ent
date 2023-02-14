@@ -1,17 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Test;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\TestRequest;
 use App\Jobs\CreateTestTransactionJob;
 use App\Models\Subject;
-use App\Models\TestStudentAnswer;
-use App\Models\TestSubjectQuestion;
-use App\Models\Test;
-use App\Models\TestSubject;
 use App\Services\TestService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class TestController extends Controller
 {
@@ -50,50 +46,25 @@ class TestController extends Controller
         return view('test', compact('subjects'));
     }
 
-    public function showFinish(Request $request, TestService $testService)
+    public function store(TestRequest $testRequest, TestService $testService)
     {
-        $allSeconds = $request->input('timer');
-        $minutes = $allSeconds / 60 % 60;
-        $seconds = $allSeconds % 60;
-
-        $subjectIds = json_decode($request->input('subjects'));
-
-        $subjects = Subject::with('questionsByGrade')
-            ->whereIn('id', $subjectIds)
-            ->get();
+        $allSeconds = $testRequest->input('timer');
+        $subjectIds = json_decode($testRequest->input('subjects'));
 
         $score = $testService->scoreSystem(
             $subjectIds,
-            $request->input('answers')
+            $testRequest->input('answers')
         );
 
         CreateTestTransactionJob::dispatch(
             auth()->user()->id,
             $score,
+            $allSeconds,
             $subjectIds,
-            $request->input('answers')
+            $testRequest->input('answers')
         );
 
-        return view('test-finish',
-            compact('subjects', 'score', 'minutes', 'seconds')
-        );
-    }
-
-    public function showStatistics()
-    {
-        $test = Test::all();
-
-        return view('statistics', compact('test'));
-    }
-
-    public function showWorkOnMistakes(Request $request)
-    {
-        $subjects = Subject::with('questions')
-//            ->whereIn('id', $request->input('subjects'))
-            ->whereIn('id', [1, 2, 3, 4, 5])
-            ->get();
-
-        return view('test-work-on-mistakes', compact('subjects'));
+        return redirect()->route('results.index');
     }
 
 }

@@ -23,32 +23,41 @@ Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {
         'index'
     ])->name('subjects');
 
-    Route::name('test.')->prefix('test')->group(function (){
+    Route::name('test.')->prefix('test')->group(function () {
 
         Route::get('/', [
-            \App\Http\Controllers\TestController::class,
+            \App\Http\Controllers\Test\TestController::class,
             'index'
         ])->name('index');
 
-        Route::post('/finish', [
-            \App\Http\Controllers\TestController::class,
-            'showFinish'
-        ])->name('finish');
-
-//        Route::post('/work-on-mistakes/{testId}', [
-        Route::get('/work-on-mistakes', [
-            \App\Http\Controllers\TestController::class,
-            'showWorkOnMistakes'
-        ])->name('work-on-mistakes');
-
-        Route::get('/statistics', [
-            \App\Http\Controllers\TestController::class,
-            'showStatistics'
-        ])->name('statistics');
+        Route::post('/', [
+            \App\Http\Controllers\Test\TestController::class,
+            'store'
+        ])->name('store');
 
     });
 
-    Route::name('dashboard.')->group(function (){
+    Route::name('results.')->prefix('result')->group(function () {
+
+        Route::get('/', [
+            \App\Http\Controllers\Test\ResultController::class,
+            'index'
+        ])->name('index');
+
+//        Route::post('/work-on-mistakes/{testId}', [
+//        Route::get('/work-on-mistakes', [
+//            \App\Http\Controllers\TestController::class,
+//            'showWorkOnMistakes'
+//        ])->name('work-on-mistakes');
+//
+//        Route::get('/statistics', [
+//            \App\Http\Controllers\TestController::class,
+//            'showStatistics'
+//        ])->name('statistics');
+
+    });
+
+    Route::name('dashboard.')->group(function () {
 
         Route::get('/dashboard', [
             \App\Http\Controllers\DashboardController::class,
@@ -62,7 +71,7 @@ Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {
 
     });
 
-    Route::name('cabinet.')->group(function (){
+    Route::name('cabinet.')->group(function () {
 
         Route::get('/cabinet', [
             \App\Http\Controllers\CabinetController::class,
@@ -71,7 +80,7 @@ Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {
 
     });
 
-    Route::name('profile.')->group(function (){
+    Route::name('profile.')->group(function () {
 
         Route::get('/profile', [
             \App\Http\Controllers\ProfileController::class,

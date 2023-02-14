@@ -27,6 +27,7 @@ class CreateTestTransactionJob implements ShouldQueue
     public function __construct(
         protected int $userId,
         protected int $score,
+        protected int $duration,
         protected array $subjectIds,
         protected array $userAnswers
     )
@@ -46,7 +47,8 @@ class CreateTestTransactionJob implements ShouldQueue
             $test = Test::create([
                 'local_uuid' => Str::uuid(),
                 'student_id' => $this->userId,
-                'score' => $this->score
+                'score' => $this->score,
+                'duration' => $this->duration,
             ]);
 
             foreach ($this->subjectIds as $subjectId) {

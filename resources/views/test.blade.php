@@ -56,7 +56,7 @@
                     </ul>
                 </div>
 
-                <form action="{{ route('test.finish') }}" method="POST">
+                <form action="{{ route('test.store') }}" method="POST">
                     @csrf
                     <input type="text" class="visually-hidden" name="subjects" value="{{ $subjects->pluck('id') }}">
                     <input id="timer" type="text" class="visually-hidden" name="timer">

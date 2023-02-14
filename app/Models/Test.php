@@ -10,6 +10,7 @@ class Test extends Model
         'local_uuid',
         'student_id',
         'score',
+        'duration',
     ];
 
 }

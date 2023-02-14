@@ -43,26 +43,25 @@
 
         <div class="d-flex gap-3" style="margin-top: 180px">
 
-            <a href="" class="btns d-flex align-items-center">
-                {{ __('common.work_on_mistakes') }}
+            <a href="{{ route('test.index') }}" class="btns d-flex align-items-center">
+                {{ __('common.repeat_test') }}
             </a>
 
             <a href="" class="btns d-flex align-items-center">
-                {{ __('common.repeat_test') }}
+                {{ __('common.work_on_mistakes') }}
             </a>
 
             <a href="{{ route('test.statistics') }}" class="btns d-flex align-items-center">
                 {{ __('common.statistics') }}
             </a>
 
-            <a href class="btns d-flex align-items-center">
+            <a href="{{ route('subjects') }}" class="btns d-flex align-items-center">
                 {{ __('common.exit_test') }}
             </a>
 
         </div>
     </div>
 
-    {{ $score }}
     @push('custom-scripts')
         <script src="{{ asset('js/chart.umd.js') }}"></script>
         <script src="{{ asset('js/results-doughnut.js') }}"></script>
