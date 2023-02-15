@@ -28,6 +28,7 @@
             <div>
                 <ul>
                     @foreach($subjects as $subject)
+                        {{ dump($subject->a) }}
                         <li data-correct_answers_count="{{ rand(1,30) }}" data-questions_count="30">
                             {{ $subject->getTranslation('name', session()->get('lang', 'ru')) }}
                             <span class="fw-bold">{{ 0 .'/'. $subject->questionsByGrade->count() }}</span>
@@ -51,9 +52,9 @@
                 {{ __('common.work_on_mistakes') }}
             </a>
 
-            <a href="{{ route('test.statistics') }}" class="btns d-flex align-items-center">
-                {{ __('common.statistics') }}
-            </a>
+{{--            <a href="{{ route('test.statistics') }}" class="btns d-flex align-items-center">--}}
+{{--                {{ __('common.statistics') }}--}}
+{{--            </a>--}}
 
             <a href="{{ route('subjects') }}" class="btns d-flex align-items-center">
                 {{ __('common.exit_test') }}

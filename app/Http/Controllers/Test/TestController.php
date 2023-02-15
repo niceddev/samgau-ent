@@ -64,7 +64,12 @@ class TestController extends Controller
             $testRequest->input('answers')
         );
 
-        return redirect()->route('results.index');
+        return redirect()->route('results.index', [
+            'score'      => $score,
+            'allSeconds' => $allSeconds,
+            'subjectIds' => $subjectIds,
+            'answers'    => $testRequest->input('answers'),
+        ]);
     }
 
 }
