@@ -2,7 +2,7 @@
 
 namespace App\Orchid\Screens\Students;
 
-use App\Models\Grade;
+use App\Models\School;
 use App\Models\Student;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
@@ -22,9 +22,7 @@ class CreateScreen extends Screen
      */
     public function query(): iterable
     {
-        return [
-            'grades' => Grade::get()
-        ];
+        return [];
     }
 
     /**
@@ -87,10 +85,16 @@ class CreateScreen extends Screen
                     ->placeholder('Введите ' . __('common.fio'))
                     ->title(__('common.fio'))
                     ->required(),
-                Select::make('student.grade_id')
-                    ->fromModel(Grade::class, 'name')
+                Select::make('student.school_id')
+                    ->fromModel(School::class, 'title')
                     ->empty('No select')
-                    ->title(__('common.grades'))
+                    ->title(__('common.school')),
+                Input::make('student.grade_number')
+                    ->placeholder('Введите класс')
+                    ->title(__('common.grades')),
+                Input::make('student.grade_letter')
+                    ->placeholder('Введите букву класса')
+                    ->title('Буква')
             ])
         ];
     }

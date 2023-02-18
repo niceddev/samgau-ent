@@ -51,9 +51,9 @@
                 {{ __('common.work_on_mistakes') }}
             </a>
 
-{{--            <a href="{{ route('test.statistics') }}" class="btns d-flex align-items-center">--}}
-{{--                {{ __('common.statistics') }}--}}
-{{--            </a>--}}
+            <a href="" class="btns d-flex align-items-center">
+                {{ __('common.statistics') }}
+            </a>
 
             <a href="{{ route('subjects') }}" class="btns d-flex align-items-center">
                 {{ __('common.exit_test') }}
