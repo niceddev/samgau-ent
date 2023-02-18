@@ -13,7 +13,7 @@ class DashboardController extends Controller
 
         $test = Test::where('student_id', auth()->user()->id);
         $passedTestsCount = $test->get()->count();
-        $maxScore = $test->orderByDesc('score')->first()->score;
+        $maxScore = $test->orderByDesc('score')->first()->score ?? 0;
         $averageScore = $test->avg('score');
 
         return view('dashboard', compact('studentsSubjects', 'passedTestsCount', 'maxScore', 'averageScore'));
