@@ -24,10 +24,11 @@ class ResultRequest extends FormRequest
     public function rules()
     {
         return [
-            'score'      => 'string',
-            'allSeconds' => 'string',
-            'subjectIds' => 'array',
-            'answers'    => 'array'
+            'score'        => 'string',
+            'allSeconds'   => 'string',
+            'subjectIds'   => 'array',
+            'answers'      => 'array',
+            'questionsIds' => 'array'
         ];
     }
 }

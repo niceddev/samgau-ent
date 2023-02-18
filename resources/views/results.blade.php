@@ -28,10 +28,9 @@
             <div>
                 <ul>
                     @foreach($subjects as $subject)
-                        {{ dump($subject->a) }}
-                        <li data-correct_answers_count="{{ rand(1,30) }}" data-questions_count="30">
+                        <li data-correct_answers_count="{{ $subject->score }}" data-questions_count="{{ $subject->questions->count() }}">
                             {{ $subject->getTranslation('name', session()->get('lang', 'ru')) }}
-                            <span class="fw-bold">{{ 0 .'/'. $subject->questionsByGrade->count() }}</span>
+                            <span class="fw-bold">{{ $subject->score .'/'. $subject->questions->count() }}</span>
                         </li>
                     @endforeach
                 </ul>

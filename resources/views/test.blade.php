@@ -66,6 +66,7 @@
                                      class="tab-content tab-pane subject-{{ $subject->id }}-questions-content fade @if($loop->first)show active @endif"
                                      role="tabpanel" aria-labelledby="nav-subject-{{ $subject->id }}-tab"
                                      data-content="subject-{{ $subject->id }}-questions-content">
+                                <input type="text" class="visually-hidden" name="questionsIds[subject-{{ $subject->id }}][]" value="{{ implode(',',$subject->questions->pluck('id')->toArray()) }}">
                                 @foreach($subject->questions as $question)
                                     <div id="question-{{ $question->id }}"
                                          class="tab-pane fade @if($loop->first)show active @endif"

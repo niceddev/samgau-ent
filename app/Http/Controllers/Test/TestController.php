@@ -13,6 +13,7 @@ class TestController extends Controller
 {
     public function index(Request $request)
     {
+//        Test isset else
         $subjects = Subject::with('questionsByGrade')
             ->whereIn('id', $request->input('subjects'))
             ->get()
@@ -65,10 +66,11 @@ class TestController extends Controller
         );
 
         return redirect()->route('results.index', [
-            'score'      => $score,
-            'allSeconds' => $allSeconds,
-            'subjectIds' => $subjectIds,
-            'answers'    => $testRequest->input('answers'),
+            'score'        => $score,
+            'allSeconds'   => $allSeconds,
+            'subjectIds'   => $subjectIds,
+            'answers'      => $testRequest->input('answers'),
+            'questionsIds' => $testRequest->input('questionsIds'),
         ]);
     }
 
