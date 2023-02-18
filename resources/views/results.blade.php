@@ -51,7 +51,7 @@
                 {{ __('common.work_on_mistakes') }}
             </a>
 
-            <a href="" class="btns d-flex align-items-center">
+            <a href="{{ route('dashboard.index') }}" class="btns d-flex align-items-center">
                 {{ __('common.statistics') }}
             </a>
 

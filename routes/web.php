@@ -57,32 +57,32 @@ Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {
 
     });
 
-    Route::name('dashboard.')->group(function () {
+    Route::name('dashboard.')->prefix('dashboard')->group(function () {
 
-        Route::get('/dashboard', [
-            \App\Http\Controllers\DashboardController::class,
+        Route::get('/', [
+            \App\Http\Controllers\Dashboard\DashboardController::class,
             'index'
         ])->name('index');
 
-        Route::get('/dashboard/detailed', [
-            \App\Http\Controllers\DashboardController::class,
-            'showDetailed'
+        Route::get('/detailed', [
+            \App\Http\Controllers\Dashboard\DetailedController::class,
+            'index'
         ])->name('detailed');
 
     });
 
-    Route::name('cabinet.')->group(function () {
+    Route::name('cabinet.')->prefix('cabinet')->group(function () {
 
-        Route::get('/cabinet', [
+        Route::get('/', [
             \App\Http\Controllers\CabinetController::class,
             'index'
         ])->name('index');
 
     });
 
-    Route::name('profile.')->group(function () {
+    Route::name('profile.')->prefix('profile')->group(function () {
 
-        Route::get('/profile', [
+        Route::get('/', [
             \App\Http\Controllers\ProfileController::class,
             'index'
         ])->name('index');

@@ -1,24 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\DetailedDashboardRequest;
 use App\Models\Subject;
 use App\Models\Test;
-use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
-class DashboardController extends Controller
+class DetailedController extends Controller
 {
-    public function index()
+    public function index(DetailedDashboardRequest $detailedDashboardRequest)
     {
-        $studentsSubjects = auth()->user()->load('subjects')->subjects;
-
-        return view('dashboard', compact('studentsSubjects'));
-    }
-
-    public function showDetailed(Request $request)
-    {
-        $subject = Subject::where('id', $request->input('subject-id'))->first();
+        $subject = Subject::where('id', $detailedDashboardRequest->input('subject-id'))->first();
         $tests = Test::where('student_id', auth()->user()->id)->get();
 
         $dates = collect();
@@ -32,5 +26,4 @@ class DashboardController extends Controller
 
         return view('dashboard-subject', compact('subject', 'tests', 'dates'));
     }
-
 }

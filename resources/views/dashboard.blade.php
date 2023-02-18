@@ -16,15 +16,15 @@
                     <div class="info-cards row p-2">
                         <div class="col rounded-4 m-2">
                             <p class="info-title m-0">{{ __('common.passed_tests_count') }}:</p>
-                            <p class="digit">0</p>
+                            <p class="digit">{{ $passedTestsCount }}</p>
                         </div>
                         <div class="col rounded-4 m-2">
                             <p class="info-title m-0">{{ __('common.max_score') }}:</p>
-                            <p class="digit">0</p>
+                            <p class="digit">{{ $maxScore }}</p>
                         </div>
                         <div class="col rounded-4 m-2">
                             <p class="info-title m-0">{{ __('common.average_score') }}:</p>
-                            <p class="digit">0</p>
+                            <p class="digit">{{ floor($averageScore) }}</p>
                         </div>
                     </div>
                 </div>
