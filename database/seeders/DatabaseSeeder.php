@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
                         'grade_number'     => rand(10, 11),
                         'grade_letter'     => 'Б',
                         'subject_id'       => $subject->id,
-                        'topic'            => $subject->name,
+                        'topic'            => '{"ru":"' . $subject->name . '"}',
                         'are_many_answers' => false
                     ];
                 }
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
                         'grade_number'     => rand(10, 11),
                         'grade_letter'     => 'Б',
                         'subject_id'       => $subject->id,
-                        'topic'            => $subject->name,
+                        'topic'            => '{"ru":"' . $subject->name . '"}',
                         'are_many_answers' => true
                     ];
                 }

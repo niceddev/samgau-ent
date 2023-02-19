@@ -23,9 +23,9 @@ class TestSubjectQuestion extends Model
         return $this->belongsTo(Subject::class);
     }
 
-    public function questions()
+    public function question()
     {
-        return $this->hasMany(Question::class);
+        return $this->hasOne(Question::class, 'id', 'question_id');
     }
 
     public function studentAnswers()

@@ -15,7 +15,12 @@ class Test extends Model
 
     public function testSubjects()
     {
-        return $this->hasMany(TestSubject::class);
+        return $this->hasMany(TestSubject::class, 'id', 'test_id');
+    }
+
+    public function studentId()
+    {
+        return $this->hasOne(Student::class, 'id', 'student_id');
     }
 
 }

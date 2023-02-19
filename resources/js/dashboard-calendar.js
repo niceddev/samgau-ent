@@ -3,7 +3,8 @@ window.addEventListener("load", () => {
     let calendarMonths = document.getElementById("calendarMonths")
     let currentDate = new URLSearchParams(window.location.search).get("date")
     if (currentDate === null){
-        calendarMonths.value = "2023-01"
+        let date = new Date()
+        calendarMonths.value = date.getFullYear() + '-' + (date.getMonth() + 1).toString().padStart(2, '0')
     } else {
         calendarMonths.value = currentDate.slice(0,7)
     }

@@ -31,7 +31,7 @@ class ResultController extends Controller
         $seconds = 9 % 60;
         $score = 1;
 
-        return view('results',
+        return view('test.results',
             compact('subjects', 'score', 'minutes', 'seconds')
         );
     }

@@ -4,6 +4,7 @@ namespace App\Orchid\Screens\Students;
 
 use App\Models\School;
 use App\Models\Student;
+use Illuminate\Support\Facades\Hash;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Input;
@@ -57,7 +58,14 @@ class CreateScreen extends Screen
      */
     public function save(Request $request)
     {
-        Student::create($request->input('student'));
+        Student::create([
+            'email'        => $request->input('student')['email'],
+            'password'     => Hash::make($request->input('student')['password']),
+            'fio'          => $request->input('student')['fio'],
+            'school_id'    => $request->input('student')['school_id'],
+            'grade_number' => $request->input('student')['grade_number'],
+            'grade_letter' => $request->input('student')['grade_letter'],
+        ]);
 
         Alert::info('['.$request->input('student.fio') .'] Создано!');
 
@@ -78,6 +86,7 @@ class CreateScreen extends Screen
                     ->title('E-mail')
                     ->required(),
                 Input::make('student.password')
+                    ->type('password')
                     ->placeholder('Введите ' . __('Password'))
                     ->title(__('Password'))
                     ->required(),

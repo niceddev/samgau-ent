@@ -44,7 +44,7 @@ class TestController extends Controller
         auth()->user()->load('subjects')
             ->subjects()->sync($subjects);
 
-        return view('test', compact('subjects'));
+        return view('test.test', compact('subjects'));
     }
 
     public function store(TestRequest $testRequest, TestService $testService)

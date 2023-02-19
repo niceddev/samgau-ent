@@ -25,6 +25,7 @@ class DetailedDashboardRequest extends FormRequest
     {
         return [
             'subject-id' => 'required|string',
+            'date'       => 'required|string',
         ];
     }
 }

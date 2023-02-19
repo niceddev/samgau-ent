@@ -51,6 +51,7 @@
                                     </li>
                                 @endforeach
                             </ul>
+                            <input type="text" class="visually-hidden" name="date" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
                         </form>
                     </div>
                     <div class="right-side">
