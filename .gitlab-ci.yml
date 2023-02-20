@@ -9,7 +9,7 @@ test:
     tags:
         - build
     script:
-        - echo "hello world"
+        - php artisan test
     
 deploy:
     stage: deploy
