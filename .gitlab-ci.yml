@@ -1,0 +1,19 @@
+image: php:8.1
+
+stages:
+    - test
+    - deploy
+
+test:
+    stage: test
+    tags:
+        - build
+    script:
+        - echo "test"
+    
+deploy:
+    stage: deploy
+    tags:
+        - build
+    script:
+        - echo "deploying"
