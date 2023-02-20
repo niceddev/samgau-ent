@@ -2,10 +2,18 @@ image: php:8.1
 
 stages:
     - test
+    - deploy
 
 test:
     stage: test
-    script:
-        - php artisan test
     tags:
         - build
+    script:
+        - echo "hello world"
+    
+deploy:
+    stage: deploy
+    tags:
+        - build
+    script:
+        - echo "deploying"
