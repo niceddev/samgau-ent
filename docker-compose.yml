@@ -42,7 +42,7 @@ services:
         image: 'redis:alpine'
         container_name: samgau_redis
         restart: always
-        command: redis-server
+        command: redis-server --appendonly yes --replica-read-only no
         volumes:
             - samgau-redis:/data
         ports:
