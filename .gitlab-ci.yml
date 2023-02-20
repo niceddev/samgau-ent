@@ -1,0 +1,5 @@
+image: php8.1.9
+
+test:
+    script:
+        - php artisan test
