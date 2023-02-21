@@ -14,6 +14,7 @@ class TestController extends Controller
     public function index(Request $request)
     {
 //        Test isset else
+
         $subjects = Subject::with('questionsByGrade')
             ->whereIn('id', $request->input('subjects'))
             ->get()
