@@ -52,6 +52,7 @@ class TestController extends Controller
         $allSeconds = $testRequest->input('timer');
         $subjectIds = json_decode($testRequest->input('subjects'));
 
+
         $score = $testService->scoreSystem(
             $subjectIds,
             $testRequest->input('answers')
@@ -65,7 +66,7 @@ class TestController extends Controller
             $testRequest->input('answers')
         );
 
-        return redirect()->route('results.index', [
+        return redirect()->route('result', [
             'score'        => $score,
             'allSeconds'   => $allSeconds,
             'subjectIds'   => $subjectIds,

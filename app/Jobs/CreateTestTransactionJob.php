@@ -58,7 +58,7 @@ class CreateTestTransactionJob implements ShouldQueue
                 ]);
 
                 if (!empty($this->userAnswers['subject-' . $subjectId])) {
-                    foreach ($this->userAnswers['subject-' . $subjectId] as $question => $answers) {
+                    foreach ($this->userAnswers['subject-' . $subjectId] as $question => $option) {
                         $testSubjectQuestion = TestSubjectQuestion::create([
                             'test_id'          => $test->id,
                             'test_subjects_id' => $testSubject->id,
@@ -69,7 +69,7 @@ class CreateTestTransactionJob implements ShouldQueue
                         TestStudentAnswer::create([
                             'test_id'                  => $test->id,
                             'test_subject_question_id' => $testSubjectQuestion->id,
-                            'answers'                  => json_encode($answers),
+                            'option_id'                => (int) $option[0],
                         ]);
                     }
                 }

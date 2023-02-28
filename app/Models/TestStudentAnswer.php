@@ -10,7 +10,7 @@ class TestStudentAnswer extends Model
     protected $fillable = [
         'test_id',
         'test_subject_question_id',
-        'answers',
+        'option_id',
     ];
 
     public function subject()

@@ -17,7 +17,7 @@ class CreateTestStudentAnswersTable extends Migration
             $table->id();
             $table->foreignId('test_id')->constrained();
             $table->foreignId('test_subject_question_id')->constrained();
-            $table->jsonb('answers');
+            $table->foreignId('option_id')->constrained();
             $table->timestamps();
         });
     }

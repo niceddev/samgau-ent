@@ -37,25 +37,16 @@ Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {
 
     });
 
-    Route::name('results.')->prefix('result')->group(function () {
+    Route::get('result/', [
+        \App\Http\Controllers\Test\ResultController::class,
+        'index'
+    ])->name('result');
 
-        Route::get('/', [
-            \App\Http\Controllers\Test\ResultController::class,
-            'index'
-        ])->name('index');
 
-//        Route::post('/work-on-mistakes/{testId}', [
-//        Route::get('/work-on-mistakes', [
-//            \App\Http\Controllers\TestController::class,
-//            'showWorkOnMistakes'
-//        ])->name('work-on-mistakes');
-//
-//        Route::get('/statistics', [
-//            \App\Http\Controllers\TestController::class,
-//            'showStatistics'
-//        ])->name('statistics');
-
-    });
+    Route::get('/statistic', [
+        \App\Http\Controllers\Test\StatisticController::class,
+        'index'
+    ])->name('statistic');
 
     Route::name('dashboard.')->prefix('dashboard')->group(function () {
 

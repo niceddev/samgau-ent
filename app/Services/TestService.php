@@ -27,7 +27,7 @@ class TestService
         foreach ($questions as $question) {
             $rightAnswers = $question->optionsForTest
                 ->where('is_correct', true)
-                ->pluck('option')
+                ->pluck('id')
                 ->toArray();
 
             $correctAnswers = array_intersect($userAnswers['subject-' . $question->subject_id]['questions-' . $question->id], $rightAnswers);

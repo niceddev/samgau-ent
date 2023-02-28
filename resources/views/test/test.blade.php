@@ -96,7 +96,7 @@
                                                                @else
                                                                    type="checkbox"
                                                                @endif
-                                                               value="{{ $option->getTranslation('option', session()->get('lang', 'ru')) }}">
+                                                               value="{{ $option->id }}">
                                                         <span class="option-checkmark">
                                                             {{ chr($key + 65) }}
                                                         </span>
