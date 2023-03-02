@@ -44,6 +44,6 @@ class StartupProject extends Command
             'email' => 'admin@admin.com',
             'password' => '123123'
         ]);
-        $this->call('db:seed');
+//        $this->call('db:seed');
     }
 }
