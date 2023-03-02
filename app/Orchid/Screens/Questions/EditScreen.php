@@ -141,18 +141,20 @@ class EditScreen extends AbstractMultiLanguageScreen
     {
         $questionId = $request->input('question_id');
 
-        Option::where('question_id', $questionId)->delete();
+        $optionsFromInput = $request->input('options');
+        $options = Option::where('question_id', $questionId)->get();
 
         $question->are_many_answers = array_count_values(array_column($request->input('options'), 'is_correct'))['1'] != 1;
         $question->update($request->input('question'));
 
-        foreach ($request->input('options') as $option) {
-            Option::create([
-                'option' => $option['option'],
+        $options->each(function ($option, $key) use ($optionsFromInput, $questionId) {
+            $option->update([
+                'option'      => $optionsFromInput[strtolower(chr($key+65))]['option'],
                 'question_id' => $questionId,
-                'is_correct' => $option['option']['ru'] === null ? false : $option['is_correct'],
+                'is_correct'  => $optionsFromInput[strtolower(chr($key+65))]['option']['ru'] === null ? false : $optionsFromInput[strtolower(chr($key+65))]['is_correct'],
             ]);
-        }
+        });
+
 
         Alert::message('Вопрос №' . $question->id . ' изменен!');
 
