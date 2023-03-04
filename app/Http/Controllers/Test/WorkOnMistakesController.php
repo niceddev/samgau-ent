@@ -22,8 +22,9 @@ class WorkOnMistakesController extends Controller
             });
 
         $questionIds = $testLoadRequest->input('questionIds');
+        $studentAnswers = $testLoadRequest->input('studentAnswers');
 
-        return view('test.work-on-mistakes', compact('subjects', 'questionIds'));
+        return view('test.work-on-mistakes', compact('subjects', 'questionIds', 'studentAnswers'));
     }
 
 }

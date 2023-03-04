@@ -819,9 +819,28 @@ ol li:hover::marker {
 }
 
 #work-on-mistakes .question-nums {
-    font-size: 32px;
-    line-height: 32px;
-    margin-right: 52px;
+    font-size: 42px;
+    line-height: 42px;
+    margin-right: 42px;
     width: 10px;
     color: #CAD5DD;
+}
+
+#work-on-mistakes .option-item {
+    width: 35px;
+    height: 35px;
+    margin-left: 20px;
+    border-radius: 50%;
+    background-color: #CAD5DD;
+    border: 3px solid #2F327D4D;
+}
+
+#work-on-mistakes .option-wrong {
+    background-color: #FF6257;
+    border: 3px solid #d04339;
+}
+
+#work-on-mistakes .option-correct {
+    background-color: #74FF67;
+    border: 3px solid #4db747;
 }

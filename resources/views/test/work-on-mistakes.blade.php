@@ -28,6 +28,7 @@
             </div>
             <div class="col-4">
                 <div class="tab-content" id="v-pills-tabContent">
+                    <h2 class="text-center mb-4">{{ __('common.questions') }}</h2>
                     @foreach($subjects as $subject)
                         <div id="nav-subject-{{ $subject->id }}"
                              class="tab-content tab-pane subject-{{ $subject->id }}-questions-content fade @if($loop->first)show active @endif"
@@ -40,9 +41,12 @@
                                         <p class="question-nums">{{ $question->id }}</p>
                                         <ul class="list-group list-group-horizontal">
                                             @foreach($question->load('optionsForTest')->optionsForTest as $option)
-                                                <li class="list-group-item">
-                                                    {{ $option->id }}
-                                                </li>
+{{--                                                {{ dd($studentAnswers['subject-' . $question->id]['questions-' . $question->id]) }}--}}
+{{--                                                @foreach($studentAnswers['subject-' . $question->id]['questions-' . $question->id] as $answer)--}}
+                                                    <li class="list-unstyled option-item">
+{{--                                                        {{ print_r($answer) }}--}}
+                                                    </li>
+{{--                                                @endforeach--}}
                                             @endforeach
                                         </ul>
 
