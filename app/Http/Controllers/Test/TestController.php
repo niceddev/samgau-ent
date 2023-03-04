@@ -3,19 +3,37 @@
 namespace App\Http\Controllers\Test;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\TestRequest;
+use App\Http\Requests\Test\TestLoadRequest;
+use App\Http\Requests\Test\TestRequest;
 use App\Jobs\CreateTestTransactionJob;
 use App\Models\Subject;
 use App\Services\TestService;
-use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 
 class TestController extends Controller
 {
-    public function index(Request $request)
+    public function index(TestLoadRequest $testLoadRequest)
     {
-//        Test isset else
+        if (!is_null($testLoadRequest->input('questionIds'))) {
+
+            $questionIds = $testLoadRequest->input('questionIds');
+
+            $subjects = Subject::with('questionsByGrade')
+                ->whereIn('id', $testLoadRequest->input('subjects'))
+                ->get()
+                ->map(function ($subject) use ($questionIds) {
+
+                    $subject->questions = $subject->questions
+                        ->whereIn('id', explode(',', $questionIds['subject-' . $subject->id][0] ?? '') ?? []);
+
+                    return $subject;
+                });
+
+            return view('test.test', compact('subjects'));
+        }
+
         $subjects = Subject::with('questionsByGrade')
-            ->whereIn('id', $request->input('subjects'))
+            ->whereIn('id', $testLoadRequest->input('subjects'))
             ->get()
             ->map(function ($subject) {
                 $subject->questions = match ($subject->id) {
@@ -40,6 +58,7 @@ class TestController extends Controller
                 };
                 return $subject;
             });
+
 
         auth()->user()->load('subjects')
             ->subjects()->sync($subjects);

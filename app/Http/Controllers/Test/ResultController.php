@@ -12,6 +12,8 @@ class ResultController extends Controller
 {
     public function index(ResultRequest $resultRequest, TestService $testService)
     {
+        $questionIds = $resultRequest->input('questionsIds');
+
         $subjects = Subject::with('questionsByGrade')
             ->whereIn('id', $resultRequest->input('subjectIds'))
             ->get()
@@ -32,7 +34,7 @@ class ResultController extends Controller
         $score = 1;
 
         return view('test.results',
-            compact('subjects', 'score', 'minutes', 'seconds')
+            compact('subjects', 'score', 'minutes', 'seconds', 'questionIds')
         );
     }
 

@@ -43,7 +43,7 @@
 
         <div class="d-flex gap-3" style="margin-top: 180px">
 
-            <a href="{{ route('test.index') }}" class="btns d-flex align-items-center">
+            <a href="{{ route('test.index', ['subjects' => $subjects->pluck('id')->toArray(), 'questionIds' => $questionIds]) }}" class="btns d-flex align-items-center">
                 {{ __('common.repeat_test') }}
             </a>
 
