@@ -42,11 +42,10 @@ Route::middleware(['auth:ent', 'verified', 'language'])->group(function() {
         'index'
     ])->name('result');
 
-
-    Route::get('/statistic', [
-        \App\Http\Controllers\Test\StatisticController::class,
+    Route::get('/work-on-mistakes', [
+        \App\Http\Controllers\Test\WorkOnMistakesController::class,
         'index'
-    ])->name('statistic');
+    ])->name('work-on-mistakes');
 
     Route::name('dashboard.')->prefix('dashboard')->group(function () {
 

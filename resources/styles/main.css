@@ -817,3 +817,11 @@ ol li:hover::marker {
 .test-results .error {
     background: #CA2828;
 }
+
+#work-on-mistakes .question-nums {
+    font-size: 32px;
+    line-height: 32px;
+    margin-right: 52px;
+    width: 10px;
+    color: #CAD5DD;
+}

@@ -24,8 +24,9 @@ class TestLoadRequest extends FormRequest
     public function rules()
     {
         return [
-            'subjects'    => 'required|array',
-            'questionIds' => 'nullable|array',
+            'subjects'       => 'required|array',
+            'questionIds'    => 'nullable|array',
+            'studentAnswers' => 'nullable|array',
         ];
     }
 }

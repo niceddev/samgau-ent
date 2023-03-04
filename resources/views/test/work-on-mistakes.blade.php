@@ -5,11 +5,11 @@
 @endsection()
 
 @section('content')
-    <div class="container my-5">
+    <div class="container my-5" id="work-on-mistakes">
         <div class="row justify-content-center">
 
-            <div class="col-4">
-                <div class="d-flex align-items-start">
+            <div class="col-3">
+                <div class="d-flex">
                     <div class="nav flex-column nav-pills me-3" id="subjectsTab" style="border-bottom: 0" role="tablist" aria-orientation="vertical">
                         @foreach($subjects as $subject)
                             <div class="text-center mb-3">
@@ -33,9 +33,23 @@
                              class="tab-content tab-pane subject-{{ $subject->id }}-questions-content fade @if($loop->first)show active @endif"
                              role="tabpanel" aria-labelledby="nav-subject-{{ $subject->id }}-tab"
                              data-content="subject-{{ $subject->id }}-questions-content">
+                            <ul>
+                                @foreach($subject->questions->whereIn('id', explode(',', $questionIds['subject-' . $subject->id][0] ?? '') ?? []) as $question)
 
-                            {{ $subject->id }}
+                                    <li class="list-unstyled d-flex">
+                                        <p class="question-nums">{{ $question->id }}</p>
+                                        <ul class="list-group list-group-horizontal">
+                                            @foreach($question->load('optionsForTest')->optionsForTest as $option)
+                                                <li class="list-group-item">
+                                                    {{ $option->id }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
 
+                                    </li>
+
+                                @endforeach
+                            </ul>
                         </div>
                     @endforeach
                 </div>
@@ -43,6 +57,7 @@
 
         </div>
     </div>
+
 
     <script src="{{ asset('js/bootstrap.js') }}"></script>
 

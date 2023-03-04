@@ -47,7 +47,7 @@
                 {{ __('common.repeat_test') }}
             </a>
 
-            <a href="" class="btns d-flex align-items-center">
+            <a href="{{ route('work-on-mistakes', ['subjects' => $subjects->pluck('id')->toArray(), 'questionIds' => $questionIds, 'studentAnswers' => $studentAnswers]) }}" class="btns d-flex align-items-center">
                 {{ __('common.work_on_mistakes') }}
             </a>
 
