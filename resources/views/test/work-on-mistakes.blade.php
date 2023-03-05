@@ -41,14 +41,18 @@
                                         <p class="question-nums">{{ $question->id }}</p>
                                         <ul class="list-group list-group-horizontal">
                                             @foreach($question->load('optionsForTest')->optionsForTest as $option)
-{{--                                                @foreach($studentAnswers['subject-' . $question->id] ?? []['questions-' . $question->id] ?? [] as $answer)--}}
-                                                    <li class="list-unstyled option-item">
-{{--                                                        {{ print_r($answer) }}--}}
-                                                    </li>
-{{--                                                @endforeach--}}
+                                                <li class="list-unstyled
+                                                    @foreach($answersOptions->collapse()->where('question_id', $question->id) as $answerOption)
+                                                        @if($option->id === $answerOption->id && $answerOption->is_correct)
+                                                            option-correct
+                                                        @elseif($option->id === $answerOption->id && !$answerOption->is_correct)
+                                                            option-wrong
+                                                        @endif
+                                                    @endforeach
+                                                    option-item">
+                                                </li>
                                             @endforeach
                                         </ul>
-
                                     </li>
 
                                 @endforeach
