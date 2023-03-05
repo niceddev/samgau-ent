@@ -844,3 +844,12 @@ ol li:hover::marker {
     background-color: #74FF67;
     border: 3px solid #4db747;
 }
+
+#work-on-mistakes .btn {
+    background-color: #FBA333;
+    padding: 5px 13px 5px 13px;
+    margin-right: 10px;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 14px;
+}

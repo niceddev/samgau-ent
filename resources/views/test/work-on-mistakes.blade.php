@@ -41,8 +41,7 @@
                                         <p class="question-nums">{{ $question->id }}</p>
                                         <ul class="list-group list-group-horizontal">
                                             @foreach($question->load('optionsForTest')->optionsForTest as $option)
-{{--                                                {{ dd($studentAnswers['subject-' . $question->id]['questions-' . $question->id]) }}--}}
-{{--                                                @foreach($studentAnswers['subject-' . $question->id]['questions-' . $question->id] as $answer)--}}
+{{--                                                @foreach($studentAnswers['subject-' . $question->id] ?? []['questions-' . $question->id] ?? [] as $answer)--}}
                                                     <li class="list-unstyled option-item">
 {{--                                                        {{ print_r($answer) }}--}}
                                                     </li>
@@ -56,6 +55,15 @@
                             </ul>
                         </div>
                     @endforeach
+                    <div class="d-flex">
+                        <a class="btn" href="{{ route('test.index', ['subjects' => $subjects->pluck('id')->toArray(), 'questionIds' => $questionIds]) }}">
+                            {{ __('common.repeat_test') }}
+                        </a>
+
+                        <a class="btn" href="{{ route('cabinet.index') }}">
+                            {{ __('common.cabinet') }}
+                        </a>
+                    </div>
                 </div>
             </div>
 
