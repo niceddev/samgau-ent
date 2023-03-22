@@ -2,9 +2,9 @@
 
 ## TO DO:
 
-# docker-compose up -d --build
-# npm i (node 16v)
-# npm run dev
-# docker exec -it samgau_php bash
-# composer i
-# php artisan startup
+### docker-compose up -d --build
+### npm i (node 16v)
+### npm run dev
+### docker exec -it samgau_php bash
+### composer i
+### php artisan startup
